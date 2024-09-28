@@ -1,0 +1,621 @@
+main: ${project.groupId}.${project.name}
+name: ${project.name}
+version: 2.13.7
+website: ${project.url}
+description: ${project.description}
+authors: [Cayorion, Madus, Ulumulu1510, MarkehMe, Brettflan, zFrost87]
+depend: [MassiveCore]
+softdepend: [Outpost, Starfall, RaidingOutpost, MobExtras, PermissionsEx, Permissions, Essentials, EssentialsChat, HeroChat, iChat, LocalAreaChat, LWC, nChat, ChatManager, AuthMe, Vault, Spout, WorldEdit, WorldGuard, AuthDB, CaptureThePoints, CombatTag, LogBlock]
+permissions:
+# -------------------------------------------- #
+# THE REAL NODES
+# -------------------------------------------- #
+  factions.access: {description: manage access, default: false}
+  factions.access.faction: {description: grant faction access, default: false}
+  factions.access.player: {description: grant player access, default: false}
+  factions.accessall: {description: manage access for all claims at once, default: false}
+  factions.accessall.faction: {description: grant/revoke faction access for all claims, default: false}
+  factions.accessall.player: {description: grant/revoke player access for all claims, default: false}
+  factions.access.view: {description: view access, default: false}
+  factions.override: {description: enable override mode, default: false}
+  factions.basecommand: {description: use factions base command, default: false}
+  factions.claim: {description: claim faction territory, default: false}
+  factions.claim.one: {description: claim a single chunk, default: false}
+  factions.claim.auto: {description: claim as you walk around, default: false}
+  factions.claim.fill: {description: claim by filling, default: false}
+  factions.claim.line: {description: claim by line, default: false}
+  factions.claim.square: {description: claim by square and radius, default: false}
+  factions.claim.circle: {description: claim by circle and radius, default: false}
+  factions.claim.all: {description: claim all faction land, default: false}
+  factions.create: {description: create new faction, default: false}
+  factions.description: {description: change faction description, default: false}
+  factions.disband: {description: disband faction, default: false}
+  factions.expansions: {description: list expansions, default: false}
+  factions.faction: {description: show faction information, default: false}
+  factions.flag: {description: manage faction flags, default: false}
+  factions.flag.list: {description: list flags, default: false}
+  factions.flag.set: {description: set flags, default: false}
+  factions.flag.show: {description: show flags, default: false}
+  factions.friendlyfire: {description: attack friends, default: false}
+  factions.raidinfo: {description: raid information, default: false}
+  factions.breachlog: {description: see recent faction raids, default: false}
+  factions.listprimaryclaims: {description: list primaryclaims, default: false}
+  factions.home: {description: teleport to faction home, default: false}
+  factions.listinvites: {description: list invited players, default: false}
+  factions.listinvites.other: {description: list invited players of another factions, default: false}
+  factions.invite: {description: invite player, default: false}
+  factions.deinvite: {description: revoke an invite, default: false}
+  factions.join: {description: join faction, default: false}
+  factions.join.others: {description: have another player join faction, default: false}
+  factions.kick: {description: kick player from faction, default: false}
+  factions.leave: {description: leave your faction, default: false}
+  factions.list: {description: list all factions, default: false}
+  factions.listclaims: {description: list all claims, default: false}
+  factions.map: {description: show territory map, default: false}
+  factions.money: {description: manage faction money, default: false}
+  factions.money.balance: {description: show faction money, default: false}
+  factions.money.balance.any: {description: show another factions money, default: false}
+  factions.money.deposit: {description: deposit to faction, default: false}
+  factions.money.f2f: {description: transfer f --> f, default: false}
+  factions.money.f2p: {description: transfer f --> p, default: false}
+  factions.money.p2f: {description: transfer p --> f, default: false}
+  factions.money.withdraw: {description: withdraw from faction, default: false}
+  factions.motd: {description: faction motd, default: false}
+  factions.open: {description: set if invitation is required to join, default: false}
+  factions.perm: {description: change faction permissions, default: false}
+  factions.perm.list: {description: list perms, default: false}
+  factions.perm.set: {description: set perms, default: false}
+  factions.perm.show: {description: show perms, default: false}
+  factions.perm.gui: {description: show perms gui, default: false}
+  factions.player: {description: show player information}
+  factions.powerboost: {description: manage powerboost, default: false}
+  factions.powerboost.faction: {description: show faction powerboost, default: false}
+  factions.powerboost.player: {description: show player powerboost, default: false}
+  factions.powerboost.set: {description: set powerboost, default: false}
+  factions.rank: {description: manage/show ranks, default: false}
+  factions.rank.show: {description: show rank, default: false}
+  factions.rank.action: {description: change rank, default: false}
+  factions.relation: {description: manage faction relations, default: false}
+  factions.relation.list: {description: list all factions with certain relation, default: false}
+  factions.relation.set: {description: set relation wish to another faction, default: false}
+  factions.relation.wishes: {description: list the relation wishes, default: false}
+  factions.seechunk: {description: see the chunk you stand in, default: false}
+  factions.seechunkold: {description: see the chunk you stand in, default: false}
+  factions.sethome: {description: set the faction home, default: false}
+  factions.setpower: {description: set power, default: false}
+  factions.status: {description: show status, default: false}
+  factions.name: {description: set faction name, default: false}
+  factions.title: {description: set player title, default: false}
+  factions.title.color: {description: set player title with color, default: false}
+  factions.territorytitles: {description: toggle territory titles, default: false}
+  factions.unclaim: {description: unclaim faction territory, default: false}
+  factions.unclaim.one: {description: unclaim a single chunk, default: false}
+  factions.unclaim.auto: {description: unclaim as you walk around, default: false}
+  factions.unclaim.fill: {description: unclaim by filling, default: false}
+  factions.unclaim.line: {description: unclaim by line, default: false}
+  factions.unclaim.square: {description: unclaim by square and radius, default: false}
+  factions.unclaim.circle: {description: unclaim by circle and radius, default: false}
+  factions.unclaim.all: {description: unclaim all faction land, default: false}
+  factions.unclaimall: {description: unclaim all faction land, default: false}
+  factions.unsethome: {description: unset faction home, default: false}
+  factions.unstuck: {description: teleport to nearest wilderness, default: false}
+  factions.config: {description: edit the factions config, default: false}
+  factions.clean: {description: clean the factions database, default: false}
+  factions.version: {description: see plugin version, default: false}
+  factions.stealth: {description: stop enemies from losing fly, default: false}
+  factions.claimmap: {description: toggle the clickable map, default: false}
+  factions.warp: {description: teleport to a warp, default: false}
+  factions.setwarp: {description: set a warp, default: false}
+  factions.listwarps: {description: list all warps, default: false}
+  factions.deletewarp: {description: delete a warp, default: false}
+  factions.regions: {description: manage faction regions, default: false}
+  factions.regions.create: {description: create a new region from your selection, default: false}
+  factions.regions.list: {description: list your factions regions, default: false}
+  factions.regions.delete: {description: delete a region, default: false}
+  factions.regions.priority: {description: change a region priority, default: false}
+  factions.regions.redefine: {description: update region with new selection, default: false}
+  factions.regions.info: {description: display region information, default: false}
+  factions.regions.player: {description: modify player access for a region, default: false}
+  factions.regions.faction: {description: modify faction access for a region, default: false}
+  factions.regions.denyall: {description: deny/allow default region access, default: false}
+  factions.regions.copyaccess: {description: copy access data to another region, default: false}
+  factions.regions.check: {description: check regions you're standing in, default: false}
+  factions.credits: {description: view credits balance, default: false}
+  factions.credits.giveitem: {description: give credit items, default: false}
+  factions.credits.add: {description: give factions credits, default: false}
+  factions.credits.take: {description: take factions credits, default: false}
+  factions.credits.balance: {description: check factions credits, default: false}
+  factions.upgrade: {description: upgrade your faction, default: false}
+  factions.top: {description: list top factions, default: false}
+  factions.toprecalculate: {description: recalc ftop, default: false}
+  factions.tnt: {description: manage tnt storage, default: false}
+  factions.tnt.balance: {description: check tnt balance, default: false}
+  factions.tnt.balance.others: {description: check others tnt balance, default: false}
+  factions.tnt.deposit: {description: deposit tnt into storage, default: false}
+  factions.tnt.withdraw: {description: withdraw tnt from storage, default: false}
+  factions.tnt.fill: {description: fill dispensers with tnt from storage, default: false}
+  factions.tnt.clear: {description: clear tnt in dispensers into storage, default: false}
+  factions.tnt.set: {description: set faction tnt, default: false}
+  factions.chest: {description: faction chest, default: false}
+  factions.chest.open: {description: access the faction chest, default: false}
+  factions.chest.log: {description: view faction chest logs, default: false}
+  factions.inspect: {description: inspect your faction land, default: false}
+  factions.chat: {description: allow faction chat, default: false}
+  factions.stats: {description: show statistics, default: false}
+  factions.statslb: {description: stats leaderboard, default: false}
+  factions.getbanner: {description: get your faction's banner, default: false}
+  factions.setbanner: {description: set your faction's banner, default: false}
+  factions.assist: {description: assist your faction, default: false}
+  factions.focus: {description: focus a player, default: false}
+  factions.unfocus: {description: unfocus a player, default: false}
+  factions.check: {description: change check settings, default: false}
+  factions.alarm: {description: toggle the alarm, default: false}
+  factions.clear: {description: mark walls as clear, default: false}
+  factions.ban: {description: ban players from faction, default: false}
+  factions.unban: {description: unban players from faction, default: false}
+  factions.banlist: {description: list faction banned players, default: false}
+  factions.coords: {description: broadcast faction coords, default: false}
+  factions.ignore: {description: unignore player from fchat, default: false}
+  factions.unignore: {description: ignore player from fchat, default: false}
+  factions.ignorelist: {description: list ignored fchat players, default: false}
+  factions.mission: {description: view faction mission, default: false}
+  factions.altjoin: {description: join a faction as an alt, default: false}
+  factions.alts: {description: manage alts, default: false}
+  factions.alts.invite: {description: invite an alt to a faction, default: false}
+  factions.alts.revoke: {description: revoke an alt invite, default: false}
+  factions.alts.invitelist: {description: list alt invites, default: false}
+  factions.alts.list: {description: list alts in a faction, default: false}
+  factions.alts.open: {description: allow anyone to join with /f altjoin, default: false}
+  factions.alts.close: {description: disable uninvited joining with /f altjoin, default: false}
+  factions.pperm: {description: change player perms, default: false}
+  factions.pperm.set: {description: set player perms, default: false}
+  factions.pperm.unset: {description: unset player perms, default: false}
+  factions.pperm.clear: {description: clear player perms, default: false}
+  factions.pperm.show: {description: show player perms, default: false}
+  factions.pperm.gui: {description: show player perms gui, default: false}
+  factions.fly: {description: toggle fly, default: false}
+  factions.deletestrike: {description: delete strike, default: false}
+  factions.strike: {description: strike a faction, default: false}
+  factions.strikes: {description: check strikes, default: false}
+  factions.checkpaypal: {description: check paypal, default: false}
+  factions.setpaypal: {description: set paypal, default: false}
+  factions.setdiscord: {description: set discord, default: false}
+  factions.setwarpitem: {description: set warp item, default: false}
+  factions.color: {description: set chat prefix color, default: false}
+  factions.drain: {description: move member money to f bank, default: false}
+  factions.drainlist: {description: show members drain status, default: false}
+  factions.draintoggle: {description: toggle your draining status, default: false}
+  factions.reserve: {description: reserve faction names, default: false}
+  factions.unreserve: {description: unreserve a faction name, default: false}
+  factions.logins: {description: toggle login notifications, default: false}
+  factions.shield: {description: manage shield hours, default: false}
+  factions.shieldtoggle: {description: toggle changing shield hours, default: false}
+  factions.setbaseregion: {description: set base region, default: false}
+  factions.raidclaim: {description: raidclaim gui, default: false}
+  factions.raids: { description: check active raids, default: false }
+  factions.raidtimer: { description: check raid times, default: false }
+  factions.roster.add: { description: add player to roster, default: false }
+  factions.roster.setkicks: { description: set amount of kicks, default: false }
+  factions.roster.setrank: { description: set roster join rank, default: false }
+  factions.roster.toggle: { description: toggle roster modifications, default: false }
+  factions.corner: { description: claim a corner, default: false }
+  factions.cornerlist: { description: list corners, default: false }
+  factions.spawnerchunk: {description: add a spawner chunk, default: false}
+  factions.spawnerchunks: {description: list spawner chunks, default: false}
+  factions.ptop: {description: potential ftop, default: false}
+  factions.sandbots: { description: access sandbot gui, default: false }
+  # -------------------------------------------- #
+# STAR NOTATION
+# -------------------------------------------- #
+  factions.*:
+    children:
+      factions.access: true
+      factions.access.faction: true
+      factions.access.player: true
+      factions.access.view: true
+      factions.accessall: true
+      factions.accessall.faction: true
+      factions.accessall.player: true
+      factions.override: true
+      factions.basecommand: true
+      factions.claim: true
+      factions.claim.one: true
+      factions.claim.auto: true
+      factions.claim.fill: true
+      factions.claim.line: true
+      factions.claim.square: true
+      factions.claim.circle: true
+      factions.claim.all: true
+      factions.create: true
+      factions.demote: true
+      factions.description: true
+      factions.disband: true
+      factions.expansions: true
+      factions.faction: true
+      factions.flag: true
+      factions.flag.list: true
+      factions.flag.set: true
+      factions.flag.show: true
+      factions.breachlog: true
+      factions.raidinfo: true
+      factions.listprimaryclaims: true
+      factions.friendlyfire: true
+      factions.home: true
+      factions.invite: true
+      factions.listinvites: true
+      factions.listinvites.other: true
+      factions.deinvite: true
+      factions.join: true
+      factions.join.others: true
+      factions.kick: true
+      factions.leader: true
+      factions.leader.any: true
+      factions.leave: true
+      factions.list: true
+      factions.listclaims: true
+      factions.map: true
+      factions.money: true
+      factions.money.balance: true
+      factions.money.balance.any: true
+      factions.money.deposit: true
+      factions.money.f2f: true
+      factions.money.f2p: true
+      factions.money.p2f: true
+      factions.money.withdraw: true
+      factions.motd: true
+      factions.officer: true
+      factions.officer.any: true
+      factions.open: true
+      factions.perm: true
+      factions.perm.list: true
+      factions.perm.set: true
+      factions.perm.show: true
+      factions.perm.gui: true
+      factions.player: true
+      factions.powerboost: true
+      factions.powerboost.faction: true
+      factions.powerboost.player: true
+      factions.powerboost.set: true
+      factions.promote: true
+      factions.relation: true
+      factions.relation.list: true
+      factions.relation.set: true
+      factions.relation.wishes: true
+      factions.seechunk: true
+      factions.seechunkold: true
+      factions.sethome: true
+      factions.setpower: true
+      factions.status: true
+      factions.name: true
+      factions.title: true
+      factions.title.color: true
+      factions.territorytitles: true
+      factions.unclaim: true
+      factions.unclaim.one: true
+      factions.unclaim.auto: true
+      factions.unclaim.fill: true
+      factions.unclaim.line: true
+      factions.unclaim.square: true
+      factions.unclaim.circle: true
+      factions.unclaim.all: true
+      factions.unclaimall: true
+      factions.unsethome: true
+      factions.unstuck: true
+      factions.config: true
+      factions.clean: true
+      factions.version: true
+      factions.stealth: true
+      factions.claimmap: true
+      factions.warp: true
+      factions.setwarp: true
+      factions.listwarps: true
+      factions.deletewarp: true
+      factions.regions: true
+      factions.regions.create: true
+      factions.regions.list: true
+      factions.regions.delete: true
+      factions.regions.priority: true
+      factions.regions.redefine: true
+      factions.regions.info: true
+      factions.regions.player: true
+      factions.regions.faction: true
+      factions.regions.denyall: true
+      factions.regions.copyaccess: true
+      factions.regions.check: true
+      factions.credits: true
+      factions.credits.giveitem: true
+      factions.credits.add: true
+      factions.credits.take: true
+      factions.credits.balance: true
+      factions.upgrade: true
+      factions.top: true
+      factions.tnt: true
+      factions.tnt.balance: true
+      factions.tnt.balance.others: true
+      factions.tnt.deposit: true
+      factions.tnt.withdraw: true
+      factions.tnt.fill: true
+      factions.tnt.clear: true
+      factions.tnt.set: true
+      factions.chest: true
+      factions.chest.open: true
+      factions.chest.log: true
+      factions.inspect: true
+      factions.chat: true
+      factions.chatspy: true
+      factions.stats: true
+      factions.statslb: true
+      factions.getbanner: true
+      factions.setbanner: true
+      factions.assist: true
+      factions.focus: true
+      factions.unfocus: true
+      factions.check: true
+      factions.alarm: true
+      factions.clear: true
+      factions.ban: true
+      factions.unban: true
+      factions.banlist: true
+      factions.coords: true
+      factions.ignore: true
+      factions.unignore: true
+      factions.ignorelist: true
+      factions.mission: true
+      factions.altjoin: true
+      factions.alts: true
+      factions.alts.invite: true
+      factions.alts.revoke: true
+      factions.alts.invitelist: true
+      factions.alts.list: true
+      factions.alts.open: true
+      factions.alts.close: true
+      factions.pperm: true
+      factions.pperm.set: true
+      factions.pperm.unset: true
+      factions.pperm.clear: true
+      factions.pperm.show: true
+      factions.pperm.gui: true
+      factions.toprecalculate: true
+      factions.fly: true
+      factions.strike: true
+      factions.strikes: true
+      factions.deletestrike: true
+      factions.checkpaypal: true
+      factions.setpaypal: true
+      factions.setdiscord: true
+      factions.setwarpitem: true
+      factions.color: true
+      factions.drain: true
+      factions.drainlist: true
+      factions.draintoggle: true
+      factions.reserve: true
+      factions.unreserve: true
+      factions.logins: true
+      factions.shield: true
+      factions.shieldtoggle: true
+      factions.setbaseregion: true
+      factions.raidclaim: true
+      factions.raids: true
+      factions.raidtimer: true
+      factions.roster.add: true
+      factions.roster.setkicks: true
+      factions.roster.setrank: true
+      factions.roster.toggle: true
+      factions.corner: true
+      factions.cornerlist: true
+      factions.spawnerchunk: true
+      factions.spawnerchunks: true
+      factions.ptop: true
+      factions.sandbots: true
+  # -------------------------------------------- #
+# KITS
+# -------------------------------------------- #
+  factions.kit.op:
+    default: op
+    children:
+      factions.*: true
+  factions.kit.rank3:
+    default: false
+    children:
+      factions.kit.rank2: true
+      factions.config: true
+      factions.clean: true
+  factions.kit.rank2:
+    default: false
+    children:
+      factions.kit.rank1: true
+      factions.powerboost.set: true
+      factions.join.others: true
+      factions.leader.any: true
+      factions.officer.any: true
+      factions.access.any: true
+      factions.setpower: true
+  factions.kit.rank1:
+    default: false
+    children:
+      factions.kit.rank0: true
+      factions.override: true
+      factions.listinvites.other: true
+  factions.kit.rank0:
+    default: false
+    children:
+      factions.access: true
+      factions.access.faction: true
+      factions.access.player: true
+      factions.access.view: true
+      factions.accessall: true
+      factions.accessall.faction: true
+      factions.accessall.player: true
+      factions.basecommand: true
+      factions.claim: true
+      factions.claim.one: true
+      factions.claim.auto: true
+      factions.claim.fill: true
+      factions.claim.line: true
+      factions.claim.square: true
+      factions.claim.circle: true
+      factions.claim.all: true
+      factions.create: true
+      factions.demote: true
+      factions.description: true
+      factions.disband: true
+      factions.expansions: true
+      factions.faction: true
+      factions.flag: true
+      factions.flag.list: true
+      factions.flag.set: true
+      factions.flag.show: true
+      factions.friendlyfire: true
+      factions.breachlog: true
+      factions.raidinfo: true
+      factions.listprimaryclaims: true
+      factions.home: true
+      factions.invite: true
+      factions.listinvites: true
+      factions.deinvite: true
+      factions.join: true
+      factions.kick: true
+      factions.leader: true
+      factions.leave: true
+      factions.list: true
+      factions.listclaims: true
+      factions.map: true
+      factions.money: true
+      factions.money.balance: true
+      factions.money.balance.any: true
+      factions.money.deposit: true
+      factions.money.f2f: true
+      factions.money.f2p: true
+      factions.money.p2f: true
+      factions.money.withdraw: true
+      factions.motd: true
+      factions.officer: true
+      factions.open: true
+      factions.perm: true
+      factions.perm.list: true
+      factions.perm.set: true
+      factions.perm.show: true
+      factions.perm.gui: true
+      factions.player: true
+      factions.promote: true
+      factions.powerboost: true
+      factions.powerboost.faction: true
+      factions.powerboost.player: true
+      factions.rank: true
+      factions.rank.show: true
+      factions.rank.action: true
+      factions.relation: true
+      factions.relation.list: true
+      factions.relation.set: true
+      factions.relation.wishes: true
+      factions.seechunk: true
+      factions.seechunkold: true
+      factions.sethome: true
+      factions.status: true
+      factions.name: true
+      factions.title: true
+      factions.title.color: true
+      factions.territorytitles: true
+      factions.unclaim: true
+      factions.unclaim.one: true
+      factions.unclaim.auto: true
+      factions.unclaim.fill: true
+      factions.unclaim.line: true
+      factions.unclaim.square: true
+      factions.unclaim.circle: true
+      factions.unclaim.all: true
+      factions.unclaimall: true
+      factions.unsethome: true
+      factions.unstuck: true
+      factions.version: true
+      factions.stealth: true
+      factions.claimmap: true
+      factions.warp: true
+      factions.setwarp: true
+      factions.listwarps: true
+      factions.deletewarp: true
+      factions.regions: true
+      factions.regions.create: true
+      factions.regions.list: true
+      factions.regions.delete: true
+      factions.regions.priority: true
+      factions.regions.redefine: true
+      factions.regions.info: true
+      factions.regions.player: true
+      factions.regions.faction: true
+      factions.regions.denyall: true
+      factions.regions.copyaccess: true
+      factions.regions.check: true
+      factions.credits: true
+      factions.credits.balance: true
+      factions.upgrade: true
+      factions.top: true
+      factions.tnt: true
+      factions.tnt.deposit: true
+      factions.tnt.withdraw: true
+      factions.tnt.fill: true
+      factions.tnt.clear: true
+      factions.chest: true
+      factions.chest.open: true
+      factions.chest.log: true
+      factions.inspect: true
+      factions.chat: true
+      factions.stats: true
+      factions.statslb: true
+      factions.getbanner: true
+      factions.setbanner: true
+      factions.assist: true
+      factions.focus: true
+      factions.unfocus: true
+      factions.check: true
+      factions.alarm: true
+      factions.clear: true
+      factions.ban: true
+      factions.unban: true
+      factions.banlist: true
+      factions.coords: true
+      factions.ignore: true
+      factions.unignore: true
+      factions.ignorelist: true
+      factions.mission: true
+      factions.altjoin: true
+      factions.alts: true
+      factions.alts.invite: true
+      factions.alts.revoke: true
+      factions.alts.invitelist: true
+      factions.alts.list: true
+      factions.alts.open: true
+      factions.alts.close: true
+      factions.pperm: true
+      factions.pperm.set: true
+      factions.pperm.unset: true
+      factions.pperm.clear: true
+      factions.pperm.show: true
+      factions.pperm.gui: true
+      factions.fly: true
+      factions.strikes: true
+      factions.checkpaypal: true
+      factions.setpaypal: true
+      factions.setdiscord: true
+      factions.setwarpitem: true
+      factions.color: true
+      factions.drain: true
+      factions.drainlist: true
+      factions.draintoggle: true
+      factions.logins: true
+      factions.shield: true
+      factions.setbaseregion: true
+      factions.raidclaim: true
+      factions.raidtimer: true
+      factions.roster.add: true
+      factions.roster.setrank: true
+      factions.corner: true
+      factions.cornerlist: true
+      factions.spawnerchunk: true
+      factions.spawnerchunks: true
+      factions.ptop: true
+      factions.sandbots: true
+  factions.kit.default:
+    default: true
+    children:
+      factions.kit.rank0: true

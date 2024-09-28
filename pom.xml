@@ -1,0 +1,230 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
+    <parent>
+        <groupId>com.massivecraft.massivesuper</groupId>
+        <artifactId>MassiveSuper</artifactId>
+        <version>2.17.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- Basics -->
+    <groupId>com.massivecraft.factions</groupId>
+    <artifactId>Factions</artifactId>
+    <packaging>jar</packaging>
+
+    <!-- Info -->
+    <name>${project.artifactId}</name>
+    <description>${massiveColorInfo}${project.name} allows the players to team up and claim land as their own and start
+        wars with other factions. This way we hope to inspire politics, intrigue, and team spirit.
+        ${massiveDescriptionSuffix}
+    </description>
+    <url>${massiveBaseUrl}/factions</url>
+
+    <!-- Repositories -->
+    <repositories>
+        <!-- Essentials -->
+        <repository>
+            <id>ess-repo</id>
+            <url>http://repo.ess3.net/content/groups/essentials</url>
+        </repository>
+        <repository>
+            <id>essentials-releases</id>
+            <url>https://repo.essentialsx.net/releases/</url>
+        </repository>
+        <!-- Spigot -->
+        <repository>
+            <id>paper-repo</id>
+            <url>https://repo.destroystokyo.com/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>polar-repo</id>
+            <url>https://repo.polar.top/repository/polar/</url>
+        </repository>
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- CoreProtect -->
+        <dependency>
+            <groupId>net.coreprotect</groupId>
+            <artifactId>CoreProtect</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/CoreProtect.jar</systemPath>
+        </dependency>
+        <!-- PaperSpigot -->
+        <dependency>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>paperspigot-api</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Spigot JAR -->
+        <dependency>
+            <groupId>testbuild</groupId>
+            <artifactId>testbuild</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/testbuild.jar</systemPath>
+        </dependency>
+        <!-- Spigot -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+        </dependency>
+        <!-- MassiveCore -->
+        <dependency>
+            <groupId>com.massivecraft</groupId>
+            <artifactId>MassiveCore</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/MassiveCore.jar</systemPath>
+        </dependency>
+        <!-- WorldEdit -->
+        <dependency>
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/worldedit.jar</systemPath>
+        </dependency>
+        <!-- WorldGuard -->
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-legacy</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/worldguard-6.0.0-beta-04.jar</systemPath>
+        </dependency>
+        <!-- Vault -->
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>Vault</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/Vault.jar</systemPath>
+        </dependency>
+        <!-- Herochat -->
+        <dependency>
+            <groupId>com.dthielke.herochat</groupId>
+            <artifactId>Herochat</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/Herochat.jar</systemPath>
+        </dependency>
+        <!-- LWC -->
+        <dependency>
+            <groupId>com.griefcraft</groupId>
+            <artifactId>lwc</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/LWC.jar</systemPath>
+        </dependency>
+        <!-- Essentials -->
+        <!--<dependency>
+            <groupId>net.ess3</groupId>
+            <artifactId>Essentials</artifactId>
+            <version>2.13.1</version>
+            <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>net.essentialsx</groupId>
+            <artifactId>EssentialsX</artifactId>
+            <version>2.19.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- SilkSpawners -->
+        <dependency>
+            <groupId>org.jdgames</groupId>
+            <artifactId>SilkSpawners</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/SilkSpawners.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.jdgames</groupId>
+            <artifactId>MobExtras</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/MobExtras-2.13.7.jar</systemPath>
+        </dependency>
+        <!-- Citizens -->
+        <dependency>
+            <groupId>org.jdgames</groupId>
+            <artifactId>Citizens</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/Citizens-2.0.26-b1996-FIXED.jar</systemPath>
+        </dependency>
+        <!-- PolarAC -->
+        <dependency>
+            <groupId>top.polar</groupId>
+            <artifactId>api</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>Fkore</groupId>
+            <artifactId>FKore</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/FactionsKore-1.3.51.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>SupplyDrop</groupId>
+            <artifactId>SupplyDrop</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/SupplyDrops-v1.1.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <!-- Build -->
+    <build>
+        <!-- Resources -->
+        <resources>
+            <!-- Standard -->
+            <resource>
+                <directory>${project.basedir}</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.yml</include>
+                </includes>
+            </resource>
+            <!-- OpenSource -->
+            <!--<resource>-->
+            <!--<directory>${project.build.sourceDirectory}</directory>-->
+            <!--<filtering>false</filtering>-->
+            <!--</resource>-->
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>false</minimizeJar>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

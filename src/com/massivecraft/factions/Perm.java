@@ -1,0 +1,245 @@
+package com.massivecraft.factions;
+
+import com.massivecraft.massivecore.Identified;
+import com.massivecraft.massivecore.util.PermissionUtil;
+import org.bukkit.permissions.Permissible;
+
+public enum Perm implements Identified
+{
+	// -------------------------------------------- //
+	// ENUM
+	// -------------------------------------------- //
+	
+	ACCESS,
+	ACCESS_VIEW,
+	ACCESS_PLAYER,
+	ACCESS_FACTION,
+	OVERRIDE,
+	BASECOMMAND,
+	BREACHLOG,
+	SPAWNERCHUNK,
+	SPAWNERCHUNKS,
+	RAIDINFO,
+	CLAIM,
+	CLAIMMAP,
+	CLAIM_ONE,
+	CLAIM_LINE,
+	CLAIM_AUTO,
+	CLAIM_FILL,
+	CLAIM_SQUARE,
+	CLAIM_CIRCLE,
+	CLAIM_ALL,
+	CREATE,
+	CHAT,
+	DESCRIPTION,
+	DISBAND,
+	DEINVITE,
+	EXPANSIONS,
+	FACTION,
+	FLAG,
+	FLAG_LIST,
+	FLAG_SET,
+	FLAG_SHOW,
+	FRIENDLYFIRE,
+	HOME,
+	INSPECT,
+	INVITE,
+	INVITE_LIST,
+	LISTINVITES_OTHER,
+	INVITE_ADD,
+	INVITE_REMOVE,
+	JOIN,
+	JOIN_OTHERS,
+	KICK,
+	LEAVE,
+	LIST,
+	LISTCLAIMS,
+	LISTINVITES,
+	LISTPRIMARYCLAIMS,
+	MAP,
+	MONEY,
+	MONEY_BALANCE,
+	MONEY_BALANCE_ANY,
+	MONEY_DEPOSIT,
+	MONEY_F2F,
+	MONEY_F2P,
+	MONEY_P2F,
+	MONEY_WITHDRAW,
+	MOTD,
+	OPEN,
+	PERM,
+	PERM_LIST,
+	PERM_SET,
+	PERM_SHOW,
+	PLAYER,
+	POWERBOOST,
+	POWERBOOST_PLAYER,
+	POWERBOOST_FACTION,
+	POWERBOOST_SET,
+	RANK,
+	RANK_SHOW,
+	RANK_ACTION,
+	RELATION,
+	RELATION_SET,
+	RELATION_LIST,
+	RELATION_WISHES,
+	SEECHUNK,
+	SEECHUNKOLD,
+	SETHOME,
+	SETPOWER,
+	STATUS,
+	STATS,
+	STATSLB,
+	STEALTH,
+	SETBANNER,
+	GETBANNER,
+	ASSIST,
+	NAME,
+	TITLE,
+	TITLE_COLOR,
+	TERRITORYTITLES,
+	UNCLAIM,
+	UNCLAIM_ONE,
+	UNCLAIM_LINE,
+	UNCLAIM_AUTO,
+	UNCLAIM_FILL,
+	UNCLAIM_SQUARE,
+	UNCLAIM_CIRCLE,
+	UNCLAIM_ALL,
+	UNSETHOME,
+	UNSTUCK,
+	CONFIG,
+	CLEAN,
+	VERSION,
+	SETWARP,
+	LISTWARPS,
+	DELETEWARP,
+	WARP,
+	REGIONS,
+	REGIONS_CREATE,
+	REGIONS_LIST,
+	REGIONS_DELETE,
+	REGIONS_PRIORITY,
+	REGIONS_REDEFINE,
+	REGIONS_INFO,
+	REGIONS_PLAYER,
+	REGIONS_FACTION,
+	REGIONS_DENYALL,
+	REGIONS_COPYACCESS,
+	REGIONS_CHECK,
+	CREDITS,
+	CREDITS_GIVEITEM,
+	CREDITS_ADD,
+	CREDITS_TAKE,
+	CREDITS_BALANCE,
+	UPGRADE,
+	TOP,
+	TOPRECALCULATE,
+	TNT,
+	TNT_BALANCE,
+	TNT_BALANCE_OTHERS,
+	TNT_DEPOSIT,
+	TNT_WITHDRAW,
+	TNT_FILL,
+	TNT_CLEAR,
+	TNT_SET,
+	CHEST,
+	CHEST_OPEN,
+	CHEST_LOG,
+	FOCUS,
+	UNFOCUS,
+	PERM_GUI,
+	CHECK,
+	ALARM,
+	CLEAR,
+	BAN,
+	UNBAN,
+	BANLIST,
+	COORDS,
+	IGNORE,
+	UNIGNORE,
+	IGNORELIST,
+	MISSION,
+	ALTJOIN,
+	ALTS,
+	ALTS_CLOSE,
+	ALTS_INVITE,
+	ALTS_INVITELIST,
+	ALTS_LIST,
+	ALTS_OPEN,
+	ALTS_REVOKE,
+	ACCESSALL,
+	ACCESSALL_FACTION,
+	ACCESSALL_PLAYER,
+	PPERM,
+	PPERM_SET,
+	PPERM_UNSET,
+	PPERM_CLEAR,
+	PPERM_SHOW,
+	PPERM_GUI,
+	FLY,
+	DELETESTRIKE,
+	STRIKE,
+	STRIKES,
+	SETPAYPAL,
+	CHECKPAYPAL,
+	SETDISCORD,
+	SETWARPITEM,
+	COLOR,
+	DRAIN,
+	DRAINLIST,
+	DRAINTOGGLE,
+	RESERVE,
+	UNRESERVE,
+	LOGINS,
+	SHIELD,
+	SHIELDTOGGLE,
+	SETBASEREGION,
+	RAIDCLAIM,
+	RAIDTIMER,
+	RAIDS,
+	ROSTER,
+	ROSTER_ADD,
+	ROSTER_SETKICKS,
+	ROSTER_SETRANK,
+	ROSTER_TOGGLE,
+	CORNER,
+	CORNERLIST,
+	GRACE,
+	PTOP,
+	SANDBOTS
+	
+	// END OF LIST
+	;
+	
+	// -------------------------------------------- //
+	// FIELDS
+	// -------------------------------------------- //
+	
+	private final String id;
+	@Override public String getId() { return this.id; }
+	
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
+	Perm()
+	{
+		this.id = PermissionUtil.createPermissionId(Factions.get(), this);
+	}
+	
+	// -------------------------------------------- //
+	// HAS
+	// -------------------------------------------- //
+	
+	public boolean has(Permissible permissible, boolean verboose)
+	{
+		return PermissionUtil.hasPermission(permissible, this, verboose);
+	}
+	
+	public boolean has(Permissible permissible)
+	{
+		return PermissionUtil.hasPermission(permissible, this);
+	}
+	
+}
