@@ -36,7 +36,7 @@ public class CmdFactionsTntBalance extends FactionsCommand
 		}
 		else
 		{
-			msender.msg("<i>%s <i>has <a>%s/%s <i>TNT", faction.describeTo(msender, true), UpgradesManager.get().getUpgradeByName(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()).getCurrentUpgradeDescription()[faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()) - 1].split(" ")[2], numberFormat.format(faction.getTnt()));
+			msender.msg("<i>%s <i>has <a>%s/%s <i>TNT", faction.describeTo(msender, true), numberFormat.format(faction.getTnt()), UpgradesManager.get().getUpgradeByName(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()).getCurrentUpgradeDescription()[faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()) - 1].split(" ")[2]);
 		}
 	}
 	

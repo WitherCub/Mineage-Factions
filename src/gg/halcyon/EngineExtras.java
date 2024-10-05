@@ -18,6 +18,7 @@ import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.mysql.jdbc.StringUtils;
+import gg.halcyon.upgrades.UpgradesManager;
 import org.bukkit.*;
 import org.bukkit.block.Chest;
 import org.bukkit.command.CommandSender;
@@ -324,7 +325,15 @@ public class EngineExtras extends Engine
 		if (!chest.getInventory().contains(Material.TNT)) return;
 		
 		int tntInChest = getAmountOfTNT(chest.getInventory());
-		
+
+		try {
+			int maxTnt = Integer.parseInt(UpgradesManager.get().getUpgradeByName(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()).getCurrentUpgradeDescription()[faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()) - 1].split(" ")[2].replace(",", ""));
+			if(faction.getTnt() >= maxTnt) {
+				mPlayer.msg(Txt.parse("<rose>Could not add more tnt to bank due to it being full."));
+				return;
+			}
+		} catch (NumberFormatException | NullPointerException ignore) {}
+
 		chest.getInventory().removeItem(new ItemStack(Material.TNT, tntInChest));
 		chest.update();
 		

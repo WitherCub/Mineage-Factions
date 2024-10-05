@@ -458,15 +458,6 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 
 		if (mplayer.isOverriding()) return true;
 
-
-
-		// Allow raidingoutpost owner to bypass fly
-		if (MPerm.getPermFly() == this && IntegrationFKore.get().isIntegrationActive() &&
-				EngineFKore.get().getROOwner() != null &&
-				EngineFKore.get().getROOwner().equals(mplayer.getFaction().getId())) {
-			return true;
-		}
-
 		Rel rel = mplayer.getRelationTo(hostFaction);
 		if (hostFaction.isPermitted(this, rel, mplayer)) return true;
 
