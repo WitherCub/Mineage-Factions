@@ -1,19 +1,20 @@
-package com.massivecraft.factions.entity;
+package com.massivecraft.factions.coll;
 
+import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.massivecore.store.Coll;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MFlagColl extends Coll<MFlag>
+public class MPermColl extends Coll<MPerm>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static MFlagColl i = new MFlagColl();
-	public static MFlagColl get() { return i; }
-	private MFlagColl()
+	private static MPermColl i = new MPermColl();
+	public static MPermColl get() { return i; }
+	private MPermColl()
 	{
 		this.setLowercasing(true);
 	}
@@ -37,23 +38,23 @@ public class MFlagColl extends Coll<MFlag>
 	{
 		super.setActive(active);
 		if (!active) return;
-		MFlag.setupStandardFlags();
+		MPerm.setupStandardPerms();
 	}
 	
 	// -------------------------------------------- //
 	// EXTRAS
 	// -------------------------------------------- //
 	
-	public List<MFlag> getAll(boolean registered)
+	public List<MPerm> getAll(boolean registered)
 	{
 		// Create
-		List<MFlag> ret = new ArrayList<>();
+		List<MPerm> ret = new ArrayList<>();
 		
 		// Fill
-		for (MFlag mflag : this.getAll())
+		for (MPerm mperm : this.getAll())
 		{
-			if (mflag.isRegistered() != registered) continue;
-			ret.add(mflag);
+			if (mperm.isRegistered() != registered) continue;
+			ret.add(mperm);
 		}
 		
 		// Return

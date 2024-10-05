@@ -5,7 +5,8 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.req.ReqHasntFaction;
 import com.massivecraft.factions.cmd.type.TypeFactionNameStrict;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.NameReserves;
 import com.massivecraft.factions.event.EventFactionsCreate;
@@ -62,11 +63,11 @@ public class CmdFactionsCreate extends FactionsCommand
 			if (player == null)
 			{
 				OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(reservedForUuid);
-				msender.msg(MConf.get().factionNameReservedMsg.replace("%faction%", newName).replace("%player%", offlinePlayer.getName()));
+				msender.msg(LangConf.get().factionNameReservedMsg.replace("%faction%", newName).replace("%player%", offlinePlayer.getName()));
 			}
 			else
 			{
-				msender.msg(MConf.get().factionNameReservedMsg.replace("%faction%", newName).replace("%player%", player.getName()));
+				msender.msg(LangConf.get().factionNameReservedMsg.replace("%faction%", newName).replace("%player%", player.getName()));
 			}
 			return;
 		}

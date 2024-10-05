@@ -55,4 +55,8 @@ public class WarpUpgrade extends Upgrade
 	public int getInventorySlot() {
 		return MissionUpgradeConf.get().warpUpgrade.getInventorySlot();
 	}
+
+	public static double getUpgradeValue(int level) {
+		return level > 0? MissionUpgradeConf.get().warpUpgrade.getUpgradeValue()[level - 1]: MConf.get().amountOfWarps;
+	}
 }

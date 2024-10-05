@@ -6,9 +6,9 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.CmdFactionsWarp;
 import com.massivecraft.factions.cmd.perm.CmdFactionsPermGui;
 import com.massivecraft.factions.cmd.pperm.CmdFactionsPpermGui;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MPlayerColl;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.coll.MPlayerColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.event.EventFactionsDisband;
 import com.massivecraft.factions.event.EventFactionsMembershipChange;
@@ -18,6 +18,7 @@ import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 import com.mysql.jdbc.StringUtils;
+import gg.halcyon.upgrades.upgrades.TNTStorageUpgrade;
 import org.bukkit.*;
 import org.bukkit.block.Chest;
 import org.bukkit.command.CommandSender;
@@ -88,7 +89,7 @@ public class EngineExtras extends Engine
 				
 				if (!mp.recieveLoginNotifications()) continue;
 				
-				p.sendMessage(ChatColor.translateAlternateColorCodes('&', MConf.get().playerQuitMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer))));
+				p.sendMessage(ChatColor.translateAlternateColorCodes('&', LangConf.get().playerQuitMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer))));
 			}
 		}
 		updateLastActivityInFactionLand(event.getPlayer());
@@ -145,7 +146,7 @@ public class EngineExtras extends Engine
 			return;
 		if (!MPerm.getPermTphome().has(mplayer, faction, false))
 		{
-			player.sendMessage(ChatColor.translateAlternateColorCodes('&', (MConf.get().homePatchMessage.replace("%LOC%", ("(" + to.getBlockX() + "," + to.getBlockY() + "," + to.getBlockZ() + ")")))));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&', (LangConf.get().homePatchMessage.replace("%LOC%", ("(" + to.getBlockX() + "," + to.getBlockY() + "," + to.getBlockZ() + ")")))));
 			event.setCancelled(true);
 		}
 	}
@@ -239,7 +240,7 @@ public class EngineExtras extends Engine
 			return;
 		
 		event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
-		MixinMessage.get().msgOne(event.getPlayer(), MConf.get().removeInvisEffectMsg);
+		MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().removeInvisEffectMsg);
 	}
 	
 	// -------------------------------------------- //
@@ -307,7 +308,7 @@ public class EngineExtras extends Engine
 		if (event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.stripColor(event.getPlayer().getItemInHand().getItemMeta().getDisplayName())))
 			return;
 		
-		if (!(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(Txt.parse(MConf.get().tntStickName))))
+		if (!(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(Txt.parse(GuiConf.get().tntStickName))))
 			return;
 		
 		event.setCancelled(true);
@@ -324,7 +325,15 @@ public class EngineExtras extends Engine
 		if (!chest.getInventory().contains(Material.TNT)) return;
 		
 		int tntInChest = getAmountOfTNT(chest.getInventory());
-		
+
+		try {
+			int max = (int) TNTStorageUpgrade.getUpgradeValue(faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()));
+			if(faction.getTnt() >= max) {
+				mPlayer.msg(Txt.parse("<rose>Could not add tnt due it bank being full."));
+				return;
+			}
+		} catch (NumberFormatException | NullPointerException ignore) {}
+
 		chest.getInventory().removeItem(new ItemStack(Material.TNT, tntInChest));
 		chest.update();
 		
@@ -337,11 +346,11 @@ public class EngineExtras extends Engine
 		int i = 0;
 		for (ItemStack is : inventory.getContents())
 		{
-			if (is != null && !is.hasItemMeta())
-			if (is.getType() == Material.TNT)
-				{
+			if (is != null && !is.hasItemMeta()) {
+				if (is.getType() == Material.TNT) {
 					i += is.getAmount();
 				}
+			}
 		}
 		return i;
 	}

@@ -8,6 +8,7 @@ import com.massivecraft.factions.chat.ChatActive;
 import com.massivecraft.factions.cmd.CmdFactions;
 import com.massivecraft.factions.cmd.type.TypeFactionChunkChangeType;
 import com.massivecraft.factions.cmd.type.TypeRel;
+import com.massivecraft.factions.coll.*;
 import com.massivecraft.factions.engine.*;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.migrator.MigratorFaction001Invitations;
@@ -20,8 +21,6 @@ import com.massivecraft.factions.integration.V19.IntegrationV19;
 import com.massivecraft.factions.integration.coreprotect.IntegrationCoreProtect;
 import com.massivecraft.factions.integration.essentials.IntegrationEssentials;
 import com.massivecraft.factions.integration.factionkore.IntegrationFKore;
-import com.massivecraft.factions.integration.herochat.IntegrationHerochat;
-import com.massivecraft.factions.integration.lwc.IntegrationLwc;
 import com.massivecraft.factions.integration.mobextras.IntegrationMobExtras;
 import com.massivecraft.factions.integration.polar.IntegrationPolar;
 import com.massivecraft.factions.integration.spigot.IntegrationSpigot;
@@ -137,7 +136,9 @@ public class Factions extends MassivePlugin
 				MigratorMConf003CleanInactivity.class,
 				MigratorFaction001Invitations.class
 		);
+
 		this.activate(getClassesActiveColls());
+
 		this.activate(
 				// Mixin
 				PowerMixin.class,
@@ -181,8 +182,6 @@ public class Factions extends MassivePlugin
 				// Integrations
 				IntegrationCoreProtect.class,
 				IntegrationFKore.class,
-				IntegrationHerochat.class,
-				IntegrationLwc.class,
 				IntegrationMobExtras.class,
 				IntegrationPolar.class,
 				IntegrationSpigot.class,

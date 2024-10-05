@@ -1,5 +1,6 @@
-package com.massivecraft.factions.entity;
+package com.massivecraft.factions.coll;
 
+import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
 

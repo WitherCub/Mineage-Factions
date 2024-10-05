@@ -1,9 +1,9 @@
 package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MFlag;
 import com.massivecraft.factions.entity.MPerm;

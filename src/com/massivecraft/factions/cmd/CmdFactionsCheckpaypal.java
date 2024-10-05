@@ -2,6 +2,7 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import org.bukkit.ChatColor;
@@ -42,6 +43,6 @@ public class CmdFactionsCheckpaypal extends FactionsCommand
 			}
 		}
 		
-		msender.msg(MConf.get().checkFactionPaypalMsg.replace("%factionName%", faction.getName()).replace("%paypal%", faction.getFactionPayPal()));
+		msender.msg(LangConf.get().checkFactionPaypalMsg.replace("%factionName%", faction.getName()).replace("%paypal%", faction.getFactionPayPal()));
 	}
 }

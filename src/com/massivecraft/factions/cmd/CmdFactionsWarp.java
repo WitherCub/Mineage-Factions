@@ -2,13 +2,9 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.cmd.type.TypeFactionWarp;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
-import com.massivecraft.factions.entity.MPlayerColl;
-import com.massivecraft.factions.entity.MissionUpgradeConf;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.*;
+import com.massivecraft.factions.coll.MPlayerColl;
 import com.massivecraft.factions.integration.essentials.EngineEssentials;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
@@ -16,11 +12,10 @@ import com.massivecraft.massivecore.chestgui.ChestGui;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.mixin.MixinCommand;
-import com.massivecraft.massivecore.mixin.MixinTeleport;
-import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.teleport.DestinationSimple;
 import com.massivecraft.massivecore.util.Txt;
+import gg.halcyon.upgrades.upgrades.WarpUpgrade;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -113,7 +108,7 @@ public class CmdFactionsWarp extends FactionsCommand
 	
 	public Inventory getWarpsInventory(Faction faction)
 	{
-		Inventory inv = Bukkit.createInventory(null, getInventorySize(MConf.get().amountOfWarps + (faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName()) * MissionUpgradeConf.get().warpsPerUpgrade)), ChatColor.GREEN + "" + ChatColor.BOLD + "Faction Warps");
+		Inventory inv = Bukkit.createInventory(null, getInventorySize((int) (MConf.get().amountOfWarps + WarpUpgrade.getUpgradeValue(faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName())))), ChatColor.GREEN + "" + ChatColor.BOLD + "Faction Warps");
 		
 		ChestGui chestGui = ChestGui.getCreative(inv);
 		chestGui.setAutoclosing(true);
@@ -127,7 +122,7 @@ public class CmdFactionsWarp extends FactionsCommand
 			ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE);
 			ItemMeta im = item.getItemMeta();
 			
-			im.setDisplayName(Txt.parse(MConf.get().warpGuiPanelWarpName.replace("%warpName%", warpName)));
+			im.setDisplayName(Txt.parse(GuiConf.get().warpGuiPanelWarpName.replace("%warpName%", warpName)));
 			
 			PS warpPs = faction.getWarp(warpName);
 			
@@ -138,7 +133,7 @@ public class CmdFactionsWarp extends FactionsCommand
 			
 			ArrayList<String> lore = new ArrayList<>();
 			
-			for (String line : MConf.get().warpGuiPanelFormat)
+			for (String line : GuiConf.get().warpGuiPanelFormat)
 			{
 				lore.add(Txt.parse(line.replace("%password%", (warpPassword != null ? "&bYes" : "&cNo")).replace("%world%", warpLocation.getWorld().getName()).replace("%x%", String.valueOf(warpLocation.getBlockX())).replace("%y%", String.valueOf(warpLocation.getBlockY())).replace("%z%", String.valueOf(warpLocation.getBlockZ()))));
 			}
@@ -169,7 +164,7 @@ public class CmdFactionsWarp extends FactionsCommand
 			slot++;
 		}
 		
-		while (slot < (MConf.get().amountOfWarps + (faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName()) * MissionUpgradeConf.get().warpsPerUpgrade)))
+		while (slot < (MConf.get().amountOfWarps + WarpUpgrade.getUpgradeValue(faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName()))))
 		{
 			
 			ItemStack item = new ItemStack(Material.STAINED_GLASS_PANE, 1);

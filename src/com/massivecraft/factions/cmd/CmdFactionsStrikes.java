@@ -2,6 +2,7 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;
@@ -32,7 +33,7 @@ public class CmdFactionsStrikes extends FactionsCommand
 
         faction.getFactionWarnings().forEach(s -> strikes.add(mson(Txt.parse(s))));
 
-        final Pager<Mson> pager = new Pager<>(this, Txt.parse(MConf.get().strikePagerName.replace("%faction%", faction.getName())), page, strikes, (Msonifier<Mson>) (item, index) -> mson(Txt.parse("<a>%s. ", (index + 1))).add(strikes.get(index)));
+        final Pager<Mson> pager = new Pager<>(this, Txt.parse(GuiConf.get().strikePagerName.replace("%faction%", faction.getName())), page, strikes, (Msonifier<Mson>) (item, index) -> mson(Txt.parse("<a>%s. ", (index + 1))).add(strikes.get(index)));
 
         pager.message();
     }

@@ -1,12 +1,8 @@
 package gg.halcyon.missions;
 
 import com.massivecraft.factions.engine.actions.ActionSpinMissions;
-import com.massivecraft.factions.entity.ConfMission;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.Mission;
-import com.massivecraft.factions.entity.MissionUpgradeConf;
 import com.massivecraft.factions.util.ItemBuilder;
 import com.massivecraft.factions.util.TimeUtil;
 import com.massivecraft.massivecore.chestgui.ChestGui;
@@ -77,7 +73,7 @@ public class MissionsManager
 		}
 		else
 		{
-			for (String s : MConf.get().missionsGuiMissionLore)
+			for (String s : LangConf.get().missionsGuiMissionLore)
 			{
 				lore.add(Txt.parse(s
 									   .replace("%missionDescription%", activeMission.getDescription())
@@ -122,7 +118,7 @@ public class MissionsManager
 			faction.addCredits(mission.getCreditsReward());
 			faction.setActiveMission(null);
 			faction.setMissionRequirementComplete(0);
-			faction.msg(MConf.get().completeMissionMsg.replace("%mission%", mission.getMissionName()).replace("%rewardAmount%", String.valueOf(mission.getCreditsReward())));
+			faction.msg(LangConf.get().completeMissionMsg.replace("%mission%", mission.getMissionName()).replace("%rewardAmount%", String.valueOf(mission.getCreditsReward())));
 		}
 		else
 		{

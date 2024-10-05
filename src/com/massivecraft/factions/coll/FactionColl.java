@@ -1,7 +1,8 @@
-package com.massivecraft.factions.entity;
+package com.massivecraft.factions.coll;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Rel;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.integration.Econ;
 import com.massivecraft.factions.util.MiscUtil;
 import com.massivecraft.massivecore.collections.MassiveMap;
@@ -304,7 +305,7 @@ public class FactionColl extends Coll<Faction>
 		List<String> names = ret.get(Rel.TRUCE);
 		if (names == null) return ret;
 
-		ret.put(Rel.TRUCE, Collections.singletonList(MConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*")));
+		ret.put(Rel.TRUCE, Collections.singletonList(LangConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*")));
 
 		// Return
 		return ret;

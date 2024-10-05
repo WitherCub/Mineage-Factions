@@ -1,9 +1,6 @@
 package com.massivecraft.factions.engine.actions;
 
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.util.TimeUtil;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
 import com.massivecraft.massivecore.mixin.MixinMessage;
@@ -29,7 +26,7 @@ public class ActionDisableShield extends ChestActionAbstract
 	{
 		if (!MConf.get().isShieldTimesChangeable())
 		{
-			MixinMessage.get().msgOne(player, MConf.get().changingShieldHoursOffMsg);
+			MixinMessage.get().msgOne(player, LangConf.get().changingShieldHoursOffMsg);
 			return false;
 		}
 		
@@ -37,20 +34,20 @@ public class ActionDisableShield extends ChestActionAbstract
 		
 		if (faction.getShieldedHoursStartTime() == null)
 		{
-			MixinMessage.get().msgOne(player, MConf.get().shieldNotEnabledMsg);
+			MixinMessage.get().msgOne(player, LangConf.get().shieldNotEnabledMsg);
 			return false;
 		}
 		
 		if (faction.getShieldedHoursCooldownFromDisable() != null)
 		{
-			MixinMessage.get().msgOne(player, MConf.get().shieldAlreadyDisabledMsg.replace("%time%", TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable())).trim()));
+			MixinMessage.get().msgOne(player, LangConf.get().shieldAlreadyDisabledMsg.replace("%time%", TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable())).trim()));
 			return false;
 		}
 		
 		faction.setShieldedHoursStartTime(null);
 		faction.setShieldedHoursCooldownFromDisable(System.currentTimeMillis());
 		faction.requestChangeShieldedHours(null, null);
-		faction.msg(MConf.get().shieldedHoursDisabledMsg.replace("%player%", playerStr).replace("%faction%", factionStr));
+		faction.msg(LangConf.get().shieldedHoursDisabledMsg.replace("%player%", playerStr).replace("%faction%", factionStr));
 		return true;
 	}
 	

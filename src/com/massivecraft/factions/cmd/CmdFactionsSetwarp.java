@@ -11,6 +11,7 @@ import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.money.MoneyMixinVault;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.Txt;
+import gg.halcyon.upgrades.upgrades.WarpUpgrade;
 
 public class CmdFactionsSetwarp extends FactionsCommand
 {
@@ -55,8 +56,8 @@ public class CmdFactionsSetwarp extends FactionsCommand
 			msender.msg(Txt.parse("<b>Sorry, your faction warps can only be set inside your own claimed territory."));
 			return;
 		}
-		
-		if (faction.getAllWarps().size() >= (MConf.get().amountOfWarps + (faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName()) * MissionUpgradeConf.get().warpsPerUpgrade)))
+
+		if (faction.getAllWarps().size() >= (MConf.get().amountOfWarps + WarpUpgrade.getUpgradeValue(faction.getLevel(MissionUpgradeConf.get().warpUpgrade.getUpgradeName()))))
 		{
 			msender.message(Txt.parse("<b>You cannot set anymore warps for this faction!"));
 			return;

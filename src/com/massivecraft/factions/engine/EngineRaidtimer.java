@@ -1,6 +1,6 @@
 package com.massivecraft.factions.engine;
 
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidData;
 import com.massivecraft.factions.event.EventFactionsDisband;
@@ -38,7 +38,7 @@ public class EngineRaidtimer extends Engine {
             {
                 Faction faction = Faction.get(raidData.getFactionRaidingId());
                 if (faction != null) {
-                    faction.msg(MConf.get().raidHasEndedDisbandMsg.replace("%faction%", event.getFaction().getName()));
+                    faction.msg(LangConf.get().raidHasEndedDisbandMsg.replace("%faction%", event.getFaction().getName()));
                 }
                 return true;
             }
@@ -88,7 +88,7 @@ public class EngineRaidtimer extends Engine {
             }
 
             event.setCancelled(true);
-            MixinMessage.get().msgOne(event.getPlayer(), MConf.get().cantTogglePrinterLockdownMsg);
+            MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().cantTogglePrinterLockdownMsg);
         }
     }
 
@@ -104,7 +104,7 @@ public class EngineRaidtimer extends Engine {
 
         if (raidData != null && MPlayer.get(event.getPlayer()).getFaction().getId().equals(raidData.getFactionRaidedId())) {
             event.setCancelled(true);
-            MixinMessage.get().msgOne(event.getPlayer(), MConf.get().cantPlaceExplosionMsg);
+            MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().cantPlaceExplosionMsg);
         }
     }
 
@@ -117,7 +117,7 @@ public class EngineRaidtimer extends Engine {
 
         if (raidData != null && factionAt.getId().equals(raidData.getFactionRaidedId())) {
             event.setCancelled(true);
-            MixinMessage.get().msgOne(event.getPlayer(), MConf.get().cantMineSpawnersDuringRaidtimerMsg);
+            MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().cantMineSpawnersDuringRaidtimerMsg);
         }
     }
 

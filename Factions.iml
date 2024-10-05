@@ -212,5 +212,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.stellardev.galactic:GalacticLib:1.19.14" level="project" />
   </component>
 </module>

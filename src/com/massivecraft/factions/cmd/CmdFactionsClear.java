@@ -1,5 +1,6 @@
 package com.massivecraft.factions.cmd;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.massivecore.MassiveException;
@@ -27,12 +28,12 @@ public class CmdFactionsClear extends FactionsCommand
 		
 		if (msenderFaction.getNotificationTimeMinutes() == 0)
 		{
-			msender.msg(MConf.get().checkWallNotifsDisabled);
+			msender.msg(LangConf.get().checkWallNotifsDisabled);
 			return;
 		}
 		
 		msenderFaction.setLastCheckedMillis(System.currentTimeMillis());
-		msender.msg(MConf.get().checkWallClearMsg);
+		msender.msg(LangConf.get().checkWallClearMsg);
 	}
 	
 }

@@ -2,7 +2,8 @@ package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.cmd.CmdFactionsShield;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.ModuloRepeatTask;
 
@@ -33,7 +34,7 @@ public class TaskUpdateShield extends ModuloRepeatTask
 			{
 				String startHour = CmdFactionsShield.get().getTimeFormatted(faction.getShieldedHoursChangeRequestNewStartTime(), 0);
 				String endHour = CmdFactionsShield.get().getTimeFormatted(MConf.get().shieldStartEndHours.get(faction.getShieldedHoursChangeRequestNewStartTime()), 0);
-				faction.msg(MConf.get().shieldHoursUpdatedMsg.replace("%startHour%", startHour).replace("%endHour%", endHour));
+				faction.msg(LangConf.get().shieldHoursUpdatedMsg.replace("%startHour%", startHour).replace("%endHour%", endHour));
 				faction.setShieldedHoursStartTime(faction.getShieldedHoursChangeRequestNewStartTime());
 				faction.requestChangeShieldedHours(null, null);
 			}

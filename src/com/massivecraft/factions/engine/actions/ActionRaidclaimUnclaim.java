@@ -2,7 +2,8 @@ package com.massivecraft.factions.engine.actions;
 
 import com.massivecraft.factions.cmd.CmdFactionsRaidclaim;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
@@ -31,7 +32,7 @@ public class ActionRaidclaimUnclaim extends ChestActionAbstract {
         mPlayer.tryClaim(FactionColl.get().getNone(), faction.getRaidClaims().get(raidclaimNumber));
         faction.getRaidClaims().put(raidclaimNumber, null);
         faction.changed();
-        MixinMessage.get().msgOne(player, MConf.get().raidClaimRemovedMsg);
+        MixinMessage.get().msgOne(player, LangConf.get().raidClaimRemovedMsg);
 
         player.openInventory(CmdFactionsRaidclaim.get().getRaidclaimGui(faction));
         return false;

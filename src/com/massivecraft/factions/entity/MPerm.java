@@ -6,9 +6,9 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.cmd.CmdFactionsOverride;
 import com.massivecraft.factions.cmd.perm.CmdFactionsPerm;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.coll.MPermColl;
 import com.massivecraft.factions.event.EventFactionsCreatePerms;
-import com.massivecraft.factions.integration.factionkore.EngineFKore;
-import com.massivecraft.factions.integration.factionkore.IntegrationFKore;
 import com.massivecraft.massivecore.Named;
 import com.massivecraft.massivecore.Prioritized;
 import com.massivecraft.massivecore.Registerable;
@@ -457,15 +457,6 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 		if (hostFaction == null) throw new NullPointerException("hostFaction");
 
 		if (mplayer.isOverriding()) return true;
-
-
-
-		// Allow raidingoutpost owner to bypass fly
-		if (MPerm.getPermFly() == this && IntegrationFKore.get().isIntegrationActive() &&
-				EngineFKore.get().getROOwner() != null &&
-				EngineFKore.get().getROOwner().equals(mplayer.getFaction().getId())) {
-			return true;
-		}
 
 		Rel rel = mplayer.getRelationTo(hostFaction);
 		if (hostFaction.isPermitted(this, rel, mplayer)) return true;

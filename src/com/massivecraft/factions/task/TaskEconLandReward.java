@@ -1,6 +1,6 @@
 package com.massivecraft.factions.task;
 
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.ModuloRepeatTask;

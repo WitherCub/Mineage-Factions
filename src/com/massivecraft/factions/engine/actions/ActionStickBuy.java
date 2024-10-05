@@ -1,6 +1,7 @@
 package com.massivecraft.factions.engine.actions;
 
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.util.Glow;
@@ -25,7 +26,7 @@ public class ActionStickBuy extends ChestActionAbstract
 		
 		if (faction.getCredits() >= 50)
 		{
-			ItemStack itemStack = new ItemBuilder(Material.STICK).name(Txt.parse(MConf.get().tntStickName)).lore(Txt.parse("&7Right click a chest to transfer TNT")).enchantment(Glow.getGlow());
+			ItemStack itemStack = new ItemBuilder(Material.STICK).name(Txt.parse(GuiConf.get().tntStickName)).lore(Txt.parse("&7Right click a chest to transfer TNT")).enchantment(Glow.getGlow());
 			
 			if (player != null)
 			{

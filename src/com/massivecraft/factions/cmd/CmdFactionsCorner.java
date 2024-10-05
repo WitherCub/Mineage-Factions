@@ -1,8 +1,9 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.massivecore.ps.PS;
@@ -33,9 +34,9 @@ public class CmdFactionsCorner extends FactionsCommand {
         if (EngineExtras.corners.contains(to)) {
             Faction cornerAt = BoardColl.get().getFactionAt(to);
             if (cornerAt != null && cornerAt.isNormal() && !cornerAt.equals(msenderFaction)) {
-                msender.msg(MConf.get().cannotClaimCornerMsg);
+                msender.msg(LangConf.get().cannotClaimCornerMsg);
             } else {
-                msenderFaction.msg(MConf.get().attemptingClaimCornerMsg);
+                msenderFaction.msg(LangConf.get().attemptingClaimCornerMsg);
                 List<PS> surrounding = new ArrayList<>(400);
                 for (int x = 0; x < MConf.get().factionBufferSize; ++x) {
                     for (int z = 0; z < MConf.get().factionBufferSize; ++z) {
@@ -50,7 +51,7 @@ public class CmdFactionsCorner extends FactionsCommand {
                 }
                 surrounding.sort(Comparator.comparingInt(pS -> (int) getDistanceTo(pS, to)));
                 if (surrounding.isEmpty()) {
-                    msender.msg(MConf.get().cannotClaimCornerMsg);
+                    msender.msg(LangConf.get().cannotClaimCornerMsg);
                 } else {
                     int amount = 0;
 
@@ -61,14 +62,14 @@ public class CmdFactionsCorner extends FactionsCommand {
                     }
 
                     if (surrounding.size() == amount) {
-                        msenderFaction.msg(MConf.get().claimedCornerMsg.replace("%claims%", String.valueOf(amount)));
+                        msenderFaction.msg(LangConf.get().claimedCornerMsg.replace("%claims%", String.valueOf(amount)));
                     } else {
-                        msenderFaction.msg(MConf.get().couldNotClaimCornerMsg.replace("%claims%", String.valueOf(amount)));
+                        msenderFaction.msg(LangConf.get().couldNotClaimCornerMsg.replace("%claims%", String.valueOf(amount)));
                     }
                 }
             }
         } else {
-            msender.msg(MConf.get().mustBeInCornerMsg);
+            msender.msg(LangConf.get().mustBeInCornerMsg);
         }
     }
 

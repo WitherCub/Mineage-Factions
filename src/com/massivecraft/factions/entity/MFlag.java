@@ -1,5 +1,6 @@
 package com.massivecraft.factions.entity;
 
+import com.massivecraft.factions.coll.MFlagColl;
 import com.massivecraft.factions.event.EventFactionsCreateFlags;
 import com.massivecraft.massivecore.Named;
 import com.massivecraft.massivecore.Prioritized;

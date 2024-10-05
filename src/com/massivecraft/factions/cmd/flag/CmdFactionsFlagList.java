@@ -3,7 +3,7 @@ package com.massivecraft.factions.cmd.flag;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.FactionsCommand;
 import com.massivecraft.factions.entity.MFlag;
-import com.massivecraft.factions.entity.MFlagColl;
+import com.massivecraft.factions.coll.MFlagColl;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;

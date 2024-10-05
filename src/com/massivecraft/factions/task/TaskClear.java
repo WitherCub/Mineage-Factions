@@ -1,7 +1,8 @@
 package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.ModuloRepeatTask;
@@ -35,7 +36,7 @@ public class TaskClear extends ModuloRepeatTask
 			for (Player player : faction.getOnlinePlayers())
 			{
 				MPlayer mPlayer = MPlayer.get(player);
-				mPlayer.msg(MConf.get().checkWallsNotifMsg.replace("%notificationTime%", String.valueOf(faction.getNotificationTimeMinutes())));
+				mPlayer.msg(LangConf.get().checkWallsNotifMsg.replace("%notificationTime%", String.valueOf(faction.getNotificationTimeMinutes())));
 			}
 		}
 	}

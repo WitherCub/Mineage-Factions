@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.cmd.req.ReqRoleIsAtLeast;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.util.MiscUtil;
 import com.massivecraft.massivecore.MassiveException;
@@ -29,19 +30,19 @@ public class CmdFactionsSetpaypal extends FactionsCommand
 		
 		if (paypal.length() < MConf.get().minFactionPaypalLength || paypal.length() > MConf.get().maxFactionPaypalLength)
 		{
-			msender.msg(MConf.get().factionPaypalInvalidLengthMsg.replace("%minCharacters%", String.valueOf(MConf.get().minFactionPaypalLength)).replace("%maxCharacters%", String.valueOf(MConf.get().maxFactionPaypalLength)));
+			msender.msg(LangConf.get().factionPaypalInvalidLengthMsg.replace("%minCharacters%", String.valueOf(MConf.get().minFactionPaypalLength)).replace("%maxCharacters%", String.valueOf(MConf.get().maxFactionPaypalLength)));
 			return;
 		}
 		
 		if (!isValidString(paypal))
 		{
-			msender.msg(MConf.get().notValidPaypalMsg);
+			msender.msg(LangConf.get().notValidPaypalMsg);
 			return;
 		}
 		
 		msenderFaction.setFactionPayPal(paypal);
-		msender.msg(MConf.get().paypalUpdatedPlayerMsg.replace("%paypal%", paypal));
-		msenderFaction.msg(MConf.get().paypalUpdatedFactionMsg.replace("%player%", msender.getName()));
+		msender.msg(LangConf.get().paypalUpdatedPlayerMsg.replace("%paypal%", paypal));
+		msenderFaction.msg(LangConf.get().paypalUpdatedFactionMsg.replace("%player%", msender.getName()));
 	}
 	
 	private boolean isValidString(String string)

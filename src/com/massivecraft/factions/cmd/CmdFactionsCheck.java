@@ -4,6 +4,7 @@ import com.massivecraft.factions.cmd.pperm.CmdFactionsPpermGui;
 import com.massivecraft.factions.engine.actions.ActionChangeNotificationTime;
 import com.massivecraft.factions.engine.actions.ActionOpenRelations;
 import com.massivecraft.factions.engine.actions.ActionToggleAlarm;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.entity.MPlayer;
@@ -55,7 +56,7 @@ public class CmdFactionsCheck extends FactionsCommand
 		
 		List<String> lore = new ArrayList<>();
 		
-		for (String string : MConf.get().notificationTimeLore)
+		for (String string : GuiConf.get().notificationTimeLore)
 		{
 			if (string.contains("%currentNotificationTime%"))
 			{
@@ -77,15 +78,15 @@ public class CmdFactionsCheck extends FactionsCommand
 		chestGui.getInventory().setItem(1, new ItemBuilder(Material.STAINED_GLASS_PANE).durability(15).name(Txt.parse("")));
 		chestGui.getInventory().setItem(3, new ItemBuilder(Material.STAINED_GLASS_PANE).durability(15).name(Txt.parse("")));
 		
-		chestGui.getInventory().setItem(0, new ItemBuilder(MConf.get().notificationTimeMaterial).name(Txt.parse(MConf.get().notificationTimeName)).setLore(lore));
+		chestGui.getInventory().setItem(0, new ItemBuilder(GuiConf.get().notificationTimeMaterial).name(Txt.parse(GuiConf.get().notificationTimeName)).setLore(lore));
 		chestGui.setAction(0, new ActionChangeNotificationTime(mPlayer));
 		
-		chestGui.getInventory().setItem(2, new ItemBuilder(MConf.get().permsFclearMaterial).name(Txt.parse(MConf.get().permsFclearName)));
+		chestGui.getInventory().setItem(2, new ItemBuilder(GuiConf.get().permsFclearMaterial).name(Txt.parse(GuiConf.get().permsFclearName)));
 		chestGui.setAction(2, new ActionOpenRelations(MPerm.get(MPerm.ID_CHECK).getName().toLowerCase(), mPlayer));
 		
 		lore.clear();
 		
-		for (String string : MConf.get().alarmSoundsLore)
+		for (String string : GuiConf.get().alarmSoundsLore)
 		{
 			if (string.contains("%currentAlarmSounds%"))
 			{
@@ -106,11 +107,11 @@ public class CmdFactionsCheck extends FactionsCommand
 		
 		if (mPlayer.isAlertSoundEnabled())
 		{
-			chestGui.getInventory().setItem(4, new ItemBuilder(MConf.get().alarmSoundsOnMaterial).durability(MConf.get().alarmSoundsOnData).name(Txt.parse(MConf.get().alarmSoundsName)).setLore(lore));
+			chestGui.getInventory().setItem(4, new ItemBuilder(GuiConf.get().alarmSoundsOnMaterial).durability(GuiConf.get().alarmSoundsOnData).name(Txt.parse(GuiConf.get().alarmSoundsName)).setLore(lore));
 		}
 		else
 		{
-			chestGui.getInventory().setItem(4, new ItemBuilder(MConf.get().alarmSoundsOffMaterial).durability(MConf.get().alarmSoundsOffData).name(Txt.parse(MConf.get().alarmSoundsName)).setLore(lore));
+			chestGui.getInventory().setItem(4, new ItemBuilder(GuiConf.get().alarmSoundsOffMaterial).durability(GuiConf.get().alarmSoundsOffData).name(Txt.parse(GuiConf.get().alarmSoundsName)).setLore(lore));
 		}
 		
 		chestGui.setAction(4, new ActionToggleAlarm(mPlayer));

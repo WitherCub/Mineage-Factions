@@ -1,6 +1,9 @@
 package com.massivecraft.factions.entity;
 
 import com.massivecraft.factions.*;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.coll.MPlayerColl;
 import com.massivecraft.factions.entity.objects.ChestTransaction;
 import com.massivecraft.factions.entity.objects.FactionValue;
 import com.massivecraft.factions.entity.objects.Mission;
@@ -2041,7 +2044,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator
 
 		Location npcLocation = ps.asBukkitLocation().clone();
 
-		NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, MConf.get().sandbotName);
+		NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, LangConf.get().sandbotName);
 		npc.data().set("removefromplayerlist", false);
 		npc.setFlyable(true);
 		npc.setProtected(true);

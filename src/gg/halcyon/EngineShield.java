@@ -1,7 +1,7 @@
 package gg.halcyon;
 
 import com.massivecraft.factions.cmd.CmdFactionsShield;
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidData;
 import com.massivecraft.factions.entity.objects.RaidtimerShield;
@@ -33,7 +33,7 @@ public class EngineShield extends Engine {
 
     @EventHandler
     public void onInventoryCloseShield(InventoryCloseEvent event) {
-        if (event.getInventory().getName().equals(Txt.parse(MConf.get().shieldMangerGuiTitle))) {
+        if (event.getInventory().getName().equals(Txt.parse(GuiConf.get().shieldMangerGuiTitle))) {
             CmdFactionsShield.get().playersWithShieldGuiOpen.remove(event.getPlayer().getUniqueId());
         }
     }
@@ -91,19 +91,19 @@ public class EngineShield extends Engine {
                     if (!lastRemindedFactionNotYourRaidMillis.containsKey(factionBreaching.getId()) || ((MConf.get().onlyMessageAboutRaidTimerEveryXMinutes * TimeUnit.MILLIS_PER_MINUTE) < System.currentTimeMillis() - lastRemindedFactionNotYourRaidMillis.get(factionBreaching.getId()))) {
                         if (!factionBreaching.getId().equals(factionBreached.getId())) {
                             lastRemindedFactionNotYourRaidMillis.put(factionBreaching.getId(), System.currentTimeMillis());
-                            factionBreaching.msg(MConf.get().alreadyBeingRaidedMsg.replace("%faction%", Faction.get(raidData.getFactionRaidingId()).getName()));
+                            factionBreaching.msg(LangConf.get().alreadyBeingRaidedMsg.replace("%faction%", Faction.get(raidData.getFactionRaidingId()).getName()));
                         }
                     }
                     event.setCancelled(true);
                 } else {
                     if (raidData.getPhase() == 2) {
-                        factionBreaching.msg(MConf.get().backToPhaseOneMsg.replace("%faction%", factionBreached.getName()));
+                        factionBreaching.msg(LangConf.get().backToPhaseOneMsg.replace("%faction%", factionBreached.getName()));
                     }
                     raidData.restartRaidStartMillis(System.currentTimeMillis());
                 }
             } else {
                 if (event.getEntity().getLocation().getBlockY() >= MConf.get().raidTimerStartMinY && !factionBreaching.isNone() && !factionBreached.isNone() && !factionBreached.getId().equals(factionBreaching.getId())) {
-                    factionBreaching.msg(MConf.get().raidStartedMsg.replace("%faction%", factionBreached.getName()));
+                    factionBreaching.msg(LangConf.get().raidStartedMsg.replace("%faction%", factionBreached.getName()));
 //					factionBreached.msg(MConf.get().raidStartedOnYouMsg.replace("%yourfaction%", factionBreached.describeTo(factionBreached, false)).replace("%faction%", factionBreaching.describeTo(factionBreached, true)));
                     RaidDataStorage.get().startRaid(factionBreaching, factionBreached);
                 }
@@ -167,7 +167,7 @@ public class EngineShield extends Engine {
             cancelDispense = false;
         } else if (!factionAt.isSystemFaction()) {
             for (Player player : factionAt.getOnlinePlayers()) {
-                TitleAPI.sendTitle(player, 10, 15, 10, MConf.get().mustUseRaidclaimTitleTopMessage, MConf.get().mustUseRaidclaimTitleBottomMessage);
+                TitleAPI.sendTitle(player, 10, 15, 10, LangConf.get().mustUseRaidclaimTitleTopMessage, LangConf.get().mustUseRaidclaimTitleBottomMessage);
             }
         }
 

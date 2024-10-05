@@ -1,6 +1,7 @@
 package gg.halcyon.upgrades.upgrades;
 
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MissionUpgradeConf;
 import com.massivecraft.massivecore.util.Txt;
 import gg.halcyon.upgrades.Upgrade;
@@ -53,5 +54,9 @@ public class TNTStorageUpgrade extends Upgrade
 	@Override
 	public int getInventorySlot() {
 		return MissionUpgradeConf.get().tntUpgrade.getInventorySlot();
+	}
+
+	public static double getUpgradeValue(int level) {
+		return level > 0? MissionUpgradeConf.get().warpUpgrade.getUpgradeValue()[level - 1]: MConf.get().amountOfWarps;
 	}
 }

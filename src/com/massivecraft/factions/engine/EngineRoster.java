@@ -2,8 +2,8 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MPlayerColl;
+import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.coll.MPlayerColl;
 import com.massivecraft.factions.engine.actions.ActionRosterKick;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.event.EventFactionsCreate;
@@ -80,7 +80,7 @@ public class EngineRoster extends Engine {
 
         if (!faction.getRoster().containsKey(mPlayer.getUuid())) {
             event.setCancelled(true);
-            mPlayer.msg(MConf.get().notOnFactionRosterMsg.replace("%faction%", faction.describeTo(mPlayer, true)));
+            mPlayer.msg(LangConf.get().notOnFactionRosterMsg.replace("%faction%", faction.describeTo(mPlayer, true)));
         }
 
         final Faction fac = faction;
@@ -190,15 +190,15 @@ public class EngineRoster extends Engine {
         }
 
         RosterScrollerInventory scrollerInventory = new RosterScrollerInventory();
-        ChestGui chestGui = scrollerInventory.getBlankPage(Txt.parse(MConf.get().factionRosterGuiTitle), 54, player);
-        scrollerInventory.fillSidesWithItem(chestGui.getInventory(), new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").durability(MConf.get().factionRosterGuiStainedGlassBorderColorId));
+        ChestGui chestGui = scrollerInventory.getBlankPage(Txt.parse(GuiConf.get().factionRosterGuiTitle), 54, player);
+        scrollerInventory.fillSidesWithItem(chestGui.getInventory(), new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").durability(GuiConf.get().factionRosterGuiStainedGlassBorderColorId));
 
         List<String> lore = new ArrayList<>();
 
         String rosterKicksRemaining;
 
         if (MConf.get().unlimitedRosterKicks) {
-            rosterKicksRemaining = MConf.get().factionRosterGuiLoreUnlimitedKicksPlaceholderRet;
+            rosterKicksRemaining = GuiConf.get().factionRosterGuiLoreUnlimitedKicksPlaceholderRet;
         } else if (MConf.get().isRosterChangeable()) {
             rosterKicksRemaining = String.valueOf(faction.getRosterKicksRemaining());
         } else {
@@ -209,8 +209,8 @@ public class EngineRoster extends Engine {
             Integer slot = scrollerInventory.getEmptyNonSideSlots(chestGui.getInventory()).stream().findFirst().orElse(null);
 
             if (slot == null) {
-                chestGui = scrollerInventory.getBlankPage(Txt.parse(MConf.get().factionRosterGuiTitle), 54, player);
-                scrollerInventory.fillSidesWithItem(chestGui.getInventory(), new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").durability(MConf.get().factionRosterGuiStainedGlassBorderColorId));
+                chestGui = scrollerInventory.getBlankPage(Txt.parse(GuiConf.get().factionRosterGuiTitle), 54, player);
+                scrollerInventory.fillSidesWithItem(chestGui.getInventory(), new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").durability(GuiConf.get().factionRosterGuiStainedGlassBorderColorId));
                 slot = scrollerInventory.getEmptyNonSideSlots(chestGui.getInventory()).stream().findFirst().orElse(null);
                 if (slot == null) {
                     break;
@@ -223,8 +223,8 @@ public class EngineRoster extends Engine {
 
             lore.clear();
 
-            MConf.get().factionRosterGuiLore.stream().map(line -> Txt.parse(line.replace("%kicks%", rosterKicksRemaining).replace("%rel%", Txt.getNicedEnum(faction.getRoster().get(rosterPlayerId))))).forEach(lore::add);
-            String entryName = faction.getId().equals(mPlayer.getFactionId()) ? MConf.get().factionRosterGuiMemberNameEntry.replace("%playerDesc%", mPlayer.describeTo(faction, true)) : MConf.get().factionRosterGuiNotMemberNameEntry.replace("%playerDesc%", mPlayer.describeTo(faction, true));
+            GuiConf.get().factionRosterGuiLore.stream().map(line -> Txt.parse(line.replace("%kicks%", rosterKicksRemaining).replace("%rel%", Txt.getNicedEnum(faction.getRoster().get(rosterPlayerId))))).forEach(lore::add);
+            String entryName = faction.getId().equals(mPlayer.getFactionId()) ? GuiConf.get().factionRosterGuiMemberNameEntry.replace("%playerDesc%", mPlayer.describeTo(faction, true)) : GuiConf.get().factionRosterGuiNotMemberNameEntry.replace("%playerDesc%", mPlayer.describeTo(faction, true));
 
             ItemStack skull = new ItemBuilder(EngineSkull.get().getSkullItem(rosterPlayerId, mPlayer.getName())).
                     name(Txt.parse(entryName))

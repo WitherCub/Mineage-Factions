@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd.type;
 
 import com.massivecraft.factions.entity.MFlag;
-import com.massivecraft.factions.entity.MFlagColl;
+import com.massivecraft.factions.coll.MFlagColl;
 import com.massivecraft.massivecore.command.type.store.TypeEntity;
 
 import java.util.Collection;

@@ -1,8 +1,8 @@
 package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.engine.EngineFtop;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.FactionValue;
@@ -53,7 +53,7 @@ public class TaskFactionTopCalculate extends ModuloRepeatTask {
 
         running = true;
 
-        MixinMessage.get().msgAll(MConf.get().ftopTotalsResynchronizeStartMsg);
+        MixinMessage.get().msgAll(LangConf.get().ftopTotalsResynchronizeStartMsg);
 
         Bukkit.getServer().getScheduler().runTaskAsynchronously(Factions.get(), () -> {
             ConcurrentHashMap<Faction, Set<PS>> toCalculate = new ConcurrentHashMap<>();
@@ -122,7 +122,7 @@ public class TaskFactionTopCalculate extends ModuloRepeatTask {
 
             running = false;
 
-            MConf.get().ftopTotalsResynchronizedMsg.forEach(s -> MixinMessage.get().msgAll(s));
+            LangConf.get().ftopTotalsResynchronizedMsg.forEach(s -> MixinMessage.get().msgAll(s));
         });
 
         Bukkit.getServer().getScheduler().cancelTask(taskID);

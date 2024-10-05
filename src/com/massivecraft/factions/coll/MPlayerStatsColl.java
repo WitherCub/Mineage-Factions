@@ -1,15 +1,21 @@
-package com.massivecraft.factions.entity;
+package com.massivecraft.factions.coll;
 
+import com.massivecraft.factions.entity.MPlayerStats;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
-public class FactionPermissionsColl extends Coll<FactionPermissions>
+
+public class MPlayerStatsColl extends Coll<MPlayerStats>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static FactionPermissionsColl i = new FactionPermissionsColl();
-	public static FactionPermissionsColl get() { return i; }
+	private static MPlayerStatsColl i = new MPlayerStatsColl();
+	
+	public static MPlayerStatsColl get()
+	{
+		return i;
+	}
 	
 	// -------------------------------------------- //
 	// STACK TRACEABILITY
@@ -30,7 +36,7 @@ public class FactionPermissionsColl extends Coll<FactionPermissions>
 	{
 		super.setActive(active);
 		if (!active) return;
-		FactionPermissions.set(this.get(MassiveCore.INSTANCE, true));
+		MPlayerStats.set(this.get(MassiveCore.INSTANCE, true));
 	}
 	
 }

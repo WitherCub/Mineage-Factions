@@ -5,6 +5,7 @@ import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.engine.actions.ActionDespawnSandbot;
 import com.massivecraft.factions.engine.actions.ActionSpawnSandbot;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.Sandbot;
 import com.massivecraft.factions.util.Glow;
@@ -43,7 +44,7 @@ public class CmdFactionsSandbots extends FactionsCommand {
     }
 
     private ChestGui getSandbotGui(Faction faction) {
-        Inventory inventory = Bukkit.createInventory(null, 54, Txt.parse(MConf.get().sandbotGuiName));
+        Inventory inventory = Bukkit.createInventory(null, 54, Txt.parse(GuiConf.get().sandbotGuiName));
 
         ChestGui chestGui = ChestGui.getCreative(inventory);
         chestGui.setAutoclosing(false);
@@ -51,19 +52,19 @@ public class CmdFactionsSandbots extends FactionsCommand {
         chestGui.setSoundOpen(null);
         chestGui.setSoundClose(null);
 
-        if (MConf.get().sandbotGuiBorderGlassEnabled) {
-            if (MConf.get().sandbotGuiBorderGlassGlowEnabled) {
-                IntStream.range(0, chestGui.getInventory().getSize()).forEach(i -> chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(MConf.get().sandbotGuiBorderGlassDurabilityId).enchantment(Glow.getGlow())));
+        if (GuiConf.get().sandbotGuiBorderGlassEnabled) {
+            if (GuiConf.get().sandbotGuiBorderGlassGlowEnabled) {
+                IntStream.range(0, chestGui.getInventory().getSize()).forEach(i -> chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(GuiConf.get().sandbotGuiBorderGlassDurabilityId).enchantment(Glow.getGlow())));
             } else {
-                IntStream.range(0, chestGui.getInventory().getSize()).forEach(i -> chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(MConf.get().sandbotGuiBorderGlassDurabilityId)));
+                IntStream.range(0, chestGui.getInventory().getSize()).forEach(i -> chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(GuiConf.get().sandbotGuiBorderGlassDurabilityId)));
             }
         }
 
-        chestGui.getInventory().setItem(MConf.get().sandbotGuiInfoItemSlot,
-                new ItemBuilder(MConf.get().sandbotGuiInfoItemMaterial)
-                        .durability(MConf.get().sandbotGuiInfoItemMaterialDurability)
-                        .name(Txt.parse(MConf.get().sandbotGuiInfoItemName))
-                        .setLore(MConf.get().sandbotGuiInfoItemLore.stream().map(Txt::parse).collect(Collectors.toList()))
+        chestGui.getInventory().setItem(GuiConf.get().sandbotGuiInfoItemSlot,
+                new ItemBuilder(GuiConf.get().sandbotGuiInfoItemMaterial)
+                        .durability(GuiConf.get().sandbotGuiInfoItemMaterialDurability)
+                        .name(Txt.parse(GuiConf.get().sandbotGuiInfoItemName))
+                        .setLore(GuiConf.get().sandbotGuiInfoItemLore.stream().map(Txt::parse).collect(Collectors.toList()))
         );
 
         int sandbotNumber = 1;
@@ -72,21 +73,21 @@ public class CmdFactionsSandbots extends FactionsCommand {
             Sandbot sandbot = faction.getSandbots().get(slot);
 
             chestGui.getInventory().setItem(slot,
-                    new ItemBuilder(SkullCreator.itemFromBase64(MConf.get().sandbotInfoButtonHeadData))
-                            .name(Txt.parse(MConf.get().sandbotInfoButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
-                            .setLore(sandbot != null && !sandbot.isDespawned() ? MConf.get().sandbotInfoButtonLoreActive.stream().map(Txt::parse).collect(Collectors.toList()) : MConf.get().sandbotInfoButtonLoreInactive.stream().map(Txt::parse).collect(Collectors.toList()))
+                    new ItemBuilder(SkullCreator.itemFromBase64(GuiConf.get().sandbotInfoButtonHeadData))
+                            .name(Txt.parse(GuiConf.get().sandbotInfoButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
+                            .setLore(sandbot != null && !sandbot.isDespawned() ? GuiConf.get().sandbotInfoButtonLoreActive.stream().map(Txt::parse).collect(Collectors.toList()) : GuiConf.get().sandbotInfoButtonLoreInactive.stream().map(Txt::parse).collect(Collectors.toList()))
             );
 
             chestGui.getInventory().setItem(slot - 1,
-                    new ItemBuilder(SkullCreator.itemFromBase64(MConf.get().sandbotSpawnButtonHeadData))
-                            .name(Txt.parse(MConf.get().sandbotSpawnButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
+                    new ItemBuilder(SkullCreator.itemFromBase64(GuiConf.get().sandbotSpawnButtonHeadData))
+                            .name(Txt.parse(GuiConf.get().sandbotSpawnButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
             );
 
             chestGui.setAction(slot - 1, new ActionSpawnSandbot(faction, slot, sandbotNumber));
 
             chestGui.getInventory().setItem(slot + 1,
-                    new ItemBuilder(SkullCreator.itemFromBase64(MConf.get().sandbotDespawnButtonHeadData))
-                            .name(Txt.parse(MConf.get().sandbotDespawnButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
+                    new ItemBuilder(SkullCreator.itemFromBase64(GuiConf.get().sandbotDespawnButtonHeadData))
+                            .name(Txt.parse(GuiConf.get().sandbotDespawnButtonName.replace("%sandbotNumber%", String.valueOf(sandbotNumber))))
             );
 
             chestGui.setAction(slot + 1, new ActionDespawnSandbot(faction, slot, sandbotNumber));

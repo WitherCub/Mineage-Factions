@@ -3,6 +3,7 @@ package com.massivecraft.factions.util;
 import com.massivecraft.factions.engine.actions.ActionPpermChoosePlayer;
 import com.massivecraft.factions.engine.actions.ActionSwitchPage;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.chestgui.ChestGui;
@@ -24,8 +25,8 @@ import java.util.UUID;
 public class ScrollerInventory
 {
 	
-	public static final String nextPageName = Txt.parse(MConf.get().pageableGuiNextPageIconName);
-	public static final String previousPageName = Txt.parse(MConf.get().pageableGuiPreviousPageIconName);
+	public static final String nextPageName = Txt.parse(GuiConf.get().pageableGuiNextPageIconName);
+	public static final String previousPageName = Txt.parse(GuiConf.get().pageableGuiPreviousPageIconName);
 	public static HashMap<UUID, ScrollerInventory> users = new HashMap<>();
 	public ArrayList<ChestGui> pages = new ArrayList<>();
 	public UUID id;
@@ -95,12 +96,12 @@ public class ScrollerInventory
 		
 		if (players < 45) return chestGui;
 		
-		ItemStack nextpage = new ItemBuilder(MConf.get().pageableGuiNextPageIconMaterial).durability(MConf.get().pageableGuiNextPageIconDurability).name(nextPageName);
+		ItemStack nextpage = new ItemBuilder(GuiConf.get().pageableGuiNextPageIconMaterial).durability(GuiConf.get().pageableGuiNextPageIconDurability).name(nextPageName);
 		ItemMeta meta = nextpage.getItemMeta();
 		meta.setDisplayName(nextPageName);
 		nextpage.setItemMeta(meta);
 		
-		ItemStack prevpage = new ItemBuilder(MConf.get().pageableGuiPreviousPageIconMaterial).durability(MConf.get().pageableGuiPreviousPageIconDurability).name(previousPageName);
+		ItemStack prevpage = new ItemBuilder(GuiConf.get().pageableGuiPreviousPageIconMaterial).durability(GuiConf.get().pageableGuiPreviousPageIconDurability).name(previousPageName);
 		meta = prevpage.getItemMeta();
 		meta.setDisplayName(previousPageName);
 		prevpage.setItemMeta(meta);

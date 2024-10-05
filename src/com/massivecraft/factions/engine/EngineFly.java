@@ -1,12 +1,9 @@
 package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.*;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.collections.MassiveSet;
 import com.massivecraft.massivecore.mixin.MixinMessage;
@@ -83,14 +80,14 @@ public class EngineFly extends Engine
 			if (player.getAllowFlight() && !player.hasPermission("factions.wildfly"))
 			{
 				player.setAllowFlight(false);
-				disableFlight(player, MConf.get().factionsFlyDisabledNoPerms);
+				disableFlight(player, LangConf.get().factionsFlyDisabledNoPerms);
 			}
 			return;
 		}
 		
 		if (!hasPerm)
 		{
-			disableFlight(player, MConf.get().factionsFlyDisabledNoPerms);
+			disableFlight(player, LangConf.get().factionsFlyDisabledNoPerms);
 		}
 	}
 	
@@ -106,12 +103,12 @@ public class EngineFly extends Engine
 		{
 			if (!player.hasPermission("factions.wildfly"))
 			{
-				disableFlight(player, MConf.get().factionsFlyDisabledNoPerms);
+				disableFlight(player, LangConf.get().factionsFlyDisabledNoPerms);
 			}
 		}
 		else if (!MPerm.getPermFly().has(mplayer, factionTo, false))
 		{
-			disableFlight(player, MConf.get().factionsFlyDisabledNoPerms);
+			disableFlight(player, LangConf.get().factionsFlyDisabledNoPerms);
 		}
 	}
 	
@@ -128,7 +125,7 @@ public class EngineFly extends Engine
 		if (event.getItem() != null && event.getItem().getType() == Material.ENDER_PEARL && player.isFlying())
 		{
 			event.setCancelled(true);
-			MixinMessage.get().msgOne(player, MConf.get().factionsFlyNoPearlsMsg);
+			MixinMessage.get().msgOne(player, LangConf.get().factionsFlyNoPearlsMsg);
 		}
 	}
 	
@@ -184,7 +181,7 @@ public class EngineFly extends Engine
 	
 	public boolean hasFlyBypass(Player player)
 	{
-		return player.getGameMode() != GameMode.SURVIVAL || player.hasPermission(MConf.get().factionsFlyOverridePerm);
+		return player.getGameMode() != GameMode.SURVIVAL || player.hasPermission(LangConf.get().factionsFlyOverridePerm);
 	}
 	
 	public boolean isEnemyNear(MPlayer mplayer, Player player, Faction hostFaction)

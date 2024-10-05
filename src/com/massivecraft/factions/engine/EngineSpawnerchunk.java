@@ -2,7 +2,7 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.CmdFactionsSpawnerchunk;
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.FactionBreach;
 import com.massivecraft.factions.event.EventFactionsNameChange;
@@ -11,17 +11,12 @@ import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.ps.PS;
 import de.dustplanet.silkspawners.events.SilkSpawnersSpawnerPlaceEvent;
-import net.minecraft.server.v1_8_R3.SpawnerCreature;
 import org.bukkit.Chunk;
-import org.bukkit.Material;
-import org.bukkit.block.CreatureSpawner;
-import org.bukkit.craftbukkit.v1_8_R3.block.CraftCreatureSpawner;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.SpawnerSpawnEvent;
 
 import java.util.*;
 
@@ -48,7 +43,7 @@ public class EngineSpawnerchunk extends Engine {
                 MPlayer mPlayer = MPlayer.get(player);
 
                 if (factionAt == null || factionAt.isSystemFaction() || factionAt != mPlayer.getFaction()) {
-                    MixinMessage.get().msgOne(player, MConf.get().onlySetSpawnerchunkOwnTerritoryMsg);
+                    MixinMessage.get().msgOne(player, LangConf.get().onlySetSpawnerchunkOwnTerritoryMsg);
                     event.setCancelled(true);
                     return;
                 }
@@ -56,7 +51,7 @@ public class EngineSpawnerchunk extends Engine {
                 if (!MPerm.getPermSpawnerchunk().has(mPlayer, factionAt, true)) return;
 
                 if (factionAt.getSpawnerChunks().contains(chunkPos)) {
-                    MixinMessage.get().msgOne(player, MConf.get().chunkAlreadySpawnerchunkMsg);
+                    MixinMessage.get().msgOne(player, LangConf.get().chunkAlreadySpawnerchunkMsg);
                     event.setCancelled(true);
                     return;
                 }
@@ -95,7 +90,7 @@ public class EngineSpawnerchunk extends Engine {
 
                 CmdFactionsSpawnerchunk.get().playersSettingSpawnerChunks.invalidateAll(cacheKeysToRemove);
 
-                factionAt.msg(MConf.get().spawnerChunkMarkedAt
+                factionAt.msg(LangConf.get().spawnerChunkMarkedAt
                         .replace("%chunkX%", Factions.get().getPriceFormat().format(psAt.getChunkX(true)))
                         .replace("%chunkZ%", Factions.get().getPriceFormat().format(psAt.getChunkZ(true)))
                         .replace("%world%", psAt.getWorld())
@@ -112,13 +107,13 @@ public class EngineSpawnerchunk extends Engine {
         }
 
         if (factionAt == null || factionAt.isNone()) {
-            MixinMessage.get().msgOne(player, MConf.get().cantPlaceSpawnersInWild);
+            MixinMessage.get().msgOne(player, LangConf.get().cantPlaceSpawnersInWild);
             event.setCancelled(true);
             return;
         }
 
         if (!factionAt.getSpawnerChunks().contains(chunkPos)) {
-            MixinMessage.get().msgOne(player, MConf.get().youCanOnlyPlaceSpawnersInSpawnerchunksMsg);
+            MixinMessage.get().msgOne(player, LangConf.get().youCanOnlyPlaceSpawnersInSpawnerchunksMsg);
             event.setCancelled(true);
         }
     }

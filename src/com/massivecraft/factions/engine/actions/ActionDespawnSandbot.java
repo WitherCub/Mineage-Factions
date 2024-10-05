@@ -26,12 +26,12 @@ public class ActionDespawnSandbot extends ChestActionAbstract {
         Sandbot sandbot = faction.getSandbots().get(slot);
 
         if (sandbot == null || sandbot.isDespawned()) {
-            mPlayer.msg(MConf.get().sandbotDespawnDontExistMsg);
+            mPlayer.msg(LangConf.get().sandbotDespawnDontExistMsg);
             return false;
         }
 
         faction.despawnSandbot(sandbot);
-        mPlayer.msg(MConf.get().sandbotDespawnDespawnedMsg.replace("%sandbotNumber%", String.valueOf(sandbotNumber)));
+        mPlayer.msg(LangConf.get().sandbotDespawnDespawnedMsg.replace("%sandbotNumber%", String.valueOf(sandbotNumber)));
         return false;
     }
 

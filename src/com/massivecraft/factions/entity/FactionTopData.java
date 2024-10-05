@@ -84,7 +84,7 @@ public class FactionTopData extends Entity<FactionTopData> {
 
 		factionValues.forEach(value -> this.factionValues.put(value.getFactionID(), value));
 
-		if (MConf.get().ftopKnockMsgEnabled && this.factionValues.size() > 1 && this.backupFactionValues.size() > 1) {
+		if (LangConf.get().ftopKnockMsgEnabled && this.factionValues.size() > 1 && this.backupFactionValues.size() > 1) {
 			IntStream.range(0, MConf.get().ftopKnockTopXPositions).forEach(i -> {
 				String faction = ((i >= factionValues.size()) ? null : getByIndex(this.factionValues, i).getFactionID());
 				String last = ((i >= backupFactionValues.size()) ? null : getByIndex(this.backupFactionValues, i).getFactionID());
@@ -93,7 +93,7 @@ public class FactionTopData extends Entity<FactionTopData> {
 					Faction lastFaction = Faction.get(last);
 
 					if (newFaction != null && lastFaction != null) {
-						for (String line : MConf.get().ftopKnockMsg) {
+						for (String line : LangConf.get().ftopKnockMsg) {
 							Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', line).replace("{newfaction}", newFaction.getName()).replace("{oldfaction}", lastFaction.getName()).replace("{rank}", String.valueOf(i + 1)));
 						}
 					}

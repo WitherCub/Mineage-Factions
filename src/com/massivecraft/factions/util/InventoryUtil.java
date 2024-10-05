@@ -1,7 +1,7 @@
 package com.massivecraft.factions.util;
 
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.entity.MissionUpgradeConf;
 import gg.halcyon.upgrades.UpgradesManager;
 import org.bukkit.Bukkit;

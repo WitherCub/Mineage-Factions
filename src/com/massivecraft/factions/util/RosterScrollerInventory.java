@@ -1,6 +1,7 @@
 package com.massivecraft.factions.util;
 
 import com.massivecraft.factions.engine.EngineSkull;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
 import com.massivecraft.massivecore.chestgui.ChestGui;
@@ -19,8 +20,8 @@ import java.util.UUID;
 public class RosterScrollerInventory {
 
     public static HashMap<UUID, RosterScrollerInventory> users = new HashMap<>();
-    private final ItemStack nextPageButton = new ItemBuilder(EngineSkull.get().getSkullItem(MConf.get().factionRosterGuiNextPageButtonTexture)).name(Txt.parse(MConf.get().factionRosterGuiNextPageName));
-    private final ItemStack previousPageButton = new ItemBuilder(EngineSkull.get().getSkullItem(MConf.get().factionRosterGuiPreviousPageButtonTexture)).name(Txt.parse(MConf.get().factionRosterGuiPreviousPageName));
+    private final ItemStack nextPageButton = new ItemBuilder(EngineSkull.get().getSkullItem(GuiConf.get().factionRosterGuiNextPageButtonTexture)).name(Txt.parse(GuiConf.get().factionRosterGuiNextPageName));
+    private final ItemStack previousPageButton = new ItemBuilder(EngineSkull.get().getSkullItem(GuiConf.get().factionRosterGuiPreviousPageButtonTexture)).name(Txt.parse(GuiConf.get().factionRosterGuiPreviousPageName));
     public ArrayList<ChestGui> pages = new ArrayList<>();
     public UUID id;
     public int currentPage = 0;
@@ -37,10 +38,10 @@ public class RosterScrollerInventory {
         chestGui.setSoundOpen(null);
         chestGui.setSoundClose(null);
 
-        page.setItem(MConf.get().factionRosterGuiNextPageSlot, nextPageButton);
-        chestGui.setAction(MConf.get().factionRosterGuiNextPageSlot, new ActionSwitchPage());
-        page.setItem(MConf.get().factionRosterGuiPreviousPageSlot, previousPageButton);
-        chestGui.setAction(MConf.get().factionRosterGuiPreviousPageSlot, new ActionSwitchPage());
+        page.setItem(GuiConf.get().factionRosterGuiNextPageSlot, nextPageButton);
+        chestGui.setAction(GuiConf.get().factionRosterGuiNextPageSlot, new ActionSwitchPage());
+        page.setItem(GuiConf.get().factionRosterGuiPreviousPageSlot, previousPageButton);
+        chestGui.setAction(GuiConf.get().factionRosterGuiPreviousPageSlot, new ActionSwitchPage());
 
         pages.add(chestGui);
         users.put(player.getUniqueId(), this);
@@ -74,8 +75,8 @@ public class RosterScrollerInventory {
             }
         }
 
-        inv.setItem(MConf.get().factionRosterGuiNextPageSlot, nextPageButton);
-        inv.setItem(MConf.get().factionRosterGuiPreviousPageSlot, previousPageButton);
+        inv.setItem(GuiConf.get().factionRosterGuiNextPageSlot, nextPageButton);
+        inv.setItem(GuiConf.get().factionRosterGuiPreviousPageSlot, previousPageButton);
     }
 
     public List<Integer> getNonSideSlots(Inventory inv) {
@@ -113,13 +114,13 @@ public class RosterScrollerInventory {
             if (event.getCurrentItem() == null) return false;
             if (event.getCurrentItem().getItemMeta() == null) return false;
             if (event.getCurrentItem().getItemMeta().getDisplayName() == null) return false;
-            if (event.getCurrentItem().getItemMeta().getDisplayName().equals(Txt.parse(MConf.get().factionRosterGuiNextPageName))) {
+            if (event.getCurrentItem().getItemMeta().getDisplayName().equals(Txt.parse(GuiConf.get().factionRosterGuiNextPageName))) {
                 if (inv.currentPage < inv.pages.size() - 1) {
                     inv.currentPage += 1;
                     player.openInventory(inv.pages.get(inv.currentPage).getInventory());
                 }
                 return true;
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equals(Txt.parse(MConf.get().factionRosterGuiPreviousPageName))) {
+            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equals(Txt.parse(GuiConf.get().factionRosterGuiPreviousPageName))) {
                 if (inv.currentPage > 0) {
                     inv.currentPage -= 1;
                     player.openInventory(inv.pages.get(inv.currentPage).getInventory());

@@ -1,6 +1,7 @@
 package com.massivecraft.factions.engine.actions;
 
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
@@ -46,7 +47,7 @@ public class ActionDrain extends ChestActionAbstract
 		
 		faction.setLastDrainMillis(System.currentTimeMillis());
 		Money.spawn(faction, null, amountDrained);
-		initiatedDrainPlayer.msg(MConf.get().drainedMsg.replace("%membersDrained%", numberFormat.format(membersDrained)).replace("%totalDrained%", numberFormat.format(amountDrained)));
+		initiatedDrainPlayer.msg(LangConf.get().drainedMsg.replace("%membersDrained%", numberFormat.format(membersDrained)).replace("%totalDrained%", numberFormat.format(amountDrained)));
 		return true;
 	}
 	

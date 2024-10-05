@@ -179,6 +179,12 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/SupplyDrops-v1.1.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.stellardev.galactic</groupId>
+            <artifactId>GalacticLib</artifactId>
+            <version>1.19.14</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!-- Build -->

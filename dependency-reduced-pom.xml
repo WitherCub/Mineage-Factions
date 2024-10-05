@@ -193,6 +193,12 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>org.stellardev.galactic</groupId>
+      <artifactId>GalacticLib</artifactId>
+      <version>1.19.14</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>net.coreprotect</groupId>
       <artifactId>CoreProtect</artifactId>
       <version>LATEST</version>

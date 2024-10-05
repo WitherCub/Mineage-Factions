@@ -1,5 +1,7 @@
-package com.massivecraft.factions.entity;
+package com.massivecraft.factions.coll;
 
+import com.massivecraft.factions.entity.MConf;
+import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.store.SenderColl;
 
 public class MPlayerColl extends SenderColl<MPlayer>

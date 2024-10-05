@@ -1,5 +1,6 @@
 package com.massivecraft.factions.cmd;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.type.primitive.TypeBooleanYes;
@@ -21,21 +22,21 @@ public class CmdFactionsStealth extends FactionsCommand
 		{
 			if (msender.isStealth())
 			{
-				msender.msg(MConf.get().alreadyInStealthMsg);
+				msender.msg(LangConf.get().alreadyInStealthMsg);
 			}
 			else
 			{
-				msender.msg(MConf.get().stealthNowOnMsg);
+				msender.msg(LangConf.get().stealthNowOnMsg);
 				msender.setStealth(true);
 			}
 		}
 		else if (!msender.isStealth())
 		{
-			msender.msg(MConf.get().alreadyOutOfStealthMsg);
+			msender.msg(LangConf.get().alreadyOutOfStealthMsg);
 		}
 		else
 		{
-			msender.msg(MConf.get().stealthNowOffMsg);
+			msender.msg(LangConf.get().stealthNowOffMsg);
 			msender.setStealth(false);
 		}
 	}

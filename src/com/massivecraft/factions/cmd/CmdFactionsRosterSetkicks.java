@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Visibility;
@@ -30,7 +31,7 @@ public class CmdFactionsRosterSetkicks extends FactionsCommand {
         Integer amount = this.readArg();
 
         if (faction.isSystemFaction()) {
-            msender.msg(MConf.get().systemFactionMsg);
+            msender.msg(LangConf.get().systemFactionMsg);
             return;
         }
 

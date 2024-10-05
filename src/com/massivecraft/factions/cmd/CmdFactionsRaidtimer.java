@@ -2,6 +2,7 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.objects.RaidData;
 import com.massivecraft.factions.entity.RaidDataStorage;
@@ -20,16 +21,16 @@ public class CmdFactionsRaidtimer extends FactionsCommand {
     @Override
     public void perform() throws MassiveException {
         if (!MConf.get().allowAltsToCheckRaidtimerStatus && msender.isAlt()) {
-            msender.msg(MConf.get().altsCantCheckRaidtimerStatusMsg);
+            msender.msg(LangConf.get().altsCantCheckRaidtimerStatusMsg);
             return;
         }
 
         RaidData raidData = RaidDataStorage.get().isFactionRaiding(msenderFaction);
 
         if (raidData == null) {
-            MixinMessage.get().msgOne(me, MConf.get().yourFactionHasNoActiveRaidMsg);
+            MixinMessage.get().msgOne(me, LangConf.get().yourFactionHasNoActiveRaidMsg);
         } else {
-            MixinMessage.get().msgOne(me, MConf.get().cmdRaidTimeRemainingMsg.replace("%phase%", String.valueOf(raidData.getPhase())).replace("%time%", TimeUtil.formatTimeFormat(raidData.getTotalMillisRemaining()).trim()).replace("%otherFaction%", Faction.get(raidData.getFactionRaidedId()).describeTo(msender, true)));
+            MixinMessage.get().msgOne(me, LangConf.get().cmdRaidTimeRemainingMsg.replace("%phase%", String.valueOf(raidData.getPhase())).replace("%time%", TimeUtil.formatTimeFormat(raidData.getTotalMillisRemaining()).trim()).replace("%otherFaction%", Faction.get(raidData.getFactionRaidedId()).describeTo(msender, true)));
         }
     }
 

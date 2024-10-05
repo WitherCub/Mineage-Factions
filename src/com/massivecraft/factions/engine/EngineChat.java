@@ -2,6 +2,7 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.chat.ChatFormatter;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerToRecipientChat;
@@ -37,17 +38,17 @@ public class EngineChat extends Engine
 	{
 		if ( ! active) return;
 		
-		if (MConf.get().chatSetFormat)
+		if (LangConf.get().chatSetFormat)
 		{
-			Bukkit.getPluginManager().registerEvent(AsyncPlayerChatEvent.class, this, MConf.get().chatSetFormatAt, new SetFormatEventExecutor(), Factions.get(), true);
+			Bukkit.getPluginManager().registerEvent(AsyncPlayerChatEvent.class, this, LangConf.get().chatSetFormatAt, new SetFormatEventExecutor(), Factions.get(), true);
 		}
 		
-		if (MConf.get().chatParseTags)
+		if (LangConf.get().chatParseTags)
 		{
-			Bukkit.getPluginManager().registerEvent(AsyncPlayerChatEvent.class, this, MConf.get().chatParseTagsAt, new ParseTagsEventExecutor(), Factions.get(), true);
+			Bukkit.getPluginManager().registerEvent(AsyncPlayerChatEvent.class, this, LangConf.get().chatParseTagsAt, new ParseTagsEventExecutor(), Factions.get(), true);
 		}
 		
-		if (MConf.get().chatParseTags)
+		if (LangConf.get().chatParseTags)
 		{
 			Bukkit.getPluginManager().registerEvent(EventMassiveCorePlayerToRecipientChat.class, this, EventPriority.NORMAL, new ParseRelcolorEventExecutor(), Factions.get(), true);
 		}
@@ -76,7 +77,7 @@ public class EngineChat extends Engine
 	
 	public static void setFormat(AsyncPlayerChatEvent event)
 	{	
-		event.setFormat(MConf.get().chatSetFormatTo);
+		event.setFormat(LangConf.get().chatSetFormatTo);
 	}
 	
 	// -------------------------------------------- //

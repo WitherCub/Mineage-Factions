@@ -1,8 +1,8 @@
 package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.CacheLocations;
 import com.massivecraft.massivecore.ModuloRepeatTask;
@@ -122,7 +122,7 @@ public class TaskPlaceSand extends ModuloRepeatTask {
                         @Override
                         public void run() {
                             faction.despawnSandbot(sbot);
-                            faction.msg(MConf.get().sandbotDespawnedNoMoneyInFbankMsg);
+                            faction.msg(LangConf.get().sandbotDespawnedNoMoneyInFbankMsg);
                         }
                     }.runTaskLater(Factions.get(), 2L);
                 }

@@ -1,5 +1,6 @@
 package com.massivecraft.factions;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.Colorized;
 import com.massivecraft.massivecore.Named;
@@ -18,47 +19,47 @@ public enum Rel implements Colorized, Named
 	ENEMY(
 		"an enemy", "enemies", "an enemy faction", "enemy factions",
 		"Enemy"
-	) { @Override public ChatColor getColor() { return MConf.get().colorEnemy; } },
+	) { @Override public ChatColor getColor() { return LangConf.get().colorEnemy; } },
 	
 	NEUTRAL(
 		"someone neutral to you", "those neutral to you", "a neutral faction", "neutral factions",
 		"Neutral"
-	) { @Override public ChatColor getColor() { return MConf.get().colorNeutral; } },
+	) { @Override public ChatColor getColor() { return LangConf.get().colorNeutral; } },
 	
 	TRUCE(
 		"someone in truce with you", "those in truce with you", "a faction in truce", "factions in truce",
 		"Truce"
-	) { @Override public ChatColor getColor() { return MConf.get().colorTruce; } },
+	) { @Override public ChatColor getColor() { return LangConf.get().colorTruce; } },
 	
 	ALLY(
 		"an ally", "allies", "an allied faction", "allied factions",
 		"Ally"
-	) { @Override public ChatColor getColor() { return MConf.get().colorAlly; } },
+	) { @Override public ChatColor getColor() { return LangConf.get().colorAlly; } },
 	
 	RECRUIT(
 		"a recruit in your faction", "recruits in your faction", "", "",
 		"Recruit"
-	) { @Override public String getPrefix() { return MConf.get().prefixRecruit; } },
+	) { @Override public String getPrefix() { return LangConf.get().prefixRecruit; } },
 	
 	MEMBER(
 		"a member in your faction", "members in your faction", "your faction", "your factions",
 		"Member"
-	) { @Override public String getPrefix() { return MConf.get().prefixMember; } },
+	) { @Override public String getPrefix() { return LangConf.get().prefixMember; } },
 	
 	OFFICER(
 		"an officer in your faction", "officers in your faction", "", "",
 		"Officer", "Moderator"
-	) { @Override public String getPrefix() { return MConf.get().prefixOfficer; } },
+	) { @Override public String getPrefix() { return LangConf.get().prefixOfficer; } },
 
 	COLEADER(
 		"a coleader in your faction", "coleaders in your faction", "", "",
 		"Coleader"
-	) { @Override public String getPrefix() { return MConf.get().prefixColeader; } },
+	) { @Override public String getPrefix() { return LangConf.get().prefixColeader; } },
 	
 	LEADER(
 		"your faction leader", "your faction leader", "", "",
 		"Leader", "Admin", "Owner"
-	) { @Override public String getPrefix() { return MConf.get().prefixLeader; } },
+	) { @Override public String getPrefix() { return LangConf.get().prefixLeader; } },
 	
 	// END OF LIST
 	;
@@ -105,7 +106,7 @@ public enum Rel implements Colorized, Named
 	@Override
 	public ChatColor getColor()
 	{
-		return MConf.get().colorMember;
+		return LangConf.get().colorMember;
 	}
 	
 	// -------------------------------------------- //

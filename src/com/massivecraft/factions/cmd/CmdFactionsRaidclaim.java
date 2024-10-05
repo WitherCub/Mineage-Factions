@@ -4,8 +4,10 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.claim.CmdFactionsClaim;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.engine.actions.ActionRaidclaimUnclaim;
-import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.util.BorderUtil;
 import com.massivecraft.factions.util.ItemBuilder;
@@ -47,12 +49,12 @@ public class CmdFactionsRaidclaim extends FactionsCommand {
             me.openInventory(getRaidclaimGui(msenderFaction));
         } else {
             if (radius > MConf.get().maxRaidclaimRadius) {
-                MixinMessage.get().msgOne(me, MConf.get().maxRaidclaimRadiusMsg.replace("%maxRadius%", String.valueOf(MConf.get().maxRaidclaimRadius)));
+                MixinMessage.get().msgOne(me, LangConf.get().maxRaidclaimRadiusMsg.replace("%maxRadius%", String.valueOf(MConf.get().maxRaidclaimRadius)));
                 return;
             }
 
             if (IntStream.range(1, MConf.get().raidClaimsAvailable + 1).noneMatch(i -> msenderFaction.isRaidClaimAvailable(i))) {
-                MixinMessage.get().msgOne(me, MConf.get().noRaidClaimsAvailableMsg);
+                MixinMessage.get().msgOne(me, LangConf.get().noRaidClaimsAvailableMsg);
                 return;
             }
 
@@ -100,7 +102,7 @@ public class CmdFactionsRaidclaim extends FactionsCommand {
                 }
             }
 
-            MixinMessage.get().msgOne(me, MConf.get().raidClaimSetMsg);
+            MixinMessage.get().msgOne(me, LangConf.get().raidClaimSetMsg);
         }
     }
 
@@ -112,9 +114,9 @@ public class CmdFactionsRaidclaim extends FactionsCommand {
         Inventory inventory;
 
         if (MConf.get().raidClaimGuiHopper) {
-            inventory = Bukkit.createInventory(null, InventoryType.HOPPER, ChatColor.translateAlternateColorCodes('&', MConf.get().raidClaimGuiInventoryTitle));
+            inventory = Bukkit.createInventory(null, InventoryType.HOPPER, ChatColor.translateAlternateColorCodes('&', GuiConf.get().raidClaimGuiInventoryTitle));
         } else {
-            inventory = Bukkit.createInventory(null, MConf.get().raidClaimGuiSize, ChatColor.translateAlternateColorCodes('&', MConf.get().raidClaimGuiInventoryTitle));
+            inventory = Bukkit.createInventory(null, GuiConf.get().raidClaimGuiSize, ChatColor.translateAlternateColorCodes('&', GuiConf.get().raidClaimGuiInventoryTitle));
         }
 
         ChestGui chestGui = ChestGui.getCreative(inventory);
@@ -123,31 +125,31 @@ public class CmdFactionsRaidclaim extends FactionsCommand {
         chestGui.setSoundOpen(null);
         chestGui.setSoundClose(null);
 
-        chestGui.getInventory().setItem(MConf.get().raidClaimGuiHelpButtonSlot,
-                new ItemBuilder(MConf.get().raidClaimGuiHelpButtonMaterial)
-                        .name(ChatColor.translateAlternateColorCodes('&', MConf.get().raidClaimGuiHelpButtonName))
-                        .setLore(MConf.get().raidClaimGuiHelpButtonLore.stream().map(Txt::parse).collect(Collectors.toList()))
+        chestGui.getInventory().setItem(GuiConf.get().raidClaimGuiHelpButtonSlot,
+                new ItemBuilder(GuiConf.get().raidClaimGuiHelpButtonMaterial)
+                        .name(ChatColor.translateAlternateColorCodes('&', GuiConf.get().raidClaimGuiHelpButtonName))
+                        .setLore(GuiConf.get().raidClaimGuiHelpButtonLore.stream().map(Txt::parse).collect(Collectors.toList()))
         );
 
         IntStream.range(1, MConf.get().raidClaimsAvailable + 1).forEach(i -> {
             List<String> raidclaimLore;
 
             if (faction.isRaidClaimAvailable(i)) {
-                raidclaimLore = MConf.get().raidClaimGuiRaidclaimButtonLoreUnclaimed.stream().map(Txt::parse).collect(Collectors.toList());
+                raidclaimLore = GuiConf.get().raidClaimGuiRaidclaimButtonLoreUnclaimed.stream().map(Txt::parse).collect(Collectors.toList());
             } else {
                 PS centerPs = faction.getRaidClaims().get(i).stream().findFirst().orElse(null);
 
                 if (centerPs == null) {
-                    raidclaimLore = MConf.get().raidClaimGuiRaidclaimButtonLoreUnclaimed.stream().map(Txt::parse).collect(Collectors.toList());
+                    raidclaimLore = GuiConf.get().raidClaimGuiRaidclaimButtonLoreUnclaimed.stream().map(Txt::parse).collect(Collectors.toList());
                 } else {
-                    raidclaimLore = MConf.get().raidClaimGuiRaidclaimButtonLoreClaimed.stream().map(s -> Txt.parse(s.replace("%worldName%", centerPs.getWorld(true)).replace("%z%", Factions.get().getPriceFormat().format(centerPs.getBlockZ(true))).replace("%x%", Factions.get().getPriceFormat().format(centerPs.getBlockX(true))))).collect(Collectors.toList());
+                    raidclaimLore = GuiConf.get().raidClaimGuiRaidclaimButtonLoreClaimed.stream().map(s -> Txt.parse(s.replace("%worldName%", centerPs.getWorld(true)).replace("%z%", Factions.get().getPriceFormat().format(centerPs.getBlockZ(true))).replace("%x%", Factions.get().getPriceFormat().format(centerPs.getBlockX(true))))).collect(Collectors.toList());
                     chestGui.setAction(MConf.get().raidClaimNumberAndGuiSlot.get(i), new ActionRaidclaimUnclaim(faction, i));
                 }
             }
 
             chestGui.getInventory().setItem(MConf.get().raidClaimNumberAndGuiSlot.get(i),
-                    new ItemBuilder(MConf.get().raidClaimGuiRaidclaimButtonMaterial)
-                            .name(ChatColor.translateAlternateColorCodes('&', MConf.get().raidClaimGuiRaidclaimButtonName.replace("%number%", String.valueOf(i))))
+                    new ItemBuilder(GuiConf.get().raidClaimGuiRaidclaimButtonMaterial)
+                            .name(ChatColor.translateAlternateColorCodes('&', GuiConf.get().raidClaimGuiRaidclaimButtonName.replace("%number%", String.valueOf(i))))
                             .setLore(raidclaimLore)
             );
         });

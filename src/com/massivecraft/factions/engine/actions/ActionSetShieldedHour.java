@@ -1,9 +1,6 @@
 package com.massivecraft.factions.engine.actions;
 
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.util.TimeUtil;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
 import com.massivecraft.massivecore.mixin.MixinMessage;
@@ -35,7 +32,7 @@ public class ActionSetShieldedHour extends ChestActionAbstract
 	{
 		if (!MConf.get().isShieldTimesChangeable())
 		{
-			MixinMessage.get().msgOne(player, MConf.get().changingShieldHoursOffMsg);
+			MixinMessage.get().msgOne(player, LangConf.get().changingShieldHoursOffMsg);
 			return false;
 		}
 		
@@ -43,19 +40,19 @@ public class ActionSetShieldedHour extends ChestActionAbstract
 		
 		if (faction.getShieldedHoursCooldownFromDisable() != null && System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable() < MConf.get().shieldHoursChangeTimeBeforeUpdate)
 		{
-			MixinMessage.get().msgOne(player, MConf.get().mustWaitBeforeChangingShieldedHoursFromDisableMsg.replace("%time%", TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable())).trim()));
+			MixinMessage.get().msgOne(player, LangConf.get().mustWaitBeforeChangingShieldedHoursFromDisableMsg.replace("%time%", TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable())).trim()));
 			return false;
 		}
 		
 		if (faction.getShieldedHoursStartTime() == null)
 		{
 			faction.setShieldedHoursStartTime(startHour);
-			faction.msg(MConf.get().shieldHoursChangedMsg.replace("%player%", playerStr).replace("%faction%", factionStr).replace("%startHour%", startTime).replace("%endHour%", endTime));
+			faction.msg(LangConf.get().shieldHoursChangedMsg.replace("%player%", playerStr).replace("%faction%", factionStr).replace("%startHour%", startTime).replace("%endHour%", endTime));
 			return true;
 		}
 		
 		faction.requestChangeShieldedHours(startHour, System.currentTimeMillis());
-		faction.msg(MConf.get().shieldHoursRequestedChangeMsg.replace("%player%", playerStr).replace("%faction%", factionStr).replace("%startHour%", startTime).replace("%endHour%", endTime));
+		faction.msg(LangConf.get().shieldHoursRequestedChangeMsg.replace("%player%", playerStr).replace("%faction%", factionStr).replace("%startHour%", startTime).replace("%endHour%", endTime));
 		return true;
 	}
 	

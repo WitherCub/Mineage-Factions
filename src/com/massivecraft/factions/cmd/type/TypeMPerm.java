@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd.type;
 
 import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPermColl;
+import com.massivecraft.factions.coll.MPermColl;
 import com.massivecraft.massivecore.command.type.store.TypeEntity;
 
 import java.util.Collection;

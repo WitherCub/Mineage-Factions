@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.coll.FactionColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.FactionValue;
 import com.massivecraft.factions.task.TaskFactionTopCalculate;
@@ -84,28 +84,28 @@ public class CmdFactionsTop extends FactionsCommand {
 
                 List<String> lore = new ArrayList<>();
 
-                for (String line : MConf.get().factionsTopLoreFormat) {
+                for (String line : LangConf.get().factionsTopLoreFormat) {
                     if (line.contains("%placedSpawnerValues%")) {
                         if (!spawnerValues.isEmpty()) {
                             spawnerValues.keySet().stream().map(entityType ->
                                     ChatColor.translateAlternateColorCodes('&',
-                                            MConf.get().factionsTopGuiLoreSpawnerValueEntry
-                                                    .replace("%spawnerType%", MConf.get().entityTypeDisplayNamesMap.getOrDefault(entityType, entityType.getName()))
+                                            LangConf.get().factionsTopGuiLoreSpawnerValueEntry
+                                                    .replace("%spawnerType%", LangConf.get().entityTypeDisplayNamesMap.getOrDefault(entityType, entityType.getName()))
                                                     .replace("%value%", "$" + ValueFormatter.format(spawnerValues.get(entityType)))
                                                     .replace("%amount%", String.valueOf(factionValue.getSpawnerValueEntityType(entityType).getAmountOfSpawners())))
                             ).forEach(lore::add);
 
                             FactionTopValue.get().getSpawnerValues().keySet().stream().filter(entityType -> !spawnerValues.containsKey(entityType)).map(entityType ->
                                     ChatColor.translateAlternateColorCodes('&',
-                                            MConf.get().factionsTopGuiLoreSpawnerValueEntry
-                                                    .replace("%spawnerType%", MConf.get().entityTypeDisplayNamesMap.getOrDefault(entityType, entityType.getName()))
+                                            LangConf.get().factionsTopGuiLoreSpawnerValueEntry
+                                                    .replace("%spawnerType%", LangConf.get().entityTypeDisplayNamesMap.getOrDefault(entityType, entityType.getName()))
                                                     .replace("%value%", "$0")
                                                     .replace("%amount%", "0"))
                             ).forEach(lore::add);
                         } else {
                             lore.add(
                                     ChatColor.translateAlternateColorCodes('&',
-                                            MConf.get().factionsTopGuiLoreSpawnerValuesEmpty
+                                            LangConf.get().factionsTopGuiLoreSpawnerValuesEmpty
                                     )
                             );
                         }
@@ -133,15 +133,15 @@ public class CmdFactionsTop extends FactionsCommand {
                     }
                 }
 
-                Mson mson = mson(RelationUtil.getColorOfThatToMe(faction, msender) + faction.getName()).add(Txt.parse(MConf.get().cmdFtopTotalPrefix.replace("%total%", Factions.get().getPriceFormat().format(data.get(factionId).getTotalSpawnerValue())))).add((dailyPercentageChange.isEmpty() ? "" : (" " + dailyPercentageChange))).add(Txt.parse(MConf.get().cmdFtopAmountOnlinePrefix.replace("%online%", String.valueOf(faction.getOnlinePlayers().size())).replace("%total%", String.valueOf(faction.getMPlayers().size())))).tooltip(lore);
+                Mson mson = mson(RelationUtil.getColorOfThatToMe(faction, msender) + faction.getName()).add(Txt.parse(LangConf.get().cmdFtopTotalPrefix.replace("%total%", Factions.get().getPriceFormat().format(data.get(factionId).getTotalSpawnerValue())))).add((dailyPercentageChange.isEmpty() ? "" : (" " + dailyPercentageChange))).add(Txt.parse(LangConf.get().cmdFtopAmountOnlinePrefix.replace("%online%", String.valueOf(faction.getOnlinePlayers().size())).replace("%total%", String.valueOf(faction.getMPlayers().size())))).tooltip(lore);
                 topData.add(mson);
             }
         }
 
-        final Pager<Mson> pager = new Pager<>(this, Txt.parse(MConf.get().ftopPagerName), page, topData, (Msonifier<Mson>) (item, index) -> mson(Txt.parse("<a>%s. ", (index + 1))).add(topData.get(index)));
+        final Pager<Mson> pager = new Pager<>(this, Txt.parse(LangConf.get().ftopPagerName), page, topData, (Msonifier<Mson>) (item, index) -> mson(Txt.parse("<a>%s. ", (index + 1))).add(topData.get(index)));
 
         pager.message();
 
-        MixinMessage.get().msgOne(me, MConf.get().ftopCommandLastUpdateFooterMsg.replace("%time%", TaskFactionTopCalculate.get().getLastRunTime()));
+        MixinMessage.get().msgOne(me, LangConf.get().ftopCommandLastUpdateFooterMsg.replace("%time%", TaskFactionTopCalculate.get().getLastRunTime()));
     }
 }
