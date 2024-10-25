@@ -17,6 +17,11 @@ public class TaskUpdateBoard extends ModuloRepeatTask {
         return MConf.get().updateBoardTimeMs;
     }
 
+    @Override
+    public boolean isSync() {
+        return true;
+    }
+
     public List<Board> boardsToUpdate = new ArrayList<>();
 
     @Override
