@@ -769,4 +769,5 @@ public class MConf extends Entity<MConf>
 
 	public long updateBoardTimeMs = 30000;
 
+	public boolean enableTnTWand = true;
 }

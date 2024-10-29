@@ -1,6 +1,6 @@
 main: ${project.groupId}.${project.name}
 name: ${project.name}
-version: 2.13.7
+version: 2.18.0
 website: ${project.url}
 description: ${project.description}
 authors: [Cayorion, Madus, Ulumulu1510, MarkehMe, Brettflan, zFrost87]

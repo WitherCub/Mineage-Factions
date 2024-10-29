@@ -291,6 +291,8 @@ public class EngineExtras extends Engine
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPlayerInteractChest(PlayerInteractEvent event)
 	{
+		if(!MConf.get().enableTnTWand) return;
+
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 		
 		if (!(event.getClickedBlock().getType() == Material.CHEST || event.getClickedBlock().getType() == Material.TRAPPED_CHEST))

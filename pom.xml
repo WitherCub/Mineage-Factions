@@ -13,6 +13,7 @@
     <groupId>com.massivecraft.factions</groupId>
     <artifactId>Factions</artifactId>
     <packaging>jar</packaging>
+    <version>2.18.0</version>
 
     <!-- Info -->
     <name>${project.artifactId}</name>
