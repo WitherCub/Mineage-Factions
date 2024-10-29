@@ -27,6 +27,9 @@ public class LangColl extends Coll<LangConf>
     // -------------------------------------------- //
     // OVERRIDE
     // -------------------------------------------- //
+    public LangColl() {
+        super("factions_lang");
+    }
 
     @Override
     public void setActive(boolean active)

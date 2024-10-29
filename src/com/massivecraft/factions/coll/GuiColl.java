@@ -27,6 +27,9 @@ public class GuiColl extends Coll<GuiConf>
     // -------------------------------------------- //
     // OVERRIDE
     // -------------------------------------------- //
+    public GuiColl() {
+        super("factions_guis");
+    }
 
     @Override
     public void setActive(boolean active)
