@@ -68,12 +68,16 @@
             <artifactId>testbuild</artifactId>
             <version>LATEST</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/testbuild.jar</systemPath>
+            <systemPath>${project.basedir}/libs/craftbukkit-1.8.8.jar</systemPath>
         </dependency>
         <!-- Spigot -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
+            <!--
+            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+            -->
         </dependency>
         <!-- MassiveCore -->
         <dependency>

@@ -1,6 +1,5 @@
 package com.massivecraft.factions.entity;
 
-import com.massivecraft.factions.coll.MPermColl;
 import com.massivecraft.factions.entity.objects.FactionPermission;
 import com.massivecraft.massivecore.command.editor.annotation.EditorName;
 import com.massivecraft.massivecore.store.Entity;

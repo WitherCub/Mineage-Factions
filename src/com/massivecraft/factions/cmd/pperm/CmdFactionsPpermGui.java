@@ -7,7 +7,7 @@ import com.massivecraft.factions.engine.actions.ActionOpenPperm;
 import com.massivecraft.factions.entity.objects.FactionPermission;
 import com.massivecraft.factions.entity.FactionPermissions;
 import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.coll.MPermColl;
+import com.massivecraft.factions.entity.MPermColl;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.chestgui.ChestGui;

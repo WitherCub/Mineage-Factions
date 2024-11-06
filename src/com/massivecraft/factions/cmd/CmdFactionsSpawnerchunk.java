@@ -4,7 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;

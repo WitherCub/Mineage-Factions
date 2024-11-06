@@ -1,7 +1,7 @@
 package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.coll.MPlayerColl;
+import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.FactionBreach;
 import com.massivecraft.factions.entity.objects.FactionValue;

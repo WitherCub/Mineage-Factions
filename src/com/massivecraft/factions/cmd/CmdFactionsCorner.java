@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;

@@ -1,9 +1,9 @@
 package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.engine.EngineFly;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.massivecore.ModuloRepeatTask;
 import com.massivecraft.massivecore.ps.PS;
 import org.bukkit.Bukkit;

@@ -6,8 +6,6 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.cmd.CmdFactionsOverride;
 import com.massivecraft.factions.cmd.perm.CmdFactionsPerm;
-import com.massivecraft.factions.coll.BoardColl;
-import com.massivecraft.factions.coll.MPermColl;
 import com.massivecraft.factions.event.EventFactionsCreatePerms;
 import com.massivecraft.massivecore.Named;
 import com.massivecraft.massivecore.Prioritized;

@@ -5,7 +5,7 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.req.ReqHasntFaction;
 import com.massivecraft.factions.cmd.type.TypeFactionNameStrict;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.NameReserves;

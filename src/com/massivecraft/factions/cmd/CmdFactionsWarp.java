@@ -2,9 +2,9 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.cmd.type.TypeFactionWarp;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
-import com.massivecraft.factions.coll.MPlayerColl;
+import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.factions.integration.essentials.EngineEssentials;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;

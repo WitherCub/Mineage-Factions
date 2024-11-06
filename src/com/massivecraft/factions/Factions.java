@@ -8,7 +8,6 @@ import com.massivecraft.factions.chat.ChatActive;
 import com.massivecraft.factions.cmd.CmdFactions;
 import com.massivecraft.factions.cmd.type.TypeFactionChunkChangeType;
 import com.massivecraft.factions.cmd.type.TypeRel;
-import com.massivecraft.factions.coll.*;
 import com.massivecraft.factions.engine.*;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.migrator.MigratorFaction001Invitations;
@@ -266,6 +265,8 @@ public class Factions extends MassivePlugin
 		// We also have the /f access system where the player can be granted specific access, possibly supporting the idea of such a reverse index.
 		return new MassiveList<Class<?>>(
 			MConfColl.class,
+			LangColl.class,
+			GuiColl.class,
 			MFlagColl.class,
 			MPermColl.class,
 			FactionColl.class,

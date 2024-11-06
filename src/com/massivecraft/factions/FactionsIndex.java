@@ -1,9 +1,9 @@
 package com.massivecraft.factions;
 
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
-import com.massivecraft.factions.coll.MPlayerColl;
+import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.massivecore.collections.MassiveSet;
 
 import java.util.Collections;

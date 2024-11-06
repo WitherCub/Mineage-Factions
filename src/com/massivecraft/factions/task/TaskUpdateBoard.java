@@ -2,8 +2,10 @@ package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.entity.Board;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.ModuloRepeatTask;
+import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class TaskUpdateBoard extends ModuloRepeatTask {
 
     @Override
     public boolean isSync() {
-        return true;
+        return false;
     }
 
     public List<Board> boardsToUpdate = new ArrayList<>();
@@ -28,6 +30,9 @@ public class TaskUpdateBoard extends ModuloRepeatTask {
     public void invoke(long l) {
         if(!boardsToUpdate.isEmpty()) {
             boardsToUpdate.forEach(Board::changed);
+            Bukkit.getScheduler().runTask(Factions.get(), () -> {
+                BoardColl.get().onTickFixed();
+            });
             boardsToUpdate.clear();
             Factions.get().log("Updated all Faction Boards.");
         }

@@ -3,7 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.objects.FactionBreach;
 import com.massivecraft.factions.entity.FactionBreachs;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.util.TimeUtil;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;

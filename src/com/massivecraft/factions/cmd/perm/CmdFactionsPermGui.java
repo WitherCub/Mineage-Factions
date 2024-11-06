@@ -5,7 +5,7 @@ import com.massivecraft.factions.engine.actions.ActionOpenRelations;
 import com.massivecraft.factions.entity.objects.FactionPermission;
 import com.massivecraft.factions.entity.FactionPermissions;
 import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.coll.MPermColl;
+import com.massivecraft.factions.entity.MPermColl;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.chestgui.ChestGui;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;

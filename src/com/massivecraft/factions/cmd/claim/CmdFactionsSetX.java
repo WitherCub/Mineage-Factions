@@ -2,7 +2,7 @@ package com.massivecraft.factions.cmd.claim;
 
 import com.massivecraft.factions.cmd.FactionsCommand;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.collections.MassiveSet;
 import com.massivecraft.massivecore.ps.PS;

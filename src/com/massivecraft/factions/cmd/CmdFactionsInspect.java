@@ -1,6 +1,6 @@
 package com.massivecraft.factions.cmd;
 
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.integration.coreprotect.IntegrationCoreProtect;
 import com.massivecraft.massivecore.MassiveException;

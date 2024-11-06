@@ -2,7 +2,7 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.CmdFactionsShield;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.comparator.ComparatorMPlayerRole;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidtimerShield;

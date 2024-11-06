@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd.claim;
 
 import com.massivecraft.factions.Perm;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.collections.MassiveSet;

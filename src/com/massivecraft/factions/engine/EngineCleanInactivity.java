@@ -3,7 +3,7 @@ package com.massivecraft.factions.engine;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
-import com.massivecraft.factions.coll.MPlayerColl;
+import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.event.EventMassiveCorePlayerCleanInactivityToleranceMillis;
 import org.bukkit.event.EventHandler;

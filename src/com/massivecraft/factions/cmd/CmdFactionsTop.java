@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.FactionValue;
 import com.massivecraft.factions.task.TaskFactionTopCalculate;

@@ -2,9 +2,8 @@ package com.massivecraft.factions.engine.actions;
 
 import com.massivecraft.factions.cmd.CmdFactionsRaidclaim;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.coll.FactionColl;
+import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.LangConf;
-import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
 import com.massivecraft.massivecore.mixin.MixinMessage;

@@ -1,6 +1,6 @@
 package com.massivecraft.factions.engine;
 
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.Sandbot;
 import com.massivecraft.factions.event.EventFactionsChunksChange;

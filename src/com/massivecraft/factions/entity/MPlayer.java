@@ -1,9 +1,6 @@
 package com.massivecraft.factions.entity;
 
 import com.massivecraft.factions.*;
-import com.massivecraft.factions.coll.BoardColl;
-import com.massivecraft.factions.coll.FactionColl;
-import com.massivecraft.factions.coll.MPlayerColl;
 import com.massivecraft.factions.event.EventFactionsChunkChangeType;
 import com.massivecraft.factions.event.EventFactionsChunksChange;
 import com.massivecraft.factions.event.EventFactionsDisband;

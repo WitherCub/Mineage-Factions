@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd.tnt;
 
 import com.massivecraft.factions.cmd.FactionsCommand;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;

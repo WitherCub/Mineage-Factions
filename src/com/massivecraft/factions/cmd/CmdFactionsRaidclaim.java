@@ -4,7 +4,7 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.claim.CmdFactionsClaim;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.engine.actions.ActionRaidclaimUnclaim;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.LangConf;

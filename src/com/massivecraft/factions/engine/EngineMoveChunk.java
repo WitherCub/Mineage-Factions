@@ -2,7 +2,7 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.AccessStatus;
 import com.massivecraft.factions.TerritoryAccess;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.util.AsciiMap;
 import com.massivecraft.massivecore.Engine;

@@ -1,7 +1,7 @@
 package com.massivecraft.factions.util;
 
 import com.massivecraft.factions.RelationParticipator;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.mson.Mson;

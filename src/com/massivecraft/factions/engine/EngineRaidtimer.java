@@ -1,6 +1,6 @@
 package com.massivecraft.factions.engine;
 
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidData;
 import com.massivecraft.factions.event.EventFactionsDisband;
@@ -9,7 +9,6 @@ import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.ps.PS;
 import de.dustplanet.silkspawners.events.SilkSpawnersSpawnerBreakEvent;
 import gg.halcyon.EngineShield;
-import gg.halcyon.events.PrinterToggleEvent;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -69,28 +68,28 @@ public class EngineRaidtimer extends Engine {
     //    }
     //}
 
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onPrinterToggle(PrinterToggleEvent event) {
-        PS psAt = PS.valueOf(event.getPlayer().getLocation());
-        Faction factionAt = BoardColl.get().getFactionAt(psAt);
-
-        RaidData raidData = RaidDataStorage.get().isBeingRaided(factionAt);
-
-        if (raidData != null && factionAt.getId().equals(raidData.getFactionRaidedId()) && raidData.getPhase() == 1) {
-            int chunkX = psAt.getChunkX(true);
-            int chunkZ = psAt.getChunkZ(true);
-            String worldName = psAt.getWorld(true);
-
-            boolean isWithinCoreRadius = EngineShield.get().isPsInsideBaseRegion(factionAt, worldName, chunkX, chunkZ);
-
-            if (!isWithinCoreRadius) {
-                return;
-            }
-
-            event.setCancelled(true);
-            MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().cantTogglePrinterLockdownMsg);
-        }
-    }
+    //@EventHandler(priority = EventPriority.LOWEST)
+    //public void onPrinterToggle(PrinterToggleEvent event) {
+    //    PS psAt = PS.valueOf(event.getPlayer().getLocation());
+    //    Faction factionAt = BoardColl.get().getFactionAt(psAt);
+    //
+    //    RaidData raidData = RaidDataStorage.get().isBeingRaided(factionAt);
+    //
+    //    if (raidData != null && factionAt.getId().equals(raidData.getFactionRaidedId()) && raidData.getPhase() == 1) {
+    //        int chunkX = psAt.getChunkX(true);
+    //        int chunkZ = psAt.getChunkZ(true);
+    //        String worldName = psAt.getWorld(true);
+    //
+    //        boolean isWithinCoreRadius = EngineShield.get().isPsInsideBaseRegion(factionAt, worldName, chunkX, chunkZ);
+    //
+    //        if (!isWithinCoreRadius) {
+    //            return;
+    //        }
+    //
+    //        event.setCancelled(true);
+    //        MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().cantTogglePrinterLockdownMsg);
+    //    }
+    //}
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onExplosionPlace(PlayerInteractEvent event) {

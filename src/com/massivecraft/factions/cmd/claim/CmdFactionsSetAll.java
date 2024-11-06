@@ -2,7 +2,7 @@ package com.massivecraft.factions.cmd.claim;
 
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.entity.Board;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;

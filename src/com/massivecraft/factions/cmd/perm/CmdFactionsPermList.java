@@ -3,7 +3,7 @@ package com.massivecraft.factions.cmd.perm;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.FactionsCommand;
 import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.coll.MPermColl;
+import com.massivecraft.factions.entity.MPermColl;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;
 import com.massivecraft.massivecore.pager.Pager;

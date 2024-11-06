@@ -1,20 +1,15 @@
 package gg.halcyon;
 
 import com.massivecraft.factions.cmd.CmdFactionsShield;
-import com.massivecraft.factions.coll.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidData;
 import com.massivecraft.factions.entity.objects.RaidtimerShield;
-import com.massivecraft.factions.util.TitleAPI;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.collections.MassiveMap;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.TimeUnit;
 import com.massivecraft.massivecore.util.Txt;
-import gg.halcyon.events.DispenseTNTEvent;
-import org.bukkit.Location;
 import org.bukkit.entity.Creeper;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -146,32 +141,32 @@ public class EngineShield extends Engine {
         return faction.isChunkWithinRaidtimerRadiusFromSpawnerChunk(worldName, chunkX, chunkZ);
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onTntDispense(DispenseTNTEvent event) {
-        boolean cancelDispense = true;
-
-        Location location = event.getEntity().getLocation();
-        PS chunkPsAt = PS.valueOf(location.getWorld().getName(), location.getChunk().getX(), location.getChunk().getZ());
-        Faction factionAt = BoardColl.get().getFactionAt(chunkPsAt);
-
-        boolean insideRaidclaim = false;
-
-        int bound = MConf.get().raidClaimsAvailable + 1;
-        for (int i1 = 1; i1 < bound; i1++) {
-            if (!factionAt.isRaidClaimAvailable(i1) && factionAt.getRaidClaims().get(i1).contains(chunkPsAt)) {
-                insideRaidclaim = true;
-            }
-        }
-
-        if (isPsInsideBaseRegion(factionAt, location.getWorld().getName(), location.getChunk().getX(), location.getChunk().getZ()) || insideRaidclaim) {
-            cancelDispense = false;
-        } else if (!factionAt.isSystemFaction()) {
-            for (Player player : factionAt.getOnlinePlayers()) {
-                TitleAPI.sendTitle(player, 10, 15, 10, LangConf.get().mustUseRaidclaimTitleTopMessage, LangConf.get().mustUseRaidclaimTitleBottomMessage);
-            }
-        }
-
-        event.setCancelled(cancelDispense);
-    }
+    //@EventHandler(priority = EventPriority.LOWEST)
+    //public void onTntDispense(DispenseTNTEvent event) {
+    //    boolean cancelDispense = true;
+    //
+    //    Location location = event.getEntity().getLocation();
+    //    PS chunkPsAt = PS.valueOf(location.getWorld().getName(), location.getChunk().getX(), location.getChunk().getZ());
+    //    Faction factionAt = BoardColl.get().getFactionAt(chunkPsAt);
+    //
+    //    boolean insideRaidclaim = false;
+    //
+    //    int bound = MConf.get().raidClaimsAvailable + 1;
+    //    for (int i1 = 1; i1 < bound; i1++) {
+    //        if (!factionAt.isRaidClaimAvailable(i1) && factionAt.getRaidClaims().get(i1).contains(chunkPsAt)) {
+    //            insideRaidclaim = true;
+    //        }
+    //    }
+    //
+    //    if (isPsInsideBaseRegion(factionAt, location.getWorld().getName(), location.getChunk().getX(), location.getChunk().getZ()) || insideRaidclaim) {
+    //        cancelDispense = false;
+    //    } else if (!factionAt.isSystemFaction()) {
+    //        for (Player player : factionAt.getOnlinePlayers()) {
+    //            TitleAPI.sendTitle(player, 10, 15, 10, LangConf.get().mustUseRaidclaimTitleTopMessage, LangConf.get().mustUseRaidclaimTitleBottomMessage);
+    //        }
+    //    }
+    //
+    //    event.setCancelled(cancelDispense);
+    //}
 
 }

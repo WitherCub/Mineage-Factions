@@ -1,7 +1,7 @@
 package com.massivecraft.factions.integration.spigot;
 
 import com.massivecraft.factions.engine.EnginePermBuild;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;

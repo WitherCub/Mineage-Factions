@@ -2,7 +2,7 @@ package com.massivecraft.factions.integration.coreprotect;
 
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.CmdFactionsInspect;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;

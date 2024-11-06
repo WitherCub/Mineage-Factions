@@ -2,8 +2,8 @@ package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.coll.FactionColl;
-import com.massivecraft.factions.coll.MPlayerColl;
+import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.factions.engine.actions.ActionRosterKick;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.event.EventFactionsCreate;
@@ -57,7 +57,7 @@ public class EngineRoster extends Engine {
             return;
         }
 
-        if (event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.DISBAND || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.CREATE || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.KICK || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.LEAVE || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.RANK || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.LEADER) {
+        if (event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.ALT || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.DISBAND || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.CREATE || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.KICK || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.LEAVE || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.RANK || event.getReason() == EventFactionsMembershipChange.MembershipChangeReason.LEADER) {
             return;
         }
 

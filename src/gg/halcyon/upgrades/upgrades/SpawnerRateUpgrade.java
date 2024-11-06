@@ -1,6 +1,6 @@
 package gg.halcyon.upgrades.upgrades;
 
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MissionUpgradeConf;
 import com.massivecraft.massivecore.ps.PS;

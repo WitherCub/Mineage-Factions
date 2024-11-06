@@ -1,7 +1,7 @@
 package com.massivecraft.factions.cmd.access;
 
 import com.massivecraft.factions.cmd.type.TypeMPlayer;
-import com.massivecraft.factions.coll.BoardColl;
+import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;

@@ -104,7 +104,7 @@ public class CmdFactionsAltjoin extends FactionsCommand {
 		}
 
 		// Event
-		EventFactionsMembershipChange membershipChangeEvent = new EventFactionsMembershipChange(sender, msender, faction, MembershipChangeReason.JOIN, true);
+		EventFactionsMembershipChange membershipChangeEvent = new EventFactionsMembershipChange(sender, msender, faction, MembershipChangeReason.ALT, true);
 		membershipChangeEvent.run();
 		if (membershipChangeEvent.isCancelled()) return;
 
