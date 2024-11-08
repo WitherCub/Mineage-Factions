@@ -87,7 +87,7 @@ public class EngineExtras extends Engine
 				
 				if (!mp.recieveLoginNotifications()) continue;
 				
-				p.sendMessage(ChatColor.translateAlternateColorCodes('&', MConf.get().playerQuitMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer))));
+				p.sendMessage(ChatColor.translateAlternateColorCodes('&', LangConf.get().playerQuitMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer))));
 			}
 		}
 		updateLastActivityInFactionLand(event.getPlayer());
@@ -144,7 +144,7 @@ public class EngineExtras extends Engine
 			return;
 		if (!MPerm.getPermTphome().has(mplayer, faction, false))
 		{
-			player.sendMessage(ChatColor.translateAlternateColorCodes('&', (MConf.get().homePatchMessage.replace("%LOC%", ("(" + to.getBlockX() + "," + to.getBlockY() + "," + to.getBlockZ() + ")")))));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&', (LangConf.get().homePatchMessage.replace("%LOC%", ("(" + to.getBlockX() + "," + to.getBlockY() + "," + to.getBlockZ() + ")")))));
 			event.setCancelled(true);
 		}
 	}

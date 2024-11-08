@@ -20,7 +20,6 @@ import com.massivecraft.factions.integration.V19.IntegrationV19;
 import com.massivecraft.factions.integration.coreprotect.IntegrationCoreProtect;
 import com.massivecraft.factions.integration.essentials.IntegrationEssentials;
 import com.massivecraft.factions.integration.factionkore.IntegrationFKore;
-import com.massivecraft.factions.integration.mobextras.IntegrationMobExtras;
 import com.massivecraft.factions.integration.polar.IntegrationPolar;
 import com.massivecraft.factions.integration.spigot.IntegrationSpigot;
 import com.massivecraft.factions.integration.supplydrop.IntegrationSupplyDrop;
@@ -181,7 +180,6 @@ public class Factions extends MassivePlugin
 				// Integrations
 				IntegrationCoreProtect.class,
 				IntegrationFKore.class,
-				IntegrationMobExtras.class,
 				IntegrationPolar.class,
 				IntegrationSpigot.class,
 				IntegrationSupplyDrop.class,

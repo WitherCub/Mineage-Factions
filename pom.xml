@@ -111,22 +111,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/Vault.jar</systemPath>
         </dependency>
-        <!-- Herochat -->
-        <dependency>
-            <groupId>com.dthielke.herochat</groupId>
-            <artifactId>Herochat</artifactId>
-            <version>LATEST</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Herochat.jar</systemPath>
-        </dependency>
-        <!-- LWC -->
-        <dependency>
-            <groupId>com.griefcraft</groupId>
-            <artifactId>lwc</artifactId>
-            <version>LATEST</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/LWC.jar</systemPath>
-        </dependency>
         <!-- Essentials -->
         <!--<dependency>
             <groupId>net.ess3</groupId>
