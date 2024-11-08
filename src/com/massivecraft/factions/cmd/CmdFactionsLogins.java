@@ -1,6 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
@@ -31,21 +32,21 @@ public class CmdFactionsLogins extends FactionsCommand
 		{
 			if (msender.recieveLoginNotifications())
 			{
-				msender.msg(MConf.get().alreadyEnabledLoginNotifsMsg);
+				msender.msg(LangConf.get().alreadyEnabledLoginNotifsMsg);
 			}
 			else
 			{
-				msenderFaction.msg(MConf.get().loginNotifsNowOnMsg);
+				msenderFaction.msg(LangConf.get().loginNotifsNowOnMsg);
 				msender.setLoginNotifications(true);
 			}
 		}
 		else if (!msender.recieveLoginNotifications())
 		{
-			msender.msg(MConf.get().alreadyDisabledLoginNotifsMsg);
+			msender.msg(LangConf.get().alreadyDisabledLoginNotifsMsg);
 		}
 		else
 		{
-			msenderFaction.msg(MConf.get().loginNotifsOffMsg);
+			msenderFaction.msg(LangConf.get().loginNotifsOffMsg);
 			msender.setLoginNotifications(false);
 		}
 	}

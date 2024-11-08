@@ -135,7 +135,9 @@ public class Factions extends MassivePlugin
 				MigratorMConf003CleanInactivity.class,
 				MigratorFaction001Invitations.class
 		);
+
 		this.activate(getClassesActiveColls());
+
 		this.activate(
 				// Mixin
 				PowerMixin.class,
@@ -263,6 +265,8 @@ public class Factions extends MassivePlugin
 		// We also have the /f access system where the player can be granted specific access, possibly supporting the idea of such a reverse index.
 		return new MassiveList<Class<?>>(
 			MConfColl.class,
+			LangColl.class,
+			GuiColl.class,
 			MFlagColl.class,
 			MPermColl.class,
 			FactionColl.class,

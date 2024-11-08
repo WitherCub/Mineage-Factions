@@ -2,6 +2,7 @@ package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.ModuloRepeatTask;
@@ -38,7 +39,7 @@ public class TaskAlarm extends ModuloRepeatTask
 				
 				if (!mPlayer.isAlertSoundEnabled()) continue;
 				
-				MixinMessage.get().msgOne(player, MConf.get().alarmSoundedMsg.replace("%player%", player.getName()));
+				MixinMessage.get().msgOne(player, LangConf.get().alarmSoundedMsg.replace("%player%", player.getName()));
 				player.playSound(player.getLocation(), Sound.valueOf(MConf.get().alarmSound), MConf.get().alarmVolume, MConf.get().alarmPitch);
 			}
 		}

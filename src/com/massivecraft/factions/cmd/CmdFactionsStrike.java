@@ -2,6 +2,7 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.type.primitive.TypeString;
@@ -30,15 +31,15 @@ public class CmdFactionsStrike extends FactionsCommand
 
         faction.addWarning(reason);
 
-        msender.msg(MConf.get().addedStrikeMsg.replace("%faction%", faction.getName()));
+        msender.msg(LangConf.get().addedStrikeMsg.replace("%faction%", faction.getName()));
 
         if (MConf.get().broadcastStrike)
         {
-            MixinMessage.get().msgAll(MConf.get().broadcastStrikeMsg.replace("%faction%", faction.getName()).replace("%reason%", reason));
+            MixinMessage.get().msgAll(LangConf.get().broadcastStrikeMsg.replace("%faction%", faction.getName()).replace("%reason%", reason));
         }
         else
         {
-            faction.msg(MConf.get().broadcastStrikeMsg.replace("%faction%", faction.getName()).replace("%reason%", reason));
+            faction.msg(LangConf.get().broadcastStrikeMsg.replace("%faction%", faction.getName()).replace("%reason%", reason));
         }
     }
 

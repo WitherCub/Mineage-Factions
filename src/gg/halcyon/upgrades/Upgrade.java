@@ -29,5 +29,4 @@ public abstract class Upgrade implements Listener
 	public abstract void onUpgrade(Faction faction);
 
 	public abstract int getInventorySlot();
-	
 }

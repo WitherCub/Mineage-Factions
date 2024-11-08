@@ -2041,7 +2041,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator
 
 		Location npcLocation = ps.asBukkitLocation().clone();
 
-		NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, MConf.get().sandbotName);
+		NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, LangConf.get().sandbotName);
 		npc.data().set("removefromplayerlist", false);
 		npc.setFlyable(true);
 		npc.setProtected(true);

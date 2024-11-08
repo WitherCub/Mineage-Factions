@@ -6,6 +6,7 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.util.ChunkPos;
@@ -37,7 +38,7 @@ public class CmdFactionsSpawnerchunk extends FactionsCommand {
     public void perform() throws MassiveException {
         Long spawnerCacheLastUseValue = spawnerCacheLastUse.getIfPresent(msender.getUuid());
         if (spawnerCacheLastUseValue != null) {
-            msender.msg(MConf.get().pleaseWaitXSecondsToUseSpawnerchunkCmdAgainMsg.replace("%seconds%", TimeUtil.formatPlayTime((System.currentTimeMillis() + (MConf.get().spawnerChunkCommandUseCooldownXSeconds * 1000)) - spawnerCacheLastUseValue)));
+            msender.msg(LangConf.get().pleaseWaitXSecondsToUseSpawnerchunkCmdAgainMsg.replace("%seconds%", TimeUtil.formatPlayTime((System.currentTimeMillis() + (MConf.get().spawnerChunkCommandUseCooldownXSeconds * 1000)) - spawnerCacheLastUseValue)));
             return;
         }
         spawnerCacheLastUse.put(msender.getUuid(), System.currentTimeMillis());
@@ -47,7 +48,7 @@ public class CmdFactionsSpawnerchunk extends FactionsCommand {
         Faction factionAt = BoardColl.get().getFactionAt(PS.valueOf(me.getLocation()));
 
         if (factionAt == null || factionAt.isSystemFaction() || factionAt != msenderFaction) {
-            msender.msg(MConf.get().onlySetSpawnerchunkOwnTerritoryMsg);
+            msender.msg(LangConf.get().onlySetSpawnerchunkOwnTerritoryMsg);
             return;
         }
 
@@ -57,12 +58,12 @@ public class CmdFactionsSpawnerchunk extends FactionsCommand {
             int spawnersInChunk = (int) Arrays.stream(chunk.getTileEntities()).filter(blockState -> blockState instanceof CreatureSpawner).count();
 
             if (spawnersInChunk > 0) {
-                msender.msg(MConf.get().cannotUnmarkSpawnerChunkWithSpawnersInChunkMsg.replace("%spawnersInChunk%", Factions.get().getPriceFormat().format(spawnersInChunk)));
+                msender.msg(LangConf.get().cannotUnmarkSpawnerChunkWithSpawnersInChunkMsg.replace("%spawnersInChunk%", Factions.get().getPriceFormat().format(spawnersInChunk)));
                 return;
             }
 
             factionAt.removeSpawnerChunk(chunkPos);
-            msender.msg(MConf.get().unmarkedSpawnerchunkMsg);
+            msender.msg(LangConf.get().unmarkedSpawnerchunkMsg);
             return;
         }
 
@@ -89,7 +90,7 @@ public class CmdFactionsSpawnerchunk extends FactionsCommand {
 //        }
 
         playersSettingSpawnerChunks.put(msender.getUuid(), new SpawnerChunkRequest(PS.valueOf(me.getLocation()), System.currentTimeMillis()));
-        MConf.get().placeSpawnerToMarkMsg.stream().map(s -> Txt.parse(s.replace("%spawnerChunkLockdownRadius%", String.valueOf(MConf.get().spawnerChunkLockdownRadius)))).forEach(s -> msender.msg(s));
+        LangConf.get().placeSpawnerToMarkMsg.stream().map(s -> Txt.parse(s.replace("%spawnerChunkLockdownRadius%", String.valueOf(MConf.get().spawnerChunkLockdownRadius)))).forEach(s -> msender.msg(s));
     }
 
     public static class SpawnerChunkRequest {

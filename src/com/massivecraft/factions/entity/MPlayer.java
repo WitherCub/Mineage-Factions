@@ -112,7 +112,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 		if (this.getPowerRounded() != (int) Math.round(MConf.get().defaultPlayerPower)) return false;
 		// if (this.isMapAutoUpdating()) return false; // Just having an auto updating map is not in itself reason enough for database storage.
 		if (this.isOverriding()) return false;
-		if (this.isTerritoryInfoTitles() != MConf.get().territoryInfoTitlesDefault) return false;
+		if (this.isTerritoryInfoTitles() != LangConf.get().territoryInfoTitlesDefault) return false;
 
 		return true;
 	}
@@ -975,7 +975,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 	public boolean isTerritoryInfoTitles()
 	{
 		if (!MixinTitle.get().isAvailable()) return false;
-		if (this.territoryInfoTitles == null) return MConf.get().territoryInfoTitlesDefault;
+		if (this.territoryInfoTitles == null) return LangConf.get().territoryInfoTitlesDefault;
 		return this.territoryInfoTitles;
 	}
 
@@ -983,7 +983,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 	{
 		// Clean input
 		Boolean target = territoryInfoTitles;
-		if (MUtil.equals(target, MConf.get().territoryInfoTitlesDefault)) target = null;
+		if (MUtil.equals(target, LangConf.get().territoryInfoTitlesDefault)) target = null;
 
 		// Detect Nochange
 		if (MUtil.equals(this.territoryInfoTitles, target)) return;

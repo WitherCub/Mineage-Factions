@@ -4,6 +4,7 @@ import com.massivecraft.factions.cmd.FactionsCommand;
 import com.massivecraft.factions.cmd.pperm.CmdFactionsPpermGui;
 import com.massivecraft.factions.engine.actions.ActionFillTnt;
 import com.massivecraft.factions.engine.actions.ActionStickBuy;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MissionUpgradeConf;
 import com.massivecraft.factions.util.ItemBuilder;
@@ -76,9 +77,13 @@ public class CmdFactionsTnt extends FactionsCommand
 		chestGui.setAction(1, new ActionFillTnt());
 		
 		chestGui.getInventory().setItem(2, new ItemBuilder(Material.TNT).durability(0).name(Txt.parse("&7Stored TNT: &e%amount%".replace("%amount%", String.valueOf(msenderFaction.getTnt())))).lore(Txt.parse("&aYour faction &7can store a maximum")).lore(Txt.parse("&7of &e%max% &7TNT".replace("%max%", String.valueOf(UpgradesManager.get().getUpgradeByName(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()).getCurrentUpgradeDescription()[msenderFaction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()) - 1].split(" ")[2])))).lore("").lore(Txt.parse("&7Purchase upgrades to store more")));
-		
-		chestGui.getInventory().setItem(3, new ItemBuilder(Material.STICK).durability(0).name(Txt.parse(MConf.get().tntStickName)).lore(Txt.parse("&7Click to claim a tnt fill tool for &e%points%".replace("%points%", String.valueOf(MConf.get().tntStickPoints)))).lore(Txt.parse("&7points.")).lore("").lore(Txt.parse("&7Right-click a container with this tool")).lore(Txt.parse("&7to put all your TNT into your TNT storage.")));
-		chestGui.setAction(3, new ActionStickBuy());
+
+		if(MConf.get().enableTnTWand) {
+			chestGui.getInventory().setItem(3, new ItemBuilder(Material.STICK).durability(0).name(Txt.parse(GuiConf.get().tntStickName)).lore(Txt.parse("&7Click to claim a tnt fill tool for &e%points%".replace("%points%", String.valueOf(MConf.get().tntStickPoints)))).lore(Txt.parse("&7points.")).lore("").lore(Txt.parse("&7Right-click a container with this tool")).lore(Txt.parse("&7to put all your TNT into your TNT storage.")));
+			chestGui.setAction(3, new ActionStickBuy());
+		} else {
+			chestGui.getInventory().setItem(3, new ItemBuilder(Material.STAINED_GLASS_PANE).durability(0).name(""));
+		}
 		
 		return chestGui;
 	}

@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.engine.actions.ActionCloseInventory;
 import com.massivecraft.factions.engine.actions.ActionDrain;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.util.ItemBuilder;
@@ -47,28 +48,28 @@ public class CmdFactionsDrain extends FactionsCommand
 		{
 			if (msender.isDrain())
 			{
-				msender.msg(MConf.get().currentDrainStatusAllowedMsg);
+				msender.msg(LangConf.get().currentDrainStatusAllowedMsg);
 			}
 			else
 			{
-				msender.msg(MConf.get().currentDrainStatusDisallowedMsg);
+				msender.msg(LangConf.get().currentDrainStatusDisallowedMsg);
 			}
 			
 			if (msenderFaction.getLastDrainMillis() == 0)
 			{
-				msender.msg(MConf.get().lastDrainTime.replace("%factionName%", msenderFaction.getName()).replace("%timeAgo%", "Never"));
+				msender.msg(LangConf.get().lastDrainTime.replace("%factionName%", msenderFaction.getName()).replace("%timeAgo%", "Never"));
 			}
 			else
 			{
-				msender.msg(MConf.get().lastDrainTime.replace("%factionName%", msenderFaction.getName()).replace("%timeAgo%", TimeUtil.formatTime(System.currentTimeMillis() - msenderFaction.getLastDrainMillis()) + "ago"));
+				msender.msg(LangConf.get().lastDrainTime.replace("%factionName%", msenderFaction.getName()).replace("%timeAgo%", TimeUtil.formatTime(System.currentTimeMillis() - msenderFaction.getLastDrainMillis()) + "ago"));
 			}
 			
-			msender.msg(MConf.get().lastDrainAmount.replace("%amount%", numberFormat.format(msender.getLastDrainAmountTaken())));
-			msender.msg(MConf.get().initiateDrainMsg);
+			msender.msg(LangConf.get().lastDrainAmount.replace("%amount%", numberFormat.format(msender.getLastDrainAmountTaken())));
+			msender.msg(LangConf.get().initiateDrainMsg);
 		}
 		else if (amount < MConf.get().minimumDrainAmount)
 		{
-			msender.msg(MConf.get().drainAmountLowerThanMinimumMsg.replace("%amount%", numberFormat.format(MConf.get().minimumDrainAmount)));
+			msender.msg(LangConf.get().drainAmountLowerThanMinimumMsg.replace("%amount%", numberFormat.format(MConf.get().minimumDrainAmount)));
 		}
 		else if (MPerm.getPermDrain().has(this.msender, this.msenderFaction, true))
 		{

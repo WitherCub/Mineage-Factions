@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.stellardev.galactic:GalacticLib:1.19.14">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/stellardev/galactic/GalacticLib/1.19.14/GalacticLib-1.19.14.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/stellardev/galactic/GalacticLib/1.19.14/GalacticLib-1.19.14-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/stellardev/galactic/GalacticLib/1.19.14/GalacticLib-1.19.14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

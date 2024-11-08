@@ -53,7 +53,7 @@ public class TaskFactionTopCalculate extends ModuloRepeatTask {
 
         running = true;
 
-        MixinMessage.get().msgAll(MConf.get().ftopTotalsResynchronizeStartMsg);
+        MixinMessage.get().msgAll(LangConf.get().ftopTotalsResynchronizeStartMsg);
 
         Bukkit.getServer().getScheduler().runTaskAsynchronously(Factions.get(), () -> {
             ConcurrentHashMap<Faction, Set<PS>> toCalculate = new ConcurrentHashMap<>();
@@ -122,7 +122,7 @@ public class TaskFactionTopCalculate extends ModuloRepeatTask {
 
             running = false;
 
-            MConf.get().ftopTotalsResynchronizedMsg.forEach(s -> MixinMessage.get().msgAll(s));
+            LangConf.get().ftopTotalsResynchronizedMsg.forEach(s -> MixinMessage.get().msgAll(s));
         });
 
         Bukkit.getServer().getScheduler().cancelTask(taskID);

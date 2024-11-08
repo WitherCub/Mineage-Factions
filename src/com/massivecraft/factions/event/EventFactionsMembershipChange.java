@@ -71,6 +71,7 @@ public class EventFactionsMembershipChange extends EventFactionsAbstractSender
 		KICK (true),
 		DISBAND (false),
 		//RESET	 (false),
+		ALT (true)
 		;
 		
 		private final boolean cancellable;

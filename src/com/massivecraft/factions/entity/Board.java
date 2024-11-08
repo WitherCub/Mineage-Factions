@@ -8,6 +8,7 @@ import com.massivecraft.massivecore.collections.MassiveMap;
 import com.massivecraft.massivecore.collections.MassiveSet;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.store.Entity;
+import com.massivecraft.massivecore.store.Modification;
 import com.massivecraft.massivecore.xlib.gson.reflect.TypeToken;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -375,5 +376,11 @@ public class Board extends Entity<Board> implements BoardInterface
 		}
 		return false;
 	}
-	
+
+	@Override
+	public void changed() {
+		if (this.isLive()) {
+			this.getContainer().putIdentifiedModificationFixed(this.getId(), Modification.LOCAL_ATTACH);
+		}
+	}
 }

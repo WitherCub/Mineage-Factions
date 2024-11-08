@@ -47,7 +47,7 @@
     <orderEntry type="module-library">
       <library name="Maven: testbuild:testbuild:LATEST">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/testbuild.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/craftbukkit-1.8.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -212,5 +212,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.stellardev.galactic:GalacticLib:1.19.14" level="project" />
   </component>
 </module>

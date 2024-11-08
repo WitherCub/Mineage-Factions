@@ -4,10 +4,7 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.CmdFactions;
 import com.massivecraft.factions.cmd.CmdFactionsKick;
 import com.massivecraft.factions.engine.EngineRoster;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.chestgui.ChestActionAbstract;
 import com.massivecraft.massivecore.util.MUtil;
 import org.bukkit.entity.Player;
@@ -27,7 +24,7 @@ public class ActionRosterKick extends ChestActionAbstract {
         Faction faction = mPlayer.getFaction();
 
         if (!MConf.get().isRosterChangeable()) {
-            mPlayer.msg(MConf.get().modificationsToRosterNotEnabledMsg);
+            mPlayer.msg(LangConf.get().modificationsToRosterNotEnabledMsg);
             return false;
         }
 
@@ -36,7 +33,7 @@ public class ActionRosterKick extends ChestActionAbstract {
         }
 
         if (mPlayer.getUuid().equals(mplayerToKick.getUuid())) {
-            mPlayer.msg(MConf.get().cantKickYourselfMsg);
+            mPlayer.msg(LangConf.get().cantKickYourselfMsg);
             return false;
         }
 
@@ -44,22 +41,22 @@ public class ActionRosterKick extends ChestActionAbstract {
         Rel playerKickingRel = mPlayer.getRelationTo(faction);
 
         if (!playerKickingRel.isAtLeast(playerToKickRel)) {
-            mPlayer.msg(MConf.get().cantKickHigherRankMsg);
+            mPlayer.msg(LangConf.get().cantKickHigherRankMsg);
             return false;
         }
 
         if (!MConf.get().unlimitedRosterKicks && faction.getRosterKicksRemaining() - 1 < 0) {
-            mPlayer.msg(MConf.get().noRosterKicksRemainingMsg);
+            mPlayer.msg(LangConf.get().noRosterKicksRemainingMsg);
             return false;
         }
 
         if (!MConf.get().permittedRanksToModifyRoster.contains(playerKickingRel)) {
-            mPlayer.msg(MConf.get().notPermittedToModifyRosterMsg);
+            mPlayer.msg(LangConf.get().notPermittedToModifyRosterMsg);
             return false;
         }
 
         if (!faction.getRoster().containsKey(mPlayer.getUuid())) {
-            mPlayer.msg(MConf.get().playerNotInRosterMsg);
+            mPlayer.msg(LangConf.get().playerNotInRosterMsg);
             return false;
         }
 
@@ -77,7 +74,7 @@ public class ActionRosterKick extends ChestActionAbstract {
         }
 
         faction.removeFromRoster(mplayerToKick.getUuid()); // remove from roster
-        mPlayer.msg(MConf.get().playerRemovedFromRosterMsg.replace("%player%", mplayerToKick.getName()));
+        mPlayer.msg(LangConf.get().playerRemovedFromRosterMsg.replace("%player%", mplayerToKick.getName()));
         player.openInventory(EngineRoster.get().getRosterGui(faction, player));
         return false;
     }

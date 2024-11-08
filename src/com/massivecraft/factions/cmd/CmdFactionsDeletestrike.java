@@ -2,6 +2,7 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
@@ -27,7 +28,7 @@ public class CmdFactionsDeletestrike extends FactionsCommand
         }
 
         faction.removeWarning(faction.getFactionWarnings().get(reasonIndex));
-        msender.msg(MConf.get().removeStrikeMsg.replace("%faction%", faction.getName()).replace("%index%", String.valueOf(reasonIndex + 1)));
+        msender.msg(LangConf.get().removeStrikeMsg.replace("%faction%", faction.getName()).replace("%index%", String.valueOf(reasonIndex + 1)));
     }
 
 }

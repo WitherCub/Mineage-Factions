@@ -1,5 +1,6 @@
 package com.massivecraft.factions.cmd;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.task.TaskFactionTopCalculate;
 import com.massivecraft.massivecore.MassiveException;
@@ -22,7 +23,7 @@ public class CmdFactionsToprecalculate extends FactionsCommand
 		{
 			if (TaskFactionTopCalculate.get().isRunning())
 			{
-				msender.msg(MConf.get().ftopAlreadyRecalculatingMsg);
+				msender.msg(LangConf.get().ftopAlreadyRecalculatingMsg);
 				return;
 			}
 			TaskFactionTopCalculate.get().updateFactionTopValues();
@@ -33,14 +34,14 @@ public class CmdFactionsToprecalculate extends FactionsCommand
 		{
 			if (TaskFactionTopCalculate.get().isRunning())
 			{
-				msender.msg(MConf.get().ftopAlreadyRecalculatingMsg);
+				msender.msg(LangConf.get().ftopAlreadyRecalculatingMsg);
 				return;
 			}
 			TaskFactionTopCalculate.get().updateFactionTopValues();
 		}
 		else
 		{
-			msender.msg(MConf.get().ftopRecalculateNoPermMsg);
+			msender.msg(LangConf.get().ftopRecalculateNoPermMsg);
 		}
 	}
 }

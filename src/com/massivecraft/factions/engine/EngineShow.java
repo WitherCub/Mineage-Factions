@@ -332,7 +332,7 @@ public class EngineShow extends Engine
 			
 			// RELATIONS
 			List<String> relationLines = new ArrayList<String>();
-			String everyone = MConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*");
+			String everyone = LangConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*");
 			Set<Rel> rels = EnumSet.of(Rel.ALLY, Rel.TRUCE, Rel.NEUTRAL);
 			Map<Rel, List<String>> relNames = FactionColl.get().getRelationNames(faction, rels);
 			for (Entry<Rel, List<String>> entry : relNames.entrySet())

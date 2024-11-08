@@ -13,8 +13,6 @@ import com.massivecraft.factions.integration.essentials.EngineEssentials;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.mixin.MixinMessage;
-import com.massivecraft.massivecore.mixin.MixinTeleport;
-import com.massivecraft.massivecore.mixin.TeleporterException;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.teleport.Destination;
 import com.massivecraft.massivecore.teleport.DestinationSimple;

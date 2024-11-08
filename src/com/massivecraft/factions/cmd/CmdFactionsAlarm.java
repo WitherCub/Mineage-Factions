@@ -1,5 +1,6 @@
 package com.massivecraft.factions.cmd;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.massivecore.MassiveException;
@@ -26,12 +27,12 @@ public class CmdFactionsAlarm extends FactionsCommand
 		
 		if (msenderFaction.isAlarmEnabled())
 		{
-			msenderFaction.msg(MConf.get().alarmDisabledMsg.replace("%player%", msender.getName()));
+			msenderFaction.msg(LangConf.get().alarmDisabledMsg.replace("%player%", msender.getName()));
 			msenderFaction.setAlarmEnabled(false);
 		}
 		else
 		{
-			msenderFaction.msg(MConf.get().alarmSoundedMsg.replace("%player%", msender.getName()));
+			msenderFaction.msg(LangConf.get().alarmSoundedMsg.replace("%player%", msender.getName()));
 			msenderFaction.setAlarmEnabled(true);
 		}
 	}

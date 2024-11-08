@@ -307,20 +307,6 @@ public class MConf extends Entity<MConf>
 	public int coreprotectInspectLimit = 100;
 	
 	// -------------------------------------------- //
-	// TERRITORY INFO
-	// -------------------------------------------- //
-	
-	public boolean territoryInfoTitlesDefault = false;
-
-	public String territoryInfoTitlesMain = "{relcolor}{name}";
-	public String territoryInfoTitlesSub = "<i>{desc}";
-	public int territoryInfoTitlesTicksIn = 5;
-	public int territoryInfoTitlesTicksStay = 60;
-	public int territoryInfoTitleTicksOut = 5;
-
-	public String territoryInfoChat = "<i> ~ {relcolor}{name} <i>{desc}";
-	
-	// -------------------------------------------- //
 	// ASSORTED
 	// -------------------------------------------- //
 	
@@ -423,58 +409,6 @@ public class MConf extends Entity<MConf>
 		Rel.ALLY
 	);
 	
-	// -------------------------------------------- //
-	// CHAT
-	// -------------------------------------------- //
-	
-	// Should Factions set the chat format?
-	// This should be kept at false if you use an external chat format plugin.
-	// If you are planning on running a more lightweight server you can set this to true.
-	public boolean chatSetFormat = false;
-	
-	// At which event priority should the chat format be set in such case?
-	// Choose between: LOWEST, LOW, NORMAL, HIGH and HIGHEST.
-	public EventPriority chatSetFormatAt = EventPriority.LOWEST;
-	
-	// What format should be set?
-	public String chatSetFormatTo = "<{factions_relcolor}§l{factions_roleprefix}§r{factions_relcolor}{factions_name|rp}§f%1$s> %2$s";
-	
-	// Should the chat tags such as {factions_name} be parsed?
-	// NOTE: You can set this to true even with chatSetFormat = false.
-	// But in such case you must set the chat format using an external chat format plugin.
-	public boolean chatParseTags = true;
-	
-	// At which event priority should the faction chat tags be parsed in such case?
-	// Choose between: LOWEST, LOW, NORMAL, HIGH, HIGHEST.
-	public EventPriority chatParseTagsAt = EventPriority.LOW;
-	
-	// -------------------------------------------- //
-	// FACTION CHAT
-	// -------------------------------------------- //
-	
-	public static String factionChatFormat = "%s:" + ChatColor.WHITE + " %s";
-	public static String allianceChatFormat = ChatColor.DARK_PURPLE + "%s:" + ChatColor.WHITE + " %s";
-	public static String truceChatFormat = ChatColor.LIGHT_PURPLE + "%s:" + ChatColor.WHITE + " %s";
-	
-	// -------------------------------------------- //
-	// COLORS
-	// -------------------------------------------- //
-	
-	// Here you can alter the colors tied to certain faction relations and settings.
-	// You probably don't want to edit these to much.
-	// Doing so might confuse players that are used to Factions.
-	public ChatColor colorMember = ChatColor.GREEN;
-	public ChatColor colorAlly = ChatColor.DARK_PURPLE;
-	public ChatColor colorTruce = ChatColor.LIGHT_PURPLE;
-	public ChatColor colorNeutral = ChatColor.WHITE;
-	public ChatColor colorEnemy = ChatColor.RED;
-	
-	// This one is for example applied to SafeZone since that faction has the pvp flag set to false.
-	public ChatColor colorNoPVP = ChatColor.GOLD;
-	
-	// This one is for example applied to WarZone since that faction has the friendly fire flag set to true.
-	public ChatColor colorFriendlyFire = ChatColor.DARK_RED;
-	
 	// Health bar settings
 	public boolean disableInvisPotsForAdmins = false;
 	public String disableInvisPotsBypassPermission = "factions.bypass.invispotcheck";
@@ -483,17 +417,6 @@ public class MConf extends Entity<MConf>
 	public int truceLimit = 1;
 	public int allyLimit = 1;
 	public int neutralLimit = 1;
-	
-	// -------------------------------------------- //
-	// PREFIXES
-	// -------------------------------------------- //
-	
-	// Here you may edit the name prefixes associated with different faction ranks.
-	public String prefixLeader = "@";
-	public String prefixColeader = "**";
-	public String prefixOfficer = "*";
-	public String prefixMember = "+";
-	public String prefixRecruit = "-";
 	
 	// -------------------------------------------- //
 	// EXPLOITS
@@ -584,61 +507,6 @@ public class MConf extends Entity<MConf>
 	public BackstringSet<EntityType> entityTypesAnimals = new BackstringSet<>(EntityType.class);
 	
 	// -------------------------------------------- //
-	// INTEGRATION: HeroChat
-	// -------------------------------------------- //
-	
-	// I you are using the chat plugin HeroChat Factions ship with built in integration.
-	// The two channels Faction and Allies will be created.
-	// Their data is actually stored right here in the factions config.
-	// NOTE: HeroChat will create it's own database files for these two channels.
-	// You should ignore those and edit the channel settings from here.
-	// Those HeroChat channel database files aren't read for the Faction and Allies channels.
-	
-	// The Faction Channel
-	public String herochatFactionName = "Faction";
-	public String herochatFactionNick = "F";
-	public String herochatFactionFormat = "{color}[&l{nick}&r{color} &l{factions_roleprefix}&r{color}{factions_title|rp}{sender}{color}] &f{msg}";
-	public ChatColor herochatFactionColor = ChatColor.GREEN;
-	public int herochatFactionDistance = 0;
-	public boolean herochatFactionIsShortcutAllowed = false;
-	public boolean herochatFactionCrossWorld = true;
-	public boolean herochatFactionMuted = false;
-	public Set<String> herochatFactionWorlds = new HashSet<>();
-	
-	// The Allies Channel
-	public String herochatAlliesName = "Allies";
-	public String herochatAlliesNick = "A";
-	public String herochatAlliesFormat = "{color}[&l{nick}&r&f {factions_relcolor}&l{factions_roleprefix}&r{factions_relcolor}{factions_name|rp}{sender}{color}] &f{msg}";
-	public ChatColor herochatAlliesColor = ChatColor.DARK_PURPLE;
-	public int herochatAlliesDistance = 0;
-	public boolean herochatAlliesIsShortcutAllowed = false;
-	public boolean herochatAlliesCrossWorld = true;
-	public boolean herochatAlliesMuted = false;
-	public Set<String> herochatAlliesWorlds = new HashSet<>();
-	
-	// -------------------------------------------- //
-	// INTEGRATION: LWC
-	// -------------------------------------------- //
-	
-	// Do you need faction build rights in the territory to create an LWC protection there?
-	public boolean lwcMustHaveBuildRightsToCreate = true;
-	
-	// The config option above does not handle situations where a player creates an LWC protection in Faction territory and then leaves the faction.
-	// The player would then have an LWC protection in a territory where they can not build.
-	// Set this config option to true to enable an automatic removal feature.
-	// LWC protections that couldn't be created will be removed on an attempt to open them by any player.
-	public boolean lwcRemoveIfNoBuildRights = false;
-	
-	// WARN: Experimental and semi buggy.
-	// If you change this to true: alien LWC protections will be removed upon using /f set.
-	public Map<EventFactionsChunkChangeType, Boolean> lwcRemoveOnChange = MUtil.map(
-		EventFactionsChunkChangeType.BUY, false, // when claiming from wilderness
-		EventFactionsChunkChangeType.SELL, false, // when selling back to wilderness
-		EventFactionsChunkChangeType.CONQUER, false, // when claiming from another player faction
-		EventFactionsChunkChangeType.PILLAGE, false // when unclaiming (to wilderness) from another player faction
-	);
-	
-	// -------------------------------------------- //
 	// INTEGRATION: WorldGuard
 	// -------------------------------------------- //
 	
@@ -713,30 +581,10 @@ public class MConf extends Entity<MConf>
 	public int factionsFlyYDistanceCheck = 60;
 	public int factionsFlyMaxHeight = 280;
 	public boolean factionsFlyCanUsePearls = false;
-	public String factionsFlyNoPearlsMsg = "&cYou cannot use enderpearls while flying.";
-	public String factionsFlyDisabledMaxHeightMessage = "&cYour flight has been disabled. You have reached the maximum fly height.";
-	public String factionsFlyDisabledEnemyNearbyMessage = "&cYour flight has been disabled. You are in enemy land or near an enemy player!";
-	public String factionsFlyDisabledNoPerms = "&cYour flight has been disabled. You do not have permission to fly here.";
-	public String factionsFlyEnabledMessage = "&aYour flight has been enabled. You have entered land where you are permitted to fly.";
-	public String factionsFlyOverridePerm = "factions.fly.override";
-	
-	public String alreadyInStealthMsg = "&cYou are already in stealth mode.";
-	public String stealthNowOnMsg = "&eStealth Mode is now &aON&e. You will no longer prevent enemies from flying.";
-	public String alreadyOutOfStealthMsg = "&cYou are already out of stealth mode.";
-	public String stealthNowOffMsg = "&eStealth Mode is now &cOFF&e. You will now prevent enemies from flying.";
-	
-	public String flyNowOnMsg = "&eYou have toggled flight &aON&e. You will now automatically enter fly.";
-	public String alreadyOutOfFlyMsg = "&cYou already have fly disabled.";
-	public String flyNowOffMsg = "&eYou have toggled flight &cOFF&e. You will no longer automatically enter fly.";
 	
 	// -------------------------------------------- //
 	// EXTRAS
 	// -------------------------------------------- //
-	
-	public String playerQuitMessage = "&8[&c-&8] %PLAYER% &7has left the game!";
-	public String playerJoinMessage = "&8[&a+&8] %PLAYER% &7has joined the game!";
-	
-	public String homePatchMessage = "&cYou are not allowed to teleport to your home in territory that you don't have access to located at %LOC%.";
 	
 	public long removePlayerMillisFromLand = 900000L;
 	
@@ -745,20 +593,14 @@ public class MConf extends Entity<MConf>
 	public int timeTillAssistTimeout = 60;
 	
 	public Integer maximumFillRadius = 40;
-	public String reachedMaximumFillRadius = "&cYou have reached the max radius of 40.";
-	public String cantFillLessThanOne = "&cYou can't tntfill less than 1 tnt!";
 	
 	public boolean disableInvisPots = true;
-	public String removeInvisEffectMsg = "&cThe invisibility potion effect is disabled on this server.";
 	
 	public int altLimit = 40;
 	public boolean hideOtherFacAlts = false;
 	public List<String> materialsAltsCanBuild = MUtil.list("SAND", "GRAVEL");
 	
 	// Missions
-	public String missionAssignedMsg = "&7The &6%mission% &7mission is now active! You have &61 day &7to complete it.";
-	public String completeMissionMsg = "&a&lCongratulations! &7Your faction has completed the &6%mission% &7mission and has been rewarded %rewardAmount% credits.";
-	public List<String> missionsGuiMissionLore = MUtil.list("", "&7&lChallenge", "&8&l* &7%missionDescription%", "", "&7&lWorth", " &8&l* &7%creditsReward% Credits", "", "&7&lTime Remaining:", " &8&l* &7%timeRemaining%", "", "&7Complete: %requirementComplete%/%requirement%");
 	public int missionSpinTimes = 10;
 	public long missionSpinSpeed = 6L;
 	
@@ -775,39 +617,7 @@ public class MConf extends Entity<MConf>
 
 	public int ftopChunksToCalculatePerSecond = 500;
 	public boolean ftopOnlyCalculateSpawnerChunks = true;
-	
-	public String ftopAlreadyRecalculatingMsg = "&cThe server is currently recalculating!";
-	public String ftopRecalculateNoPermMsg = "&cYou do not have permission to execute this command!";
-	public String ftopTotalsResynchronizeStartMsg = "&eBeginning to recalculate faction top totals...";
-	public List<String> ftopTotalsResynchronizedMsg = MUtil.list("&eFaction top totals have been resynchronized.");
-	public String ftopCommandLastUpdateFooterMsg = "&eLast updated &6%time%&eago";
 
-	public String cmdFtopTotalPrefix = " &6Total: &7$%total%";
-	public String cmdFtopAmountOnlinePrefix = " &6%online%/%total% online";
-	public String ftopPagerName = "&6Top wealth";
-	public String ptopPagerName = "&6Potential wealth";
-	public List<String> factionsTopLoreFormat = MUtil.list(
-			"&f&l&nF Top Summary for %faction%",
-			" ",
-			"&fPosition: &6#%position%",
-			" ",
-			"&fTotal 24 hour change: &a%twentyFourHourChangeValue% %twentyFourHourChangePercent%",
-			"&rCurrent Worth: &6%currentWorth%",
-			"&rPotential Value: &6%potentialWorth%",
-			" ",
-			"&f&l&nPlaced Spawner Values",
-			" ",
-			"%placedSpawnerValues%",
-			" ",
-			"&fLast updated %updatedAgoTime% ago"
-	);
-	public String factionsTopGuiLoreSpawnerValueEntry = "&6%spawnerType%: &7%value% &7(&r%amount%&7)";
-	public String factionsTopGuiLoreSpawnerValuesEmpty = "&fNone";
-	
-	public Map<EntityType, String> entityTypeDisplayNamesMap = MUtil.map(EntityType.PIG_ZOMBIE, "Zombie Pigman", EntityType.CAVE_SPIDER, "Cave Spider", EntityType.MAGMA_CUBE, "Magma Cube", EntityType.ENDER_DRAGON, "Ender Dragon", EntityType.MUSHROOM_COW, "Mooshroom", EntityType.SNOWMAN, "Snow Golem", EntityType.OCELOT, "Ocelot", EntityType.IRON_GOLEM, "Iron Golem", EntityType.HORSE, "Horse", EntityType.WITHER, "Wither");
-	
-	public boolean ftopKnockMsgEnabled = true;
-	public List<String> ftopKnockMsg = MUtil.list(" ", "&e{newfaction} &ehas just passed {oldfaction} &efor ftop rank {rank}!", " ");
 	public int ftopKnockTopXPositions = 3;
 	
 	public double spawnerInitalValue = 0.10;
@@ -816,116 +626,22 @@ public class MConf extends Entity<MConf>
 	// -------------------------------------------- //
 	// FACTION ALARM
 	// -------------------------------------------- //
-	
-	public Material notificationTimeMaterial = Material.WATCH;
-	public String notificationTimeName = "&e&lNotification Time";
-	public List<String> notificationTimeLore = MUtil.list("&rCurrent Setting: &6%currentNotificationTime%", "", "&7This setting controls the time it takes", "&7for a notification to be sent if", "&7the walls are not marked as clear", "&7with /f clear", "", "&7If notifications are disabled", "&7then so is the /clear command");
-	
-	public Material permsFclearMaterial = Material.BLAZE_ROD;
-	public String permsFclearName = "&e&lPerms for /f clear";
-	
-	public Material alarmSoundsOnMaterial = Material.WOOL;
-	public Integer alarmSoundsOnData = 5;
-	public Material alarmSoundsOffMaterial = Material.WOOL;
-	public Integer alarmSoundsOffData = 14;
-	
-	public String alarmSoundsName = "&e&lAlarm Sounds";
-	public List<String> alarmSoundsLore = MUtil.list("&rCurrent Setting: &6%currentAlarmSounds%", "", "&7This setting is for you only", "&7and will toggle the alarm sounds", "&7when someone types /f alarm");
-	
 	public Long alarmDelayMillis = 5000L;
 	public String alarmSound = "NOTE_BASS";
 	public float alarmVolume = 1.0f;
 	public float alarmPitch = 1.0f;
 	
-	public String alarmSoundedMsg = "&cALERT: &a%player% &ehas sounded the alarm! Get to the walls!";
-	public String alarmDisabledMsg = "&cALERT: &eThe alarm has been disabled by &a%player%.";
-	
 	public Long checkWallReminderMillis = 15000L;
-	public String checkWallClearMsg = "&aYou have marked the walls as clear!";
-	public String checkWallNotifsDisabled = "&cCheck notifications must be enabled in /f check for this command to function.";
-	public String checkWallsNotifMsg = "&cALERT: &eThe walls have not been checked for over %notificationTime% minutes.";
-	
-	public Material pageableGuiNextPageIconMaterial = Material.STAINED_GLASS_PANE;
-	public Integer pageableGuiNextPageIconDurability = 14;
-	public String pageableGuiNextPageIconName = "&7Next Page";
-	
-	public Material pageableGuiPreviousPageIconMaterial = Material.STAINED_GLASS_PANE;
-	public Integer pageableGuiPreviousPageIconDurability = 14;
-	public String pageableGuiPreviousPageIconName = "&7Previous Page";
 	
 	public boolean enableSetPaypal = true;
 	public int minFactionPaypalLength = 3;
 	public int maxFactionPaypalLength = 24;
-	public String factionPaypalInvalidLengthMsg = "&cYour faction paypal name must be between %minCharacters% and %maxCharacters% characters long!";
-	public String notValidPaypalMsg = "&cThat is not a valid paypal email!";
-	public String paypalUpdatedPlayerMsg = "&eYour faction's paypal email has been updated to %paypal%";
-	public String paypalUpdatedFactionMsg = "&e%player% has just updated your faction's paypal.";
-	public String checkFactionPaypalMsg = "&e%factionName%'s Paypal: %paypal%";
 	
 	public int minFactionDiscordLength = 3;
 	public int maxFactionDiscordLength = 24;
-	public String factionDiscordInvalidLengthMsg = "&cYour faction discord url must be between %minCharacters% and %maxCharacters% characters long!";
-	public String discordUrlRemoved = "&eYour Discord URL has been removed.";
-	public String discordUrlUpdated = "&eYour Discord URL has been updated.";
-	public String notValidDiscordMsg = "&cThat is not a valid discord URL!";
-	
-	public String warpGuiPanelWarpName = "&c%warpName%";
-	public List<String> warpGuiPanelFormat = MUtil.list(" ", "&7World &8» &c%world%", "&7X &8» &c%x%", "&7Y &8» &c%y%", "&7Z &8» &c%z%", " ", "&7Password &8» %password%", " ", "&7Click to warp.");
-	
-	public String tntStickName = "&eTNT Fill Tool";
 	public int tntStickPoints = 50;
-	
-	public String drainAlreadyDisallowedMsg = "&eYou already have drain &cDISALLOWED";
-	public String drainAlreadyAllowedMsg = "&eYou already have drain &eALLOWED";
-	public String drainStatusAllowedMsg = "&a%player% &ehas changed their drain status to &aALLOWED";
-	public String drainStatusDisallowedMsg = "&a%player% &ehas changed their drain status to &cDISALLOWED";
-	public String drainingSetAllowedInformMsg = "&aYou have set draining to ALLOWED. &7This means your faction leaders can drain your personal /balance at any time.";
-	public String drainingSetDisallowedInformMsg = "&cYou have set draining to DISALLOWED. &7This means your personal balance will not be included in faction drains.";
-	public String currentDrainStatusAllowedMsg = "&fCurrent drain status: &aALLOWED";
-	public String currentDrainStatusDisallowedMsg = "&fCurrent drain status: &cDISALLOWED";
-	public String lastDrainTime = "&fLast drain for %factionName%: &e%timeAgo%";
-	public String lastDrainAmount = "&fLast drain amount taken from you: &b$%amount%";
-	public String initiateDrainMsg = "&7&oUse &7&n&o/f drain <amount to drain>&7&o to initiate a faction drain";
+
 	public int minimumDrainAmount = 50000;
-	public String drainAmountLowerThanMinimumMsg = "&cThe smallest drain-to balance you can set is $%amount%";
-	public String drainedMsg = "&aSuccessfully drained %membersDrained% Faction members for a total of $%totalDrained%";
-	
-	public String factionNameReservedMsg = "&cSorry, the faction named %faction% is currently reserved for %player%.";
-	
-	public String alreadyEnabledLoginNotifsMsg = "&cYou already have login notifications enabled.";
-	public String loginNotifsNowOnMsg = "&eLogin notifications are now &aENABLED&e. You will now be notified when your faction members login.";
-	public String alreadyDisabledLoginNotifsMsg = "&cYou already have login notifications disabled.";
-	public String loginNotifsOffMsg = "&eLogin notifications are now &cDISABLED&e. You will no longer be notified when your faction members login.";
-	
-	public String shieldMangerGuiTitle = "&c&lShield Manager";
-	
-	public List<String> shieldManagerGuiLoreCurrently = MUtil.list(
-		"",
-		"&aYour shielded hours are currently",
-		"&e%startHour% &f---> &e%endHour% &7(&e8 hours total&7)",
-		"",
-		"&fCurrent time:",
-		"&e%currentTime%"
-	);
-	
-	public List<String> shieldManagerGuiLoreChangeTo = MUtil.list(
-		"",
-		"&aYour shielded hours are currently",
-		"&aset to change to",
-		"&e%startHour% &f---> &e%endHour% &7(&e8 hours total&7)",
-		"",
-		"&fCurrent time:",
-		"&e%currentTime%"
-	);
-	
-	public List<String> shieldManagerGuiLoreChange = MUtil.list(
-		"",
-		"&aClick to change the Shielded hours to",
-		"&e%startHour% &f---> &e%endHour% &7(&e8 hours total&7)",
-		"",
-		"&fCurrent time:",
-		"&e%currentTime%"
-	);
 	
 	public String timeZone = "America/New_York";
 	
@@ -958,47 +674,13 @@ public class MConf extends Entity<MConf>
 	);
 	
 	public int shieldLengthHrs = 8;
-	public String shieldInformationGuiName = "&e&lShield Information";
-	public List<String> shieldInformationGuiLore = MUtil.list("", "&fDuring Shield, a faction cannot", "&fbe raided by cannons, nor raid others", "", "&fChanging the Shield time period takes", "&e1 day &fto update", "", "&cAbuse of this mechanic in any way", "&cwill be punished severely");
-	public String disableShieldGuiItemName = "&c&lDisable Shield";
-	public List<String> disableShieldGuiItemLore = MUtil.list("", "&fYou will need to wait &e1 day", "&fto reactivate it");
-	public String shieldedHoursDisabledMsg = "%player% &ehas disabled %faction%&e's shielded hours.";
-	public String changingShieldHoursOffMsg = "&cChanging shielded hours is currently disabled.";
-	public String shieldHoursChangedMsg = "%player% &ehas set %faction%&e's shielded hours to &7%startHour% &f---> &7%endHour%";
-	public String pendingChangeGuiName = "&b&lPending Shield Change";
-	public List<String> pendingChangeGuiLoreNoChange = MUtil.list("", "&cThere is no pending change to", "&cyour faction's Shield time period");
-	public List<String> pendingChangeGuiLoreChangeAfterDisable = MUtil.list("", "&cYour faction has recently disabled their", "&cshield. You can reselect a time period in", "&c%time%");
-	public List<String> pendingChangeGuiLoreChangeActive = MUtil.list("", "&fYour faction's Shield time period", "&fwill be updated to &e%startHour% &f---> &e%endHour%", "&fin &e%time%");
 	public long shieldHoursChangeTimeBeforeUpdate = 86400000;
-	public String shieldHoursRequestedChangeMsg = "%player% &ehas requested to change %faction%&e's shielded hours to &7%startHour% &f---> &7%endHour%";
-	public String shieldHoursUpdatedMsg = "&Your faction&e's shielded hours have been updated to &7%startHour% &f---> &7%endHour%";
-	public String mustWaitBeforeChangingShieldedHoursFromDisableMsg = "&cYour faction has recently disabled your shield. You must wait %time% to reconfigure your shield again!";
-	public String shieldAlreadyDisabledMsg = "&cYour faction has already recently disabled your shield. You must wait %time% to reconfigure your shield again!";
-	public String shieldNotEnabledMsg = "&cYour faction already has their shield disabled.";
-
-	public String onlySetSpawnerchunkOwnTerritoryMsg = "&cYou can only set spawner chunks in your own territory!";
-	public List<String> placeSpawnerToMarkMsg = MUtil.list("&ePlace a spawner in this chunk within the next minute to validate this spawner chunk.", "&7&oIf another Faction manages to breach within %spawnerChunkLockdownRadius% chunks of any Spawner Chunk then your Faction will be placed on Lockdown until the raid completes.");
-	public String chunkAlreadySpawnerchunkMsg = "&cThis chunk is already marked as a spawner chunk!";
-	//	public String mustBeNextToSpawnerchunkMsg = "&cYou can only set spawner chunks next to existing spawner chunks.";
-	public String youCanOnlyPlaceSpawnersInSpawnerchunksMsg = "&cYou can only place spawners in spawner chunks. Use &d/f spawnerchunk &cto mark this chunk as a spawner chunk.";
-	public String cantPlaceSpawnersInWild = "&cYou are not permitted to place spawners in wilderness.";
 	public boolean enableSpawnerChunks = false;
 	public int spawnerChunkRequestExpireAfterXSeconds = 60;
-	public String spawnerChunkMarkedAt = "&a%player% has marked a spawner chunk for your faction at &6Chunk X: &7%chunkX% &6ChunkZ: &7%chunkZ% &ain &7%world%&a.";
-	public String pleaseWaitXSecondsToUseSpawnerchunkCmdAgainMsg = "&cPlease wait %seconds% before using this command again.";
 	public int spawnerChunkCommandUseCooldownXSeconds = 5;
-	public String cannotUnmarkSpawnerChunkWithSpawnersInChunkMsg = "&cThere are still &c&l%spawnersInChunk% spawners left in this chunk. Please remove all spawners before attempting to unset a spawner chunk.";
-	public String unmarkedSpawnerchunkMsg = "&aYou have successfully unmarked this chunk from being a spawner chunk.";
 	public int spawnerChunkLockdownRadius = 25;
 
 	public long breachCooldown = 28800000;
-	public List<String> msgFactionBreached = MUtil.list(
-			" ",
-			"&c[BREACH] %factionRaiding% &ehas just breached %factionRaided% &eand has gained &a%amount% &evalue.",
-			" "
-	);
-
-	public int stainedGlassGUIDurability = 7;
 	
 	private boolean shieldTimesChangeable = true;
 	
@@ -1018,32 +700,13 @@ public class MConf extends Entity<MConf>
 	public boolean allowRaidingWhileOnShield = true;
 
 	public boolean enableStrikes = true;
-	public String addedStrikeMsg = "&aYou have added a faction strike to %faction%.";
-	public String removeStrikeMsg = "&aYou have removed a faction strike from %faction% at their /f strikes index of %index%.";
-	public String broadcastStrikeMsg = "&c&l[!] &c%faction% &7has been striked for &c%reason%";
-	public String strikePagerName = "&6Strikes for %faction%";
 	public boolean broadcastStrike = true;
 
 	public int phaseOneLastsXMinutes = 15;
 	public int phaseTwoLastsXMinutes = 15;
 	public int phaseThreeLastsXMinutes = 30;
-	public String startOfPhaseThreeMsg = "&aThis is the start of Phase III. Your faction is now on grace for the next 30 minutes.";
-	public String yourFactionHasNoActiveRaidMsg = "&aYour faction &eis currently not raiding anybody.";
-	public String cmdRaidTimeRemainingMsg = "&aYour faction's &eraid on &c%otherFaction% &ehas &a%time% &eremaining. &7&l(&7Phase %phase%&7&l)";
 	public boolean allowAltsToCheckRaidtimerStatus = false;
-	public String altsCantCheckRaidtimerStatusMsg = "&cFaction alts are not permitted to check raidtimer status.";
-	public String raidHasEndedMsg = "&cYour raid on &c&l%faction% &chas ended as time has expired.";
-	public String raidHasEndedDisbandMsg = "&cYour raid on &c&l%faction% &chas ended as they have disbanded.";
 	public int onlyMessageAboutRaidTimerEveryXMinutes = 3;
-	public String alreadyBeingRaidedMsg = "&cThis faction is already being raided by %faction%!";
-	public String raidStartedMsg = "&aYour faction &ehas started a raid on &c%faction%&e!";
-	public String cantMineSpawnersDuringRaidtimerMsg = "&cYou are not permitted to mine spawners while you are on lockdown.";
-	public String cantTogglePrinterLockdownMsg = "&cYou are not permitted to toggle printer during Phase 1 of lockdown.";
-	public String cantPlaceGenbucketLockdownMsg = "&cYou are not permitted to place genbuckets during Phase 1 of lockdown.";
-	public String cantPlaceExplosionMsg = "&cYou are not permitted to use explosions during lockdown.";
-	public String backToPhaseOneMsg = "&aYour faction &ehas restarted the raid timer, back to Phase 1 of your raid on &c%faction%&e!";
-	public String endOfPhaseOneMsg = "&aThis is the end of Phase I. You are now permitted to toggle printer & place genbuckets.";
-	public String endOfPhaseOneFactionRaidingMsg = "&aThis is the end of Phase I. %faction% is now permitted to toggle printer & place genbuckets.";
 	public int raidTimerStartMinY = 40;
 
 	public boolean rosterEnabled = true;
@@ -1057,48 +720,9 @@ public class MConf extends Entity<MConf>
 	public boolean unlimitedRosterKicks = false;
 	public int defaultRosterKicks = 5;
 	public boolean resetRosterKicksDailyAtMidnight = true;
-	public String rosterKicksResetMsg = "&aYour faction's roster kicks have been reset!";
 	public String rosterBypassJoinPermission = "roster.bypass";
 	public Set<Rel> acceptableDefaultRankFactionRelations = MUtil.set(Rel.RECRUIT, Rel.MEMBER, Rel.OFFICER, Rel.COLEADER);
-	public String notValidDefaultRankMsg = "&cThat is not a valid default rank.";
-	public String systemFactionMsg = "&cYou can not modify the roster for a system faction.";
-	public String notPermittedToModifyRosterMsg = "&cYour faction does not allow you to modify the roster.";
-	public String playerAlreadyInRosterMsg = "&cThe specified player is already added to your faction's roster.";
-	public String factionRosterFullMsg = "&cYour faction's roster is currently full.";
-	public String playerAddedToRosterMsg = "&a%player% &7has been added to your faction roster.";
 	public Set<Rel> permittedRanksToModifyRoster = MUtil.set(Rel.LEADER, Rel.COLEADER);
-	public String modificationsToRosterNotEnabledMsg = "&cModifications to faction rosters have already been disabled.";
-	public String playerNotInRosterMsg = "&cThe specified player is not currently on your faction's roster.";
-	public String playerDefaultRankSetMsg = "&c%player% &7now has their default join rank set to %rel%.";
-	public String notOnFactionRosterMsg = "&cYou are not on %faction%'s &croster.";
-	public String playerRemovedFromRosterMsg = "&a%player% &7has been removed from your faction roster.";
-	public String noRosterKicksRemainingMsg = "&cYour faction has no remaining roster kicks.";
-	public String cantKickYourselfMsg = "&cYou can not kick yourself!";
-	public String cantKickHigherRankMsg = "&cYou can not kick someone of a higher rank than you!";
-
-	public String factionRosterGuiTitle = "&4&lFaction Roster";
-	public int factionRosterGuiStainedGlassBorderColorId = 14;
-	public String factionRosterGuiMemberNameEntry = "%playerDesc%";
-	public String factionRosterGuiNotMemberNameEntry = "%playerDesc% &7(&fnot member&7)";
-	public List<String> factionRosterGuiLore = MUtil.list(
-			"&fJoins as: &7a %rel% in your faction",
-			"&eClick to kick from roster",
-			" ",
-			"&7Roster kicks remaining: &e%kicks%",
-			" ",
-			"&cNote: &fIf this player is currently",
-			"&fin the faction, you must also have",
-			"&fthe kick perm so they can be kicked",
-			"&fas well"
-	);
-	public String factionRosterGuiLoreUnlimitedKicksPlaceholderRet = "Unlimited";
-
-	public int factionRosterGuiNextPageSlot = 51;
-	public int factionRosterGuiPreviousPageSlot = 47;
-	public String factionRosterGuiNextPageName = "&eNext Page";
-	public String factionRosterGuiPreviousPageName = "&ePrevious Page";
-	public String factionRosterGuiNextPageButtonTexture = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTU2YTM2MTg0NTllNDNiMjg3YjIyYjdlMjM1ZWM2OTk1OTQ1NDZjNmZjZDZkYzg0YmZjYTRjZjMwYWI5MzExIn19fQ==";
-	public String factionRosterGuiPreviousPageButtonTexture = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2RjOWU0ZGNmYTQyMjFhMWZhZGMxYjViMmIxMWQ4YmVlYjU3ODc5YWYxYzQyMzYyMTQyYmFlMWVkZDUifX19";
 
 	private boolean rosterChangeable = true;
 
@@ -1113,11 +737,6 @@ public class MConf extends Entity<MConf>
 
 
 	public int factionBufferSize = 20;
-	public String cannotClaimCornerMsg = "&cYou cannot claim this corner.";
-	public String attemptingClaimCornerMsg = "&aAttempting to claim corner...";
-	public String mustBeInCornerMsg = "&cYou must be in a corner to use this command.";
-	public String couldNotClaimCornerMsg = "&7One or more &cclaims in this corner &7could not be claimed! Total chunks claimed: &c%claims%";
-	public String claimedCornerMsg = "&aYou have claimed the corner successfully. &d%claims% &achunks have been claimed.";
 	public List<String> worldsToShowInCornerlist = MUtil.list("world");
 	public boolean showFactionOwnerInCornerlist = true;
 
@@ -1136,49 +755,7 @@ public class MConf extends Entity<MConf>
 	public Map<Integer, Integer> raidClaimNumberAndGuiSlot = MUtil.map(1, 1, 2,2);
 
 	public boolean raidClaimGuiHopper = true;
-	public int raidClaimGuiSize = 9;
-
-	public String raidClaimGuiInventoryTitle = "&c&lRaid Claim Manager";
-
-	public int raidClaimGuiHelpButtonSlot = 0;
-	public Material raidClaimGuiHelpButtonMaterial = Material.BOOK_AND_QUILL;
-	public String raidClaimGuiHelpButtonName = "&bRaid Claim Help";
-	public List<String> raidClaimGuiHelpButtonLore = MUtil.list("&5&oYou must claim your cannon with raid claims", "&5&oif you want to damage someone's base.", "&5&oYou do not need raid claims for counter cannoning.");
-
-	public Material raidClaimGuiRaidclaimButtonMaterial = Material.TNT;
-	public String raidClaimGuiRaidclaimButtonName = "&fRaid Claim &e%number%";
-	public List<String> raidClaimGuiRaidclaimButtonLoreClaimed = MUtil.list("&fLocation:", " ", "&fWorld: &b%worldName%", "&fX: &b%x%", "&fZ: &b%z%", " ", "&eClick to unclaim");
-	public List<String> raidClaimGuiRaidclaimButtonLoreUnclaimed = MUtil.list("&cClaim a Raid Claim with /f raidclaim <radius>");
-
-	public String noRaidClaimsAvailableMsg = "&cYour faction currently has the maximum amount of raid claims set.";
-	public String raidClaimSetMsg = "&aYou have created a raidclaim centered at your current location.";
-	public String raidClaimRemovedMsg = "&aYour selected raidclaim has been removed.";
-
-	public String mustUseRaidclaimTitleTopMessage = "&c&lWARNING";
-	public String mustUseRaidclaimTitleBottomMessage = "&7You must use /f raidclaim to fire!";
-
 	public int maxRaidclaimRadius = 5;
-	public String maxRaidclaimRadiusMsg = "&cYou are not permitted to claim a raidclaim with a radius larger than %maxRadius%.";
-
-	public String sandbotGuiName = "&e&lSand Bots";
-	public int sandbotGuiInfoItemSlot = 4;
-	public Material sandbotGuiInfoItemMaterial = Material.BOOK;
-	public int sandbotGuiInfoItemMaterialDurability = 0;
-	public String sandbotGuiInfoItemName = "&e&lInformation";
-	public List<String> sandbotGuiInfoItemLore = MUtil.list(
-			"&7Sand bots will automatically place sand",
-			"&7below and &cbrick blocks &7they find nearby.",
-			" ",
-			"&7Each sand they place will cost your",
-			"&7faction &f$10 &7per block.",
-			" ",
-			"&7Once the bot runs out of charges",
-			"&7or your faction runs out of money",
-			"&7the bot will despawn.",
-			" ",
-			"&cUsing the bots for any purpose other",
-			"&cthan loading cannons will be punished."
-	);
 
 	public long refreshSandbotBlocksEveryXMillis = 5000;
 	public long placeSandDelay = 200L;
@@ -1188,31 +765,9 @@ public class MConf extends Entity<MConf>
 	public int sandbotYRadius = 2;
 	public List<Material> sandbotTriggerBlocks = MUtil.list(Material.BRICK, Material.LAPIS_BLOCK, Material.SANDSTONE);
 
-	public boolean sandbotGuiBorderGlassEnabled = true;
-	public int sandbotGuiBorderGlassDurabilityId = 7;
-	public boolean sandbotGuiBorderGlassGlowEnabled = false;
-
-	public String sandbotSpawnButtonName = "&a&lSpawn Sand Bot #%sandbotNumber%";
-	public String sandbotSpawnButtonHeadData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjQ1YzlhY2VhOGRhNzFiNGYyNTJjZDRkZWI1OTQzZjQ5ZTdkYmMwNzY0Mjc0YjI1YTZhNmY1ODc1YmFlYTMifX19";
-	public String sandbotInfoButtonName = "&e&lSand Bot #%sandbotNumber%";
-	public String sandbotInfoButtonHeadData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmQ3ZTg2NGNlODliMGY2NGVmZDMxM2NlMjU4N2NiYjRlNjVkM2RmMThiMmExMjNkYzJhZjJlNTY2ZDAifX19";
-	public String sandbotDespawnButtonName = "&c&lDespawn Sand Bot #%sandbotNumber%";
-	public String sandbotDespawnButtonHeadData = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWQ1ZmNkMzEyODdkNjNlNzgyNmVhNzYwYTdlZDE1NGY2ODVkZmRjN2YzNDY1NzMyYTk2ZTYxOWIyZTEzNDcifX19";
-
-	public String sandbotDespawnDespawnedMsg = "&aDespawned Sandbot #%sandbotNumber%.";
-	public String sandbotDespawnDontExistMsg = "&cYou can't despawn something that doesn't exist.";
-	public String sandbotSpawnAlreadySpawnedMsg = "&cThis sandbot is already spawned.";
-	public String spawnbotSandPurchaseSandbotMsg = "&cIn order to spawn sandbot #%sandbotNumber% you must unlock it using /f upgrade.";
-	public String spawnbotMustBeInFactionLandMsg = "&cYou can only spawn sandbots in your land.";
-	public String sandbotDespawnedNoMoneyInFbankMsg = "&cYour sandbots have been despawned due to running out of money in /f bank.";
-	public String spawnbotSpawnedMsg = "&aSandbot spawned at your location.";
-	public String sandbotName = "&c&lSandbot";
-
-	public List<String> sandbotInfoButtonLoreInactive = MUtil.list("&fStatus: &cInactive");
-	public List<String> sandbotInfoButtonLoreActive = MUtil.list("&fStatus: &aActive");
-
 	public boolean showFactionLandClaimedValues = false;
 
 	public long updateBoardTimeMs = 30000;
 
+	public boolean enableTnTWand = true;
 }

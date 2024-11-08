@@ -1,6 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
@@ -31,23 +32,23 @@ public class CmdFactionsDraintoggle extends FactionsCommand
 		{
 			if (msender.isDrain())
 			{
-				msender.msg(MConf.get().drainAlreadyAllowedMsg);
+				msender.msg(LangConf.get().drainAlreadyAllowedMsg);
 			}
 			else
 			{
-				msenderFaction.msg(MConf.get().drainStatusAllowedMsg.replace("%player%", msender.describeTo(msenderFaction, true)));
-				msender.msg(MConf.get().drainingSetAllowedInformMsg);
+				msenderFaction.msg(LangConf.get().drainStatusAllowedMsg.replace("%player%", msender.describeTo(msenderFaction, true)));
+				msender.msg(LangConf.get().drainingSetAllowedInformMsg);
 				msender.setDrain(true);
 			}
 		}
 		else if (!msender.isDrain())
 		{
-			msender.msg(MConf.get().drainAlreadyDisallowedMsg);
+			msender.msg(LangConf.get().drainAlreadyDisallowedMsg);
 		}
 		else
 		{
-			msenderFaction.msg(MConf.get().drainStatusDisallowedMsg.replace("%player%", msender.describeTo(msenderFaction, true)));
-			msender.msg(MConf.get().drainingSetDisallowedInformMsg);
+			msenderFaction.msg(LangConf.get().drainStatusDisallowedMsg.replace("%player%", msender.describeTo(msenderFaction, true)));
+			msender.msg(LangConf.get().drainingSetDisallowedInformMsg);
 			msender.setDrain(false);
 		}
 	}

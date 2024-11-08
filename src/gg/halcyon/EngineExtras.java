@@ -6,8 +6,6 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.cmd.CmdFactionsWarp;
 import com.massivecraft.factions.cmd.perm.CmdFactionsPermGui;
 import com.massivecraft.factions.cmd.pperm.CmdFactionsPpermGui;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.event.EventFactionsDisband;
@@ -17,8 +15,8 @@ import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
-import com.mysql.jdbc.StringUtils;
-import gg.halcyon.upgrades.UpgradesManager;
+import gg.halcyon.upgrades.upgrades.TNTStorageUpgrade;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.*;
 import org.bukkit.block.Chest;
 import org.bukkit.command.CommandSender;
@@ -240,7 +238,7 @@ public class EngineExtras extends Engine
 			return;
 		
 		event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
-		MixinMessage.get().msgOne(event.getPlayer(), MConf.get().removeInvisEffectMsg);
+		MixinMessage.get().msgOne(event.getPlayer(), LangConf.get().removeInvisEffectMsg);
 	}
 	
 	// -------------------------------------------- //
@@ -291,6 +289,8 @@ public class EngineExtras extends Engine
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPlayerInteractChest(PlayerInteractEvent event)
 	{
+		if(!MConf.get().enableTnTWand) return;
+
 		if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 		
 		if (!(event.getClickedBlock().getType() == Material.CHEST || event.getClickedBlock().getType() == Material.TRAPPED_CHEST))
@@ -308,7 +308,7 @@ public class EngineExtras extends Engine
 		if (event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.stripColor(event.getPlayer().getItemInHand().getItemMeta().getDisplayName())))
 			return;
 		
-		if (!(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(Txt.parse(MConf.get().tntStickName))))
+		if (!(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals(Txt.parse(GuiConf.get().tntStickName))))
 			return;
 		
 		event.setCancelled(true);
@@ -327,9 +327,9 @@ public class EngineExtras extends Engine
 		int tntInChest = getAmountOfTNT(chest.getInventory());
 
 		try {
-			int maxTnt = Integer.parseInt(UpgradesManager.get().getUpgradeByName(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()).getCurrentUpgradeDescription()[faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()) - 1].split(" ")[2].replace(",", ""));
-			if(faction.getTnt() >= maxTnt) {
-				mPlayer.msg(Txt.parse("<rose>Could not add more tnt to bank due to it being full."));
+			int max = (int) TNTStorageUpgrade.getUpgradeValue(faction.getLevel(MissionUpgradeConf.get().tntUpgrade.getUpgradeName()));
+			if(faction.getTnt() >= max) {
+				mPlayer.msg(Txt.parse("<rose>Could not add tnt due it bank being full."));
 				return;
 			}
 		} catch (NumberFormatException | NullPointerException ignore) {}
@@ -346,11 +346,11 @@ public class EngineExtras extends Engine
 		int i = 0;
 		for (ItemStack is : inventory.getContents())
 		{
-			if (is != null && !is.hasItemMeta())
-			if (is.getType() == Material.TNT)
-				{
+			if (is != null && !is.hasItemMeta()) {
+				if (is.getType() == Material.TNT) {
 					i += is.getAmount();
 				}
+			}
 		}
 		return i;
 	}

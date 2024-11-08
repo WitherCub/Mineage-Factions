@@ -122,7 +122,7 @@ public class TaskPlaceSand extends ModuloRepeatTask {
                         @Override
                         public void run() {
                             faction.despawnSandbot(sbot);
-                            faction.msg(MConf.get().sandbotDespawnedNoMoneyInFbankMsg);
+                            faction.msg(LangConf.get().sandbotDespawnedNoMoneyInFbankMsg);
                         }
                     }.runTaskLater(Factions.get(), 2L);
                 }

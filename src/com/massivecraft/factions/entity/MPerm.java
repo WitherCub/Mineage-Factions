@@ -7,8 +7,6 @@ import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.cmd.CmdFactionsOverride;
 import com.massivecraft.factions.cmd.perm.CmdFactionsPerm;
 import com.massivecraft.factions.event.EventFactionsCreatePerms;
-import com.massivecraft.factions.integration.factionkore.EngineFKore;
-import com.massivecraft.factions.integration.factionkore.IntegrationFKore;
 import com.massivecraft.massivecore.Named;
 import com.massivecraft.massivecore.Prioritized;
 import com.massivecraft.massivecore.Registerable;

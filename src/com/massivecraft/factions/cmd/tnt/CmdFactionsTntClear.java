@@ -2,10 +2,7 @@ package com.massivecraft.factions.cmd.tnt;
 
 import com.massivecraft.factions.cmd.FactionsCommand;
 import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MissionUpgradeConf;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
@@ -41,7 +38,7 @@ public class CmdFactionsTntClear extends FactionsCommand
 		
 		if (radius > MConf.get().maximumFillRadius)
 		{
-			msg(MConf.get().reachedMaximumFillRadius);
+			msg(LangConf.get().reachedMaximumFillRadius);
 			return;
 		}
 		

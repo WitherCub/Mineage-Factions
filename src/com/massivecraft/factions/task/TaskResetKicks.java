@@ -2,6 +2,7 @@ package com.massivecraft.factions.task;
 
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.Skulls;
 import com.massivecraft.massivecore.ModuloRepeatTask;
@@ -32,7 +33,7 @@ public class TaskResetKicks extends ModuloRepeatTask {
 
             if (currentCalendar.get(Calendar.DAY_OF_MONTH) != lastUpdatedCalendar.get(Calendar.DAY_OF_MONTH)) {
                 for (Faction faction : FactionColl.get().getAll()) {
-                    faction.msg(MConf.get().rosterKicksResetMsg);
+                    faction.msg(LangConf.get().rosterKicksResetMsg);
                     faction.setRosterKicksRemaining(MConf.get().defaultRosterKicks);
                 }
                 Skulls.get().setKicksLastResetMillis(System.currentTimeMillis());

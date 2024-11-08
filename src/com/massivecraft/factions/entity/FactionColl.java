@@ -304,7 +304,7 @@ public class FactionColl extends Coll<Faction>
 		List<String> names = ret.get(Rel.TRUCE);
 		if (names == null) return ret;
 
-		ret.put(Rel.TRUCE, Collections.singletonList(MConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*")));
+		ret.put(Rel.TRUCE, Collections.singletonList(LangConf.get().colorTruce.toString() + Txt.parse("<italic>*EVERYONE*")));
 
 		// Return
 		return ret;

@@ -2,10 +2,7 @@ package com.massivecraft.factions.util;
 
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.RelationParticipator;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MFlag;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.util.Txt;
 import org.bukkit.ChatColor;
 
@@ -135,9 +132,9 @@ public class RelationUtil
 		Faction thatFaction = getFaction(that);
 		if (thatFaction != null && thatFaction != getFaction(me))
 		{
-			if (thatFaction.getFlag(MFlag.getFlagFriendlyire())) return MConf.get().colorFriendlyFire;
+			if (thatFaction.getFlag(MFlag.getFlagFriendlyire())) return LangConf.get().colorFriendlyFire;
 			
-			if (!thatFaction.getFlag(MFlag.getFlagPvp())) return MConf.get().colorNoPVP;
+			if (!thatFaction.getFlag(MFlag.getFlagPvp())) return LangConf.get().colorNoPVP;
 		}
 		return getRelationOfThatToMe(that, me).getColor();
 	}

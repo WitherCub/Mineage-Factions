@@ -1,5 +1,6 @@
 package com.massivecraft.factions.engine.runnables;
 
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.entity.objects.Mission;
@@ -37,7 +38,7 @@ public class SpinMissionsRunnable extends BukkitRunnable
 		
 		List<String> lore = new ArrayList<>();
 		
-		for (String s : MConf.get().missionsGuiMissionLore)
+		for (String s : LangConf.get().missionsGuiMissionLore)
 		{
 			lore.add(Txt.parse(s
 								   .replace("%missionDescription%", mission.getDescription())
@@ -54,7 +55,7 @@ public class SpinMissionsRunnable extends BukkitRunnable
 		
 		if (timesSpun == MConf.get().missionSpinTimes)
 		{
-			mPlayer.getFaction().msg(MConf.get().missionAssignedMsg.replace("%mission%", mission.getMissionDisplayname()));
+			mPlayer.getFaction().msg(LangConf.get().missionAssignedMsg.replace("%mission%", mission.getMissionDisplayname()));
 			
 			mPlayer.getFaction().setMissionStartTime(System.currentTimeMillis());
 			mPlayer.getFaction().setMissionRequirementComplete(0);

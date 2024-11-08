@@ -64,11 +64,11 @@ public class TaskRaidTimer extends ModuloRepeatTask {
                         processBreach(raidData);
                     }
 
-                    factionRaiding.msg(MConf.get().raidHasEndedMsg.replace("%faction%", factionRaided.getName()));
+                    factionRaiding.msg(LangConf.get().raidHasEndedMsg.replace("%faction%", factionRaided.getName()));
 
                     // Phase III shield
                     RaidDataStorage.get().addRaidtimerShield(factionRaided);
-                    factionRaided.msg(MConf.get().startOfPhaseThreeMsg);
+                    factionRaided.msg(LangConf.get().startOfPhaseThreeMsg);
                 }
                 return true;
             }
@@ -109,7 +109,7 @@ public class TaskRaidTimer extends ModuloRepeatTask {
 
                     if (valueLost > 0) {
                         for (MPlayer mPlayer : MPlayerColl.get().getAllOnline()) {
-                            for (String line : MConf.get().msgFactionBreached) {
+                            for (String line : LangConf.get().msgFactionBreached) {
                                 mPlayer.msg(line
                                         .replace("%factionRaiding%", factionRaiding.describeTo(mPlayer, true))
                                         .replace("%factionRaided%", factionRaided.describeTo(mPlayer, true))

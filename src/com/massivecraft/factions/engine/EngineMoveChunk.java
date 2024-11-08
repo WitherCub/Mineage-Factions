@@ -3,10 +3,7 @@ package com.massivecraft.factions.engine;
 import com.massivecraft.factions.AccessStatus;
 import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.util.AsciiMap;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.MixinTitle;
@@ -91,16 +88,16 @@ public class EngineMoveChunk extends Engine
 		
 		if (mplayer.isTerritoryInfoTitles())
 		{
-			String titleMain = parseTerritoryInfo(MConf.get().territoryInfoTitlesMain, mplayer, factionTo);
-			String titleSub = parseTerritoryInfo(MConf.get().territoryInfoTitlesSub, mplayer, factionTo);
-			int ticksIn = MConf.get().territoryInfoTitlesTicksIn;
-			int ticksStay = MConf.get().territoryInfoTitlesTicksStay;
-			int ticksOut = MConf.get().territoryInfoTitleTicksOut;
+			String titleMain = parseTerritoryInfo(LangConf.get().territoryInfoTitlesMain, mplayer, factionTo);
+			String titleSub = parseTerritoryInfo(LangConf.get().territoryInfoTitlesSub, mplayer, factionTo);
+			int ticksIn = LangConf.get().territoryInfoTitlesTicksIn;
+			int ticksStay = LangConf.get().territoryInfoTitlesTicksStay;
+			int ticksOut = LangConf.get().territoryInfoTitleTicksOut;
 			MixinTitle.get().sendTitleMessage(player, ticksIn, ticksStay, ticksOut, titleMain, titleSub);
 		}
 		else
 		{
-			String message = parseTerritoryInfo(MConf.get().territoryInfoChat, mplayer, factionTo);
+			String message = parseTerritoryInfo(LangConf.get().territoryInfoChat, mplayer, factionTo);
 			player.sendMessage(message);
 		}
 	}

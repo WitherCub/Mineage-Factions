@@ -1,6 +1,7 @@
 package com.massivecraft.factions.cmd.tnt;
 
 import com.massivecraft.factions.cmd.FactionsCommand;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.entity.MissionUpgradeConf;
@@ -39,7 +40,7 @@ public class CmdFactionsTntFill extends FactionsCommand
 		
 		if (tntPer < 1)
 		{
-			msg(MConf.get().cantFillLessThanOne);
+			msg(LangConf.get().cantFillLessThanOne);
 			return;
 		}
 		
@@ -47,7 +48,7 @@ public class CmdFactionsTntFill extends FactionsCommand
 		
 		if (radius > MConf.get().maximumFillRadius)
 		{
-			msg(MConf.get().reachedMaximumFillRadius);
+			msg(LangConf.get().reachedMaximumFillRadius);
 			return;
 		}
 		

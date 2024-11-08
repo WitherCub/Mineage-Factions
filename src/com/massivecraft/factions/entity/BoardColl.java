@@ -36,6 +36,10 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	@Override
 	public void onTick()
 	{
+		//super.onTick();
+	}
+
+	public void onTickFixed() {
 		super.onTick();
 	}
 	

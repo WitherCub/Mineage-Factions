@@ -28,23 +28,23 @@ public class ActionSpawnSandbot extends ChestActionAbstract {
         Sandbot sandbot = faction.getSandbots().get(slot);
 
         if (sandbot == null) {
-            mPlayer.msg(MConf.get().spawnbotSandPurchaseSandbotMsg.replace("%sandbotNumber%", String.valueOf(sandbotNumber)));
+            mPlayer.msg(LangConf.get().spawnbotSandPurchaseSandbotMsg.replace("%sandbotNumber%", String.valueOf(sandbotNumber)));
             return false;
         }
 
         if (!sandbot.isDespawned()) {
-            mPlayer.msg(MConf.get().sandbotSpawnAlreadySpawnedMsg);
+            mPlayer.msg(LangConf.get().sandbotSpawnAlreadySpawnedMsg);
         }
 
         PS psAt = PS.valueOf(player.getLocation());
 
         if (!faction.getId().equals(BoardColl.get().getFactionAt(psAt).getId())) {
-            mPlayer.msg(MConf.get().spawnbotMustBeInFactionLandMsg);
+            mPlayer.msg(LangConf.get().spawnbotMustBeInFactionLandMsg);
             return false;
         }
 
         faction.spawnSandbot(sandbot, psAt);
-        mPlayer.msg(MConf.get().spawnbotSpawnedMsg);
+        mPlayer.msg(LangConf.get().spawnbotSpawnedMsg);
         return false;
     }
 }

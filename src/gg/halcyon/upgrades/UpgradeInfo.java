@@ -37,9 +37,10 @@ public class UpgradeInfo extends EntityInternal<UpgradeInfo>
 	private String[] nextUpgradeDescription;
 	private Material upgradeItem;
 	private Integer[] cost;
+	private Double[] upgradeValue;
 	private int inventorySlot;
 	
-	public UpgradeInfo(String upgradeName, Material upgradeItem, int maxLevel, String[] currentUpgradeDescription, String[] nextUpgradeDescription, Integer[] cost, int inventorySlot)
+	public UpgradeInfo(String upgradeName, Material upgradeItem, int maxLevel, String[] currentUpgradeDescription, String[] nextUpgradeDescription, Integer[] cost, Double[] upgradeValue, int inventorySlot)
 	{
 		this.maxLevel = maxLevel;
 		this.upgradeName = upgradeName;
@@ -47,6 +48,7 @@ public class UpgradeInfo extends EntityInternal<UpgradeInfo>
 		this.nextUpgradeDescription = nextUpgradeDescription;
 		this.upgradeItem = upgradeItem;
 		this.cost = cost;
+		this.upgradeValue = upgradeValue;
 		this.inventorySlot = inventorySlot;
 	}
 	
@@ -57,5 +59,9 @@ public class UpgradeInfo extends EntityInternal<UpgradeInfo>
 
 	public int getInventorySlot() {
 		return inventorySlot;
+	}
+
+	public Double[] getUpgradeValue() {
+		return upgradeValue;
 	}
 }

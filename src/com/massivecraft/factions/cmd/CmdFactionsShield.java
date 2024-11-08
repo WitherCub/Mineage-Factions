@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.engine.actions.ActionDisableShield;
 import com.massivecraft.factions.engine.actions.ActionShieldOpenConfirm;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.util.ItemBuilder;
@@ -45,7 +46,7 @@ public class CmdFactionsShield extends FactionsCommand
 	
 	private ChestGui getShieldGui(Faction faction)
 	{
-		Inventory inventory = Bukkit.createInventory(null, 45, Txt.parse(MConf.get().shieldMangerGuiTitle));
+		Inventory inventory = Bukkit.createInventory(null, 45, Txt.parse(GuiConf.get().shieldMangerGuiTitle));
 		
 		ChestGui chestGui = ChestGui.getCreative(inventory);
 		chestGui.setAutoclosing(true);
@@ -72,17 +73,17 @@ public class CmdFactionsShield extends FactionsCommand
 			
 			if (faction.getShieldedHoursStartTime() != null && faction.getShieldedHoursStartTime() == startHour)
 			{
-				MConf.get().shieldManagerGuiLoreCurrently.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+				GuiConf.get().shieldManagerGuiLoreCurrently.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 				chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(13).setLore(lore));
 			}
 			else if (faction.getShieldedHoursChangeRequestNewStartTime() != null && faction.getShieldedHoursChangeRequestNewStartTime() == startHour)
 			{
-				MConf.get().shieldManagerGuiLoreChangeTo.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+				GuiConf.get().shieldManagerGuiLoreChangeTo.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 				chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(4).setLore(lore));
 			}
 			else
 			{
-				MConf.get().shieldManagerGuiLoreChange.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+				GuiConf.get().shieldManagerGuiLoreChange.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 				chestGui.getInventory().setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(14).setLore(lore));
 				chestGui.setAction(i, new ActionShieldOpenConfirm("Set", faction, startHour, msender.describeTo(msenderFaction, true), msenderFaction.describeTo(msender), startHourFormatted, endHourFormatted));
 			}
@@ -97,22 +98,22 @@ public class CmdFactionsShield extends FactionsCommand
 		if (faction.getShieldedHoursCooldownFromDisable() != null)
 		{
 			String timeRemaining = TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursCooldownFromDisable()));
-			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(MConf.get().pendingChangeGuiName)).setLore(MConf.get().pendingChangeGuiLoreChangeAfterDisable.stream().map(s -> Txt.parse(s.replace("%time%", timeRemaining))).collect(Collectors.toList())));
+			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(GuiConf.get().pendingChangeGuiName)).setLore(GuiConf.get().pendingChangeGuiLoreChangeAfterDisable.stream().map(s -> Txt.parse(s.replace("%time%", timeRemaining))).collect(Collectors.toList())));
 		}
 		else if (faction.getShieldedHoursChangeRequestNewStartTime() != null)
 		{
 			String newStartHourFormatted = getTimeFormatted(faction.getShieldedHoursChangeRequestNewStartTime(), 0);
 			String newEndHourFormatted = getTimeFormatted(MConf.get().shieldStartEndHours.get(faction.getShieldedHoursChangeRequestNewStartTime()), 0);
 			String timeRemaining = TimeUtil.formatTime(MConf.get().shieldHoursChangeTimeBeforeUpdate - (System.currentTimeMillis() - faction.getShieldedHoursChangeRequestMillis()));
-			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(MConf.get().pendingChangeGuiName)).setLore(MConf.get().pendingChangeGuiLoreChangeActive.stream().map(s -> Txt.parse(s.replace("%startHour%", newStartHourFormatted).replace("%endHour%", newEndHourFormatted).replace("%time%", timeRemaining))).collect(Collectors.toList())));
+			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(GuiConf.get().pendingChangeGuiName)).setLore(GuiConf.get().pendingChangeGuiLoreChangeActive.stream().map(s -> Txt.parse(s.replace("%startHour%", newStartHourFormatted).replace("%endHour%", newEndHourFormatted).replace("%time%", timeRemaining))).collect(Collectors.toList())));
 		}
 		else
 		{
-			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(MConf.get().pendingChangeGuiName)).setLore(MConf.get().pendingChangeGuiLoreNoChange.stream().map(Txt::parse).collect(Collectors.toList())));
+			chestGui.getInventory().setItem(39, new ItemBuilder(Material.WATCH).name(Txt.parse(GuiConf.get().pendingChangeGuiName)).setLore(GuiConf.get().pendingChangeGuiLoreNoChange.stream().map(Txt::parse).collect(Collectors.toList())));
 		}
 		
-		chestGui.getInventory().setItem(40, new ItemBuilder(Material.PAPER).name(Txt.parse(MConf.get().shieldInformationGuiName)).setLore(MConf.get().shieldInformationGuiLore.stream().map(Txt::parse).collect(Collectors.toList())));
-		chestGui.getInventory().setItem(41, new ItemBuilder(Material.REDSTONE_BLOCK).name(Txt.parse(MConf.get().disableShieldGuiItemName)).setLore(MConf.get().disableShieldGuiItemLore.stream().map(Txt::parse).collect(Collectors.toList())));
+		chestGui.getInventory().setItem(40, new ItemBuilder(Material.PAPER).name(Txt.parse(GuiConf.get().shieldInformationGuiName)).setLore(GuiConf.get().shieldInformationGuiLore.stream().map(Txt::parse).collect(Collectors.toList())));
+		chestGui.getInventory().setItem(41, new ItemBuilder(Material.REDSTONE_BLOCK).name(Txt.parse(GuiConf.get().disableShieldGuiItemName)).setLore(GuiConf.get().disableShieldGuiItemLore.stream().map(Txt::parse).collect(Collectors.toList())));
 		chestGui.setAction(41, new ActionDisableShield(faction, msender.describeTo(msenderFaction, true), msenderFaction.describeTo(msender)));
 		chestGui.setAction(41, new ActionShieldOpenConfirm("Disable", faction, 0, msender.describeTo(msenderFaction, true), msenderFaction.describeTo(msender), null, null));
 		

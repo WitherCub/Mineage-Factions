@@ -3,7 +3,7 @@ package com.massivecraft.factions.engine;
 import com.massivecraft.factions.ChatMode;
 import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.entity.MPlayerColl;
 import com.massivecraft.massivecore.Engine;
@@ -58,7 +58,7 @@ public class EngineFactionChat extends Engine
 		// Is it a faction chat message?
 		if (chat == ChatMode.FACTION)
 		{
-			String message = String.format(MConf.factionChatFormat, me.describeTo(myFaction), msg);
+			String message = String.format(LangConf.factionChatFormat, me.describeTo(myFaction), msg);
 			
 			for (MPlayer mPlayer : MPlayerColl.get().getAllOnline())
 			{
@@ -88,7 +88,7 @@ public class EngineFactionChat extends Engine
 		}
 		else if (chat == ChatMode.ALLIANCE)
 		{
-			String message = String.format(MConf.allianceChatFormat, ChatColor.stripColor(me.getNameAndFactionName()), msg);
+			String message = String.format(LangConf.allianceChatFormat, ChatColor.stripColor(me.getNameAndFactionName()), msg);
 			
 			//Send message to our own faction
 			for (MPlayer mPlayer : MPlayerColl.get().getAllOnline())
@@ -126,7 +126,7 @@ public class EngineFactionChat extends Engine
 		}
 		else if (chat == ChatMode.TRUCE)
 		{
-			String message = String.format(MConf.truceChatFormat, ChatColor.stripColor(me.getNameAndFactionName()), msg);
+			String message = String.format(LangConf.truceChatFormat, ChatColor.stripColor(me.getNameAndFactionName()), msg);
 			
 			//Send message to our own faction
 			for (MPlayer mPlayer : MPlayerColl.get().getAllOnline())

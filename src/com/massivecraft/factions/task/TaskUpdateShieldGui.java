@@ -3,6 +3,7 @@ package com.massivecraft.factions.task;
 import com.massivecraft.factions.cmd.CmdFactions;
 import com.massivecraft.factions.cmd.CmdFactionsShield;
 import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.GuiConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.util.ItemBuilder;
@@ -47,7 +48,7 @@ public class TaskUpdateShieldGui extends ModuloRepeatTask
 		{
 			MPlayer mplayer = MPlayer.get(uuid);
 			
-			if (!mplayer.getPlayer().getOpenInventory().getTitle().equals(Txt.parse(MConf.get().shieldMangerGuiTitle))) continue;
+			if (!mplayer.getPlayer().getOpenInventory().getTitle().equals(Txt.parse(GuiConf.get().shieldMangerGuiTitle))) continue;
 			
 			Faction faction = mplayer.getFaction();
 			Inventory inventory = mplayer.getPlayer().getOpenInventory().getTopInventory();
@@ -66,17 +67,17 @@ public class TaskUpdateShieldGui extends ModuloRepeatTask
 				
 				if (faction.getShieldedHoursStartTime() != null && faction.getShieldedHoursStartTime() == startHour)
 				{
-					MConf.get().shieldManagerGuiLoreCurrently.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+					GuiConf.get().shieldManagerGuiLoreCurrently.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 					inventory.setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(13).setLore(lore));
 				}
 				else if (faction.getShieldedHoursChangeRequestNewStartTime() != null && faction.getShieldedHoursChangeRequestNewStartTime() == startHour)
 				{
-					MConf.get().shieldManagerGuiLoreChangeTo.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+					GuiConf.get().shieldManagerGuiLoreChangeTo.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 					inventory.setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(4).setLore(lore));
 				}
 				else
 				{
-					MConf.get().shieldManagerGuiLoreChange.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
+					GuiConf.get().shieldManagerGuiLoreChange.forEach(s -> lore.add(Txt.parse(s.replace("%startHour%", startHourFormatted).replace("%endHour%", endHourFormatted).replace("%currentTime%", currentTime))));
 					inventory.setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).amount(1).name(" ").durability(14).setLore(lore));
 				}
 				

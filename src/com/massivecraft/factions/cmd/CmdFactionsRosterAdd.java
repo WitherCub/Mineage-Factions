@@ -4,6 +4,7 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.req.ReqHasFaction;
 import com.massivecraft.factions.cmd.type.TypeMPlayer;
 import com.massivecraft.factions.cmd.type.TypeRel;
+import com.massivecraft.factions.entity.LangConf;
 import com.massivecraft.factions.entity.MConf;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
@@ -28,37 +29,37 @@ public class CmdFactionsRosterAdd extends FactionsCommand {
         Rel rel = this.readArg(Rel.RECRUIT);
 
         if (!MConf.get().isRosterChangeable()) {
-            msender.msg(MConf.get().modificationsToRosterNotEnabledMsg);
+            msender.msg(LangConf.get().modificationsToRosterNotEnabledMsg);
             return;
         }
 
         if (!MConf.get().acceptableDefaultRankFactionRelations.contains(rel)) {
-            msender.msg(MConf.get().notValidDefaultRankMsg);
+            msender.msg(LangConf.get().notValidDefaultRankMsg);
             return;
         }
 
         if (msenderFaction.isSystemFaction()) {
-            msender.msg(MConf.get().systemFactionMsg);
+            msender.msg(LangConf.get().systemFactionMsg);
             return;
         }
 
         if (!MConf.get().permittedRanksToModifyRoster.contains(msender.getRelationTo(msenderFaction))) {
-            msender.msg(MConf.get().notPermittedToModifyRosterMsg);
+            msender.msg(LangConf.get().notPermittedToModifyRosterMsg);
             return;
         }
 
         if (msenderFaction.getRoster().containsKey(mPlayer.getUuid())) {
-            msender.msg(MConf.get().playerAlreadyInRosterMsg);
+            msender.msg(LangConf.get().playerAlreadyInRosterMsg);
             return;
         }
 
         if (msenderFaction.getRoster().size() >= MConf.get().maxRosterSize) {
-            msender.msg(MConf.get().factionRosterFullMsg);
+            msender.msg(LangConf.get().factionRosterFullMsg);
             return;
         }
 
         msenderFaction.addToRoster(mPlayer.getUuid(), rel);
-        msenderFaction.msg(MConf.get().playerAddedToRosterMsg.replace("%player%", mPlayer.getName()));
+        msenderFaction.msg(LangConf.get().playerAddedToRosterMsg.replace("%player%", mPlayer.getName()));
     }
 
 }

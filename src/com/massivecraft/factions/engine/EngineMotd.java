@@ -1,11 +1,7 @@
 package com.massivecraft.factions.engine;
 
 import com.massivecraft.factions.Factions;
-import com.massivecraft.factions.entity.Board;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MPerm;
-import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.entity.*;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.MixinActual;
 import com.massivecraft.massivecore.mixin.MixinMessage;
@@ -77,7 +73,7 @@ public class EngineMotd extends Engine
 				}
 			}
 			
-			final String message = MConf.get().playerJoinMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer));
+			final String message = LangConf.get().playerJoinMessage.replace("%PLAYER%", mplayer.getNameAndTitle(mplayer));
 			
 			if (!(faction.isNone()))
 			{

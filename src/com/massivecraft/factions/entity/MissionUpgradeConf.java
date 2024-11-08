@@ -37,17 +37,17 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 			5,
 			new String[]{
 					"Mob spawner rates boosted by a total /nof 2% in your claimed land",
-					"Mob spawner rates boosted by a total /nof 4% in your claimed land",
 					"Mob spawner rates boosted by a total /nof 6% in your claimed land",
-					"Mob spawner rates boosted by a total /nof 8% in your claimed land",
-					"Mob spawner rates boosted by a total /nof 10% in your claimed land"
+					"Mob spawner rates boosted by a total /nof 16% in your claimed land",
+					"Mob spawner rates boosted by a total /nof 24% in your claimed land",
+					"Mob spawner rates boosted by a total /nof 30% in your claimed land"
 			},
 			new String[]{
 					"Increases mob spawner rates by 2% /nin your claimed land",
 					"Increases mob spawner rates by 4% /nfor a total of 6% in your claimed land",
-					"Increases mob spawner rates by 6% /nfor a total of 16% in your claimed land",
-					"Increases mob spawner rates by 8% /nfor a total of 24% in your claimed land",
-					"Increases mob spawner rates by 10% /nfor a total of 34% in your claimed land"
+					"Increases mob spawner rates by 6% /nfor a total of 12% in your claimed land",
+					"Increases mob spawner rates by 8% /nfor a total of 20% in your claimed land",
+					"Increases mob spawner rates by 10% /nfor a total of 30% in your claimed land"
 			},
 			new Integer[]{
 					1000000,
@@ -55,6 +55,13 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 					3000000,
 					4000000,
 					5000000
+			},
+			new Double[]{
+					0.02,
+					0.06,
+					0.12,
+					0.20,
+					0.30,
 			},
 			1);
 
@@ -64,16 +71,16 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 			5,
 			new String[]{
 					"Crop growth rates boosted by a total /nof 2% in your claimed land",
-					"Crop growth rates boosted by a total /nof 4% in your claimed land",
 					"Crop growth rates boosted by a total /nof 6% in your claimed land",
-					"Crop growth rates boosted by a total /nof 8% in your claimed land",
-					"Crop growth rates boosted by a total /nof 10% in your claimed land"
+					"Crop growth rates boosted by a total /nof 12% in your claimed land",
+					"Crop growth rates boosted by a total /nof 20% in your claimed land",
+					"Crop growth rates boosted by a total /nof 30% in your claimed land"
 			},
 			new String[]{
 					"Increases crop growth rates by 2% /nin your claimed land",
 					"Increases crop growth rates by 4% /nfor a total of 6% in your claimed land",
-					"Increases crop growth rates by 6% /nfor a total of 16% in your claimed land",
-					"Increases crop growth rates by 8% /nfor a total of 24% in your claimed land",
+					"Increases crop growth rates by 6% /nfor a total of 12% in your claimed land",
+					"Increases crop growth rates by 8% /nfor a total of 20% in your claimed land",
 					"Increases crop growth rates by 10% /nfor a total of 30% in your claimed land"
 			},
 			new Integer[]{
@@ -82,6 +89,13 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 					3000000,
 					4000000,
 					5000000
+			},
+			new Double[]{
+					0.02,
+					0.06,
+					0.12,
+					0.20,
+					0.30,
 			},
 			2);
 
@@ -110,98 +124,125 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 					2000000,
 					3000000
 			},
+			new Double[]{
+					0.1,
+					0.2,
+					0.3,
+			},
 			3);
 
 	public UpgradeInfo factionChestUpgrade = new UpgradeInfo(
-		Txt.parse("<i>Faction Chest"),
-		Material.CHEST,
-		3,
-		new String[]{
-			"Total of 18 slots of virtual chest storage in /f chest",
-			"Total of 36 slots of virtual chest storage in /f chest",
-			"Total of 54 slots of virtual chest storage in /f chest"
-		},
-		new String[]{
-			"Unlocks a total of 18 slots of /nvirtual chest storage in /f chest",
-			"Unlocks 18 extra slots for a total of 36 /nslots of virtual chest storage in /f chest",
-			"Unlocks 18 extra slots for a total of 54 /nslots of virtual chest storage in /f chest"
-		},
-		new Integer[]{
-			1000000,
-			2000000,
-			3000000
-		},
+			Txt.parse("<i>Faction Chest"),
+			Material.CHEST,
+			3,
+			new String[]{
+				"Total of 18 slots of virtual chest storage in /f chest",
+				"Total of 36 slots of virtual chest storage in /f chest",
+				"Total of 54 slots of virtual chest storage in /f chest"
+			},
+			new String[]{
+				"Unlocks a total of 18 slots of /nvirtual chest storage in /f chest",
+				"Unlocks 18 extra slots for a total of 36 /nslots of virtual chest storage in /f chest",
+				"Unlocks 18 extra slots for a total of 54 /nslots of virtual chest storage in /f chest"
+			},
+			new Integer[]{
+				1000000,
+				2000000,
+				3000000
+			},
+			new Double[]{
+					18D,
+					36D,
+					54D
+			},
 			4);
 	
 	public UpgradeInfo tntUpgrade = new UpgradeInfo(
-		Txt.parse("<i>Virtual TNT Storage"),
-		Material.TNT,
-		10,
-		new String[]{
-			"Total of 10,000 slots of virtual tnt storage in /f tnt",
-			"Total of 30,000 slots of virtual tnt storage in /f tnt",
-			"Total of 50,000 slots of virtual tnt storage in /f tnt",
-			"Total of 75,000 slots of virtual tnt storage in /f tnt",
-			"Total of 100,000 slots of virtual tnt storage in /f tnt",
-			"Total of 125,000 slots of virtual tnt storage in /f tnt",
-			"Total of 150,000 slots of virtual tnt storage in /f tnt",
-			"Total of 200,000 slots of virtual tnt storage in /f tnt",
-			"Total of 250,000 slots of virtual tnt storage in /f tnt",
-			"Total of 300,000 slots of virtual tnt storage in /f tnt"
-		},
-		new String[]{
-			"Unlocks a total of 10,000 slots of /nvirtual tnt storage in /f tnt",
-			"Unlocks 20,000 extra slots for a total of /n30,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 20,000 extra slots for a total of /n50,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 25,000 extra slots for a total of /n75,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 25,000 extra slots for a total of /n100,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 25,000 extra slots for a total of /n125,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 25,000 extra slots for a total of /n150,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 50,000 extra slots for a total of /n200,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 50,000 extra slots for a total of /n250,000 slots of virtual tnt storage in /f tnt",
-			"Unlocks 50,000 extra slots for a total of /n300,000 slots of virtual tnt storage in /f tnt"
-		},
-		new Integer[]{
-			1000000,
-			2000000,
-			3000000,
-			4000000,
-			5000000,
-			6000000,
-			7000000,
-			8000000,
-			9000000,
-			10000000
-		},
+			Txt.parse("<i>Virtual TNT Storage"),
+			Material.TNT,
+			10,
+			new String[]{
+				"Total of 10,000 slots of virtual tnt storage in /f tnt",
+				"Total of 30,000 slots of virtual tnt storage in /f tnt",
+				"Total of 50,000 slots of virtual tnt storage in /f tnt",
+				"Total of 75,000 slots of virtual tnt storage in /f tnt",
+				"Total of 100,000 slots of virtual tnt storage in /f tnt",
+				"Total of 125,000 slots of virtual tnt storage in /f tnt",
+				"Total of 150,000 slots of virtual tnt storage in /f tnt",
+				"Total of 200,000 slots of virtual tnt storage in /f tnt",
+				"Total of 250,000 slots of virtual tnt storage in /f tnt",
+				"Total of 300,000 slots of virtual tnt storage in /f tnt"
+			},
+			new String[]{
+				"Unlocks a total of 10,000 slots of /nvirtual tnt storage in /f tnt",
+				"Unlocks 20,000 extra slots for a total of /n30,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 20,000 extra slots for a total of /n50,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 25,000 extra slots for a total of /n75,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 25,000 extra slots for a total of /n100,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 25,000 extra slots for a total of /n125,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 25,000 extra slots for a total of /n150,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 50,000 extra slots for a total of /n200,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 50,000 extra slots for a total of /n250,000 slots of virtual tnt storage in /f tnt",
+				"Unlocks 50,000 extra slots for a total of /n300,000 slots of virtual tnt storage in /f tnt"
+			},
+			new Integer[]{
+				1000000,
+				2000000,
+				3000000,
+				4000000,
+				5000000,
+				6000000,
+				7000000,
+				8000000,
+				9000000,
+				10000000
+			},
+			new Double[]{
+					10000D,
+					30000D,
+					50000D,
+					750000D,
+					100000D,
+					125000D,
+					150000D,
+					200000D,
+					250000D,
+					300000D,
+			},
 			5);
-	
-	public int warpsPerUpgrade = 2;
-	
+
 	public UpgradeInfo warpUpgrade = new UpgradeInfo(
-		Txt.parse("<i>More Warps"),
-		Material.ENDER_PORTAL_FRAME,
-		5,
-		new String[]{
-			"Total of " + (MConf.get().amountOfWarps + warpsPerUpgrade) + " faction warps",
-			"Total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 2)) + " faction warps",
-			"Total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 3)) + " faction warps",
-			"Total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 4)) + " faction warps",
-			"Total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 5)) + " faction warps",
-		},
-		new String[]{
-			"Unlocks 2 extra faction warps for a total of " + (MConf.get().amountOfWarps + warpsPerUpgrade),
-			"Unlocks 2 extra faction warps for a total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 2)),
-			"Unlocks 2 extra faction warps for a total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 3)),
-			"Unlocks 2 extra faction warps for a total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 4)),
-			"Unlocks 2 extra faction warps for a total of " + (MConf.get().amountOfWarps + (warpsPerUpgrade * 5))
-		},
-		new Integer[]{
-			1000000,
-			2000000,
-			3000000,
-			4000000,
-			5000000
-		},
+			Txt.parse("<i>More Warps"),
+			Material.ENDER_PORTAL_FRAME,
+			5,
+			new String[]{
+				"Total of 7 faction warps",
+				"Total of 9 faction warps",
+				"Total of 11 faction warps",
+				"Total of 13 faction warps",
+				"Total of 15 faction warps",
+			},
+			new String[]{
+				"Unlocks 2 extra faction warps for a total of 7",
+				"Unlocks 2 extra faction warps for a total of 9",
+				"Unlocks 2 extra faction warps for a total of 11",
+				"Unlocks 2 extra faction warps for a total of 13",
+				"Unlocks 2 extra faction warps for a total of 15"
+			},
+			new Integer[]{
+				1000000,
+				2000000,
+				3000000,
+				4000000,
+				5000000
+			},
+			new Double[]{
+					2D,
+					4D,
+					6D,
+					8D,
+					10D
+			},
 			6
 	);
 
@@ -239,6 +280,7 @@ public class MissionUpgradeConf extends Entity<MissionUpgradeConf>
 					7000000,
 					8000000
 			},
+			new Double[]{},
 			7
 	);
 
