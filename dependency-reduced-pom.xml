@@ -67,6 +67,10 @@
       <id>polar-repo</id>
       <url>https://repo.polar.top/repository/polar/</url>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -242,20 +246,6 @@
       <systemPath>${project.basedir}/libs/Vault.jar</systemPath>
     </dependency>
     <dependency>
-      <groupId>com.dthielke.herochat</groupId>
-      <artifactId>Herochat</artifactId>
-      <version>LATEST</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/libs/Herochat.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>com.griefcraft</groupId>
-      <artifactId>lwc</artifactId>
-      <version>LATEST</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/libs/LWC.jar</systemPath>
-    </dependency>
-    <dependency>
       <groupId>org.jdgames</groupId>
       <artifactId>SilkSpawners</artifactId>
       <version>LATEST</version>
@@ -289,6 +279,13 @@
       <version>LATEST</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/libs/SupplyDrops-v1.1.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.github.N0RSKA</groupId>
+      <artifactId>UltimateAutoRestartAPI</artifactId>
+      <version>2023.12</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/libs/UltimateAutoRestart-2023.12.jar</systemPath>
     </dependency>
   </dependencies>
 </project>

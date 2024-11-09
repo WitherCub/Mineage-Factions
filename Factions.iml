@@ -90,24 +90,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library name="Maven: com.dthielke.herochat:Herochat:LATEST">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/Herochat.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="Maven: com.griefcraft:lwc:LATEST">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/LWC.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.essentialsx:EssentialsX:2.19.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: io.papermc:paperlib:1.0.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.essentialsx:BaseProviders:2.19.0" level="project" />
@@ -213,5 +195,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.stellardev.galactic:GalacticLib:1.19.14" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.github.N0RSKA:UltimateAutoRestartAPI:2023.12">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/UltimateAutoRestart-2023.12.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
