@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <artifactId>MassiveSuper</artifactId>
-    <groupId>com.massivecraft.massivesuper</groupId>
-    <version>2.17.0-SNAPSHOT</version>
-    <relativePath>../pom.xml/pom.xml</relativePath>
-  </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.massivecraft.factions</groupId>
   <artifactId>Factions</artifactId>
   <name>${project.artifactId}</name>
   <version>2.18.0</version>
-  <description>${massiveColorInfo}${project.name} allows the players to team up and claim land as their own and start
-        wars with other factions. This way we hope to inspire politics, intrigue, and team spirit.
-        ${massiveDescriptionSuffix}</description>
-  <url>${massiveBaseUrl}/factions</url>
   <build>
     <resources>
       <resource>
@@ -31,11 +21,12 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <compileSourceRoots>src</compileSourceRoots>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.5.3</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -74,133 +65,21 @@
   </repositories>
   <dependencies>
     <dependency>
-      <groupId>org.github.paperspigot</groupId>
-      <artifactId>paperspigot-api</artifactId>
-      <version>1.8.8-R0.1-SNAPSHOT</version>
+      <groupId>net.techcable.tacospigot</groupId>
+      <artifactId>WineSpigot</artifactId>
+      <version>1.8.8-R0.2-SNAPSHOT</version>
       <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>commons-lang</artifactId>
-          <groupId>commons-lang</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>json-simple</artifactId>
-          <groupId>com.googlecode.json-simple</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>guava</artifactId>
-          <groupId>com.google.guava</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>gson</artifactId>
-          <groupId>com.google.code.gson</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>ebean</artifactId>
-          <groupId>org.avaje</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>snakeyaml</artifactId>
-          <groupId>org.yaml</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>bungeecord-chat</artifactId>
-          <groupId>net.md-5</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
-      <groupId>org.spigotmc</groupId>
-      <artifactId>spigot-api</artifactId>
-      <version>1.18.1-R0.1-SNAPSHOT</version>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.17-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>commons-lang</artifactId>
-          <groupId>commons-lang</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>guava</artifactId>
-          <groupId>com.google.guava</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>gson</artifactId>
-          <groupId>com.google.code.gson</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>bungeecord-chat</artifactId>
-          <groupId>net.md-5</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>snakeyaml</artifactId>
-          <groupId>org.yaml</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>net.essentialsx</groupId>
-      <artifactId>EssentialsX</artifactId>
-      <version>2.19.0</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>paperlib</artifactId>
-          <groupId>io.papermc</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>BaseProviders</artifactId>
-          <groupId>net.essentialsx</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>PaperProvider</artifactId>
-          <groupId>net.essentialsx</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>NMSReflectionProvider</artifactId>
-          <groupId>net.essentialsx</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>1_8Provider</artifactId>
-          <groupId>net.essentialsx</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>configurate-yaml</artifactId>
-          <groupId>org.spongepowered</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>checker-qual</artifactId>
-          <groupId>org.checkerframework</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>bstats-bukkit</artifactId>
-          <groupId>org.bstats</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>top.polar</groupId>
       <artifactId>api</artifactId>
       <version>2.0.0</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>reactor-netty</artifactId>
-          <groupId>io.projectreactor.netty</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>netty-all</artifactId>
-          <groupId>io.netty</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>kafka-clients</artifactId>
-          <groupId>org.apache.kafka</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.stellardev.galactic</groupId>
-      <artifactId>GalacticLib</artifactId>
-      <version>1.19.14</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -246,6 +125,13 @@
       <systemPath>${project.basedir}/libs/Vault.jar</systemPath>
     </dependency>
     <dependency>
+      <groupId>net.essentialsx</groupId>
+      <artifactId>EssentialsX</artifactId>
+      <version>2.21.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/libs/EssentialsX-2.21.0.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>org.jdgames</groupId>
       <artifactId>SilkSpawners</artifactId>
       <version>LATEST</version>
@@ -289,4 +175,3 @@
     </dependency>
   </dependencies>
 </project>
-

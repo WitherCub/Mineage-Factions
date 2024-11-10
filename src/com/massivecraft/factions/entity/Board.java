@@ -4,24 +4,26 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.entity.objects.BoardInterface;
 import com.massivecraft.factions.task.TaskUpdateBoard;
+import com.massivecraft.factions.util.MiscUtil;
 import com.massivecraft.massivecore.collections.MassiveMap;
 import com.massivecraft.massivecore.collections.MassiveSet;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.store.Modification;
 import com.massivecraft.massivecore.xlib.gson.reflect.TypeToken;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Type;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Board extends Entity<Board> implements BoardInterface
 {
@@ -31,11 +33,50 @@ public class Board extends Entity<Board> implements BoardInterface
 	// META
 	// -------------------------------------------- //
 	
-	public static Board get(Object oid)
+	public static Board get(Object object)
 	{
-		return BoardColl.get().get(oid);
+		if (!(object instanceof PS)) {
+			throw new IllegalArgumentException("Board IDs must be instances of PS");
+		}
+		PS ps = (PS) object;
+		return BoardColl.get().get(ps.getWorld() + "#" + (ps.getChunkX(true) >> 5) + "#" + (ps.getChunkZ(true) >> 5));
 	}
-	
+
+	public static Collection<Board> getAll() {
+		return BoardColl.get().getAll();
+	}
+
+	public static Set<Board> getWorld(String world)
+	{
+		return getWorldStream(world).collect(Collectors.toSet());
+	}
+
+	public static Stream<Board> getWorldStream(String world)
+	{
+		return getAll().stream()
+				.filter(board -> board.getId().startsWith(world+"#"));
+	}
+
+	// -------------------------------------------- //
+	// IDENTIFIERS
+	// -------------------------------------------- //
+
+	private transient String world = null;
+	public String getWorld() {
+		return world;
+	}
+
+	private transient Integer regionX = null;
+	public Integer getRegionX() {
+		return regionX;
+	}
+
+	private transient Integer regionZ = null;
+	public Integer getRegionZ() {
+		return regionZ;
+	}
+
+
 	// -------------------------------------------- //
 	// OVERRIDE: ENTITY
 	// -------------------------------------------- //
@@ -55,7 +96,39 @@ public class Board extends Entity<Board> implements BoardInterface
 		if (this.map.isEmpty()) return true;
 		return false;
 	}
-	
+
+	@Override
+	public void postAttach(String id)
+	{
+		// Check if this Board needs re-mapping.
+		if (!id.contains("#")) {
+			// Regionize the data on this entity.
+			Long2ObjectMap<ConcurrentHashMap<PS, TerritoryAccess>> regionizedTAMap = new Long2ObjectOpenHashMap<>();
+			for (Entry<PS, TerritoryAccess> entry : map.entrySet()) {
+				int regionX = entry.getKey().getChunkX(true) >> 5;
+				int regionZ = entry.getKey().getChunkZ(true) >> 5;
+				long regionKey = MiscUtil.toLong(regionX, regionZ);
+				ConcurrentHashMap<PS, TerritoryAccess> territoryMap = regionizedTAMap.computeIfAbsent(regionKey, (k) -> new ConcurrentHashMap<>());
+				territoryMap.put(entry.getKey(), entry.getValue());
+			}
+
+			for (Entry<Long, ConcurrentHashMap<PS, TerritoryAccess>> regionizedEntry : regionizedTAMap.long2ObjectEntrySet()) {
+				int regionX = MiscUtil.msw(regionizedEntry.getKey());
+				int regionZ = MiscUtil.lsw(regionizedEntry.getKey());
+				Board board = get(PS.valueOf(id, regionX << 5, regionZ << 5));
+				board.map = regionizedEntry.getValue();
+				board.saveToRemote();
+				this.detach();
+			}
+			return;
+		}
+		String[] split = id.split("#");
+		world = split[0];
+		regionX = Integer.parseInt(split[1]);
+		regionZ = Integer.parseInt(split[2]);
+	}
+
+
 	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
@@ -158,18 +231,6 @@ public class Board extends Entity<Board> implements BoardInterface
 	}
 	
 	// CHUNKS
-	
-	private transient String world;
-	
-	public String getWorld()
-	{
-		if (this.world != null)
-		{
-			return this.world;
-		}
-		return this.world = this.getId().split("\\.")[0];
-	}
-	
 	public boolean isChunkOutsideBorder(PS ps)
 	{
 		ps = ps.withWorld(this.getWorld());
@@ -207,7 +268,7 @@ public class Board extends Entity<Board> implements BoardInterface
 			if (!ta.getHostFactionId().equals(factionId)) continue;
 			
 			PS ps = entry.getKey();
-			ps = ps.withWorld(this.getId());
+			ps = ps.withWorld(this.getWorld());
 			ret.add(ps);
 		}
 		return ret;
@@ -235,7 +296,7 @@ public class Board extends Entity<Board> implements BoardInterface
 			
 			// Add Chunk
 			PS chunk = entry.getKey();
-			chunk = chunk.withWorld(this.getId());
+			chunk = chunk.withWorld(this.getWorld());
 			chunks.add(chunk);
 		}
 		
