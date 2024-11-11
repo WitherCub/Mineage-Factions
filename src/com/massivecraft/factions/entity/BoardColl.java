@@ -9,11 +9,8 @@ import com.massivecraft.massivecore.store.Coll;
 import com.massivecraft.massivecore.util.MUtil;
 import org.bukkit.entity.Player;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 public class BoardColl extends Coll<Board> implements BoardInterface
 {
@@ -53,6 +50,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 		if (oid == null) return null;
 		if (oid instanceof String) return (String)oid;
 		if (oid instanceof Board) return ((Board)oid).getId();
+		if (oid instanceof PS) return ((PS) oid).getWorld() + "#" + (((PS) oid).getChunkX(true) >> 5) + "#" + (((PS) oid).getChunkZ() >> 5);
 		
 		return MUtil.extract(String.class, "worldName", oid);
 	}
@@ -321,7 +319,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 		// Fill
 		for (Board board : this.getAll())
 		{
-			if (board.hasClaimed(factionId)) ret.add(board.getId());
+			if (board.hasClaimed(factionId)) ret.add(board.getWorld());
 		}
 		
 		// Return
@@ -425,5 +423,5 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 		// Return
 		return ret;
 	}
-	
+
 }

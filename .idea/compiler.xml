@@ -9,8 +9,5 @@
         <module name="Factions" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Factions" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
