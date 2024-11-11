@@ -63,7 +63,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public TerritoryAccess getTerritoryAccessAt(PS ps)
 	{
 		if (ps == null) return null;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return null;
 		return board.getTerritoryAccessAt(ps);
 	}
@@ -72,7 +72,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public Faction getFactionAt(PS ps)
 	{
 		if (ps == null) return null;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return null;
 		return board.getFactionAt(ps);
 	}
@@ -83,7 +83,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public void setTerritoryAccessAt(PS ps, TerritoryAccess territoryAccess)
 	{
 		if (ps == null) return;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return;
 		board.setTerritoryAccessAt(ps, territoryAccess);
 	}
@@ -92,7 +92,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public void setFactionAt(PS ps, Faction faction, Player player)
 	{
 		if (ps == null) return;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return;
 		board.setFactionAt(ps, faction, player);
 	}
@@ -103,7 +103,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public void removeAt(PS ps)
 	{
 		if (ps == null) return;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return;
 		board.removeAt(ps);
 	}
@@ -268,7 +268,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public boolean isBorderPs(PS ps)
 	{
 		if (ps == null) return false;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return false;
 		return board.isBorderPs(ps);
 	}
@@ -287,7 +287,7 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 	public boolean isConnectedPs(PS ps, Faction faction)
 	{
 		if (ps == null) return false;
-		Board board = this.get(ps.getWorld());
+		Board board = Board.get(ps);
 		if (board == null) return false;
 		return board.isConnectedPs(ps, faction);
 	}

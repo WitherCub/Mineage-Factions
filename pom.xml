@@ -52,7 +52,8 @@
             <groupId>net.techcable.tacospigot</groupId>
             <artifactId>WineSpigot</artifactId>
             <version>1.8.8-R0.2-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/WineSpigot.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>io.papermc.paper</groupId>
@@ -122,13 +123,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/SilkSpawners.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>org.jdgames</groupId>
-            <artifactId>MobExtras</artifactId>
-            <version>LATEST</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/MobExtras-2.13.7.jar</systemPath>
-        </dependency>
         <!-- Citizens -->
         <dependency>
             <groupId>org.jdgames</groupId>
@@ -165,6 +159,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/UltimateAutoRestart-2023.12.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>net.minelink.ctplus</groupId>
+            <artifactId>CombatTagPlus</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/CombatTagPlus-1.0.0-SNAPSHOT.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <!-- Build -->
@@ -198,7 +199,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

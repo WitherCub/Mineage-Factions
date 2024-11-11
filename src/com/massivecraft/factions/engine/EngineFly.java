@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -144,6 +145,25 @@ public class EngineFly extends Engine
 		{
 			mplayer.setWasFlying(false);
 			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void onPlayerHit(EntityDamageByEntityEvent event) {
+		if(event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+			if (!MConf.get().factionsFlyEnabled) return;
+
+			Player player = (Player) event.getEntity();
+			Player player2 = (Player) event.getDamager();
+
+			if (MUtil.isntPlayer(player) && MUtil.isntPlayer(player2)) return;
+
+			if(player.isFlying()) {
+				this.disableFlight(player, "<rose>Disabled fly due to combat.");
+			}
+			if(player2.isFlying()) {
+				this.disableFlight(player2, "<rose>Disabled fly due to combat.");
+			}
 		}
 	}
 	

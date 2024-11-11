@@ -296,7 +296,7 @@ public class Board extends Entity<Board> implements BoardInterface
 			
 			// Add Chunk
 			PS chunk = entry.getKey();
-			chunk = chunk.withWorld(this.getWorld());
+			chunk = chunk.withWorld(world);
 			chunks.add(chunk);
 		}
 		

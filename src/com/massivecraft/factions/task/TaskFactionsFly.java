@@ -4,6 +4,8 @@ import com.massivecraft.factions.engine.EngineFly;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.integration.combattagplus.EngineCTPlus;
+import com.massivecraft.factions.integration.combattagplus.IntegrationCTPlus;
 import com.massivecraft.massivecore.ModuloRepeatTask;
 import com.massivecraft.massivecore.ps.PS;
 import org.bukkit.Bukkit;
@@ -66,6 +68,7 @@ public class TaskFactionsFly extends ModuloRepeatTask
 			}
 			else if (!EngineFly.get().playersWithFlyDisabled.contains(player.getUniqueId().toString()) && !player.getAllowFlight() && !EngineFly.get().isEnemyNear(mplayer, player, hostFaction) && (MPerm.getPermFly().has(mplayer, hostFaction, false) || (hostFaction.isNone() && player.hasPermission("factions.wildfly"))))
 			{
+				if(IntegrationCTPlus.get().isActive() && EngineCTPlus.get().isInCombat(player)) continue;
 				EngineFly.get().enableFlight(player, LangConf.get().factionsFlyEnabledMessage);
 			}
 		}

@@ -16,8 +16,8 @@ import com.massivecraft.factions.entity.migrator.MigratorMConf002CleanInactivity
 import com.massivecraft.factions.entity.migrator.MigratorMConf003CleanInactivity;
 import com.massivecraft.factions.event.EventFactionsChunkChangeType;
 import com.massivecraft.factions.integration.V18.IntegrationV18;
-import com.massivecraft.factions.integration.V19.IntegrationV19;
 import com.massivecraft.factions.integration.autorestart.IntegrationAutoRestart;
+import com.massivecraft.factions.integration.combattagplus.IntegrationCTPlus;
 import com.massivecraft.factions.integration.coreprotect.IntegrationCoreProtect;
 import com.massivecraft.factions.integration.essentials.IntegrationEssentials;
 import com.massivecraft.factions.integration.factionkore.IntegrationFKore;
@@ -185,10 +185,10 @@ public class Factions extends MassivePlugin
 				IntegrationSpigot.class,
 				IntegrationSupplyDrop.class,
 				IntegrationV18.class,
-				IntegrationV19.class,
 				IntegrationWorldGuard.class,
 				IntegrationEssentials.class,
 				IntegrationAutoRestart.class,
+				IntegrationCTPlus.class,
 
 				// Command
 				CmdFactions.class,
