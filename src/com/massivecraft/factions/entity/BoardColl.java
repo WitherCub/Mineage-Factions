@@ -150,6 +150,22 @@ public class BoardColl extends Coll<Board> implements BoardInterface
 		// Return
 		return ret;
 	}
+
+	public Set<PS> getChunksInWorld(Faction faction, String world)
+	{
+		// Create
+		Set<PS> ret = new HashSet<>();
+
+		// Fill
+		for (Board board : this.getAll())
+		{
+			if(!board.getId().startsWith(world)) continue;
+			ret.addAll(board.getChunks(faction));
+		}
+
+		// Return
+		return ret;
+	}
 	
 	@Override
 	public Map<Faction, Set<PS>> getFactionToChunks()

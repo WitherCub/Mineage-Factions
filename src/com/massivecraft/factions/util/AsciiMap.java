@@ -69,7 +69,7 @@ public class AsciiMap
 		this.height = extraHeight ? HEIGHT_EXTRA : HEIGHT;
 		this.heightHalf = extraHeight ? HEIGHT_EXTRA_HALF : HEIGHT_HALF;
 		this.topLeft = this.center.plusChunkCoords(-WIDTH_HALF, -this.heightHalf);
-		this.board = BoardColl.get().get(this.center.getWorld());
+		this.board = BoardColl.get().get(this.center);
 	}
 	
 	public RelationParticipator getRelationParticipator()

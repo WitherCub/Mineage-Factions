@@ -83,8 +83,7 @@ public class CmdFactionsSetAll extends CmdFactionsSetXAll
 				worldId = this.argAt(0);
 				if (worldId == null) return null;
 			}
-			Board board = BoardColl.get().get(worldId);
-			chunks = board.getChunks(oldFaction);
+			chunks = BoardColl.get().getChunksInWorld(oldFaction, worldId);
 			String worldDisplayName = MixinWorld.get().getWorldDisplayName(worldId);
 			this.setFormatOne("<h>%s<i> %s <h>%d <i>chunk using " + word + " <h>" + worldDisplayName + "<i>.");
 			this.setFormatMany("<h>%s<i> %s <h>%d <i>chunks using " + word + " <h>" + worldDisplayName + "<i>.");

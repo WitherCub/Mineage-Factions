@@ -26,7 +26,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.3</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -65,12 +65,6 @@
   </repositories>
   <dependencies>
     <dependency>
-      <groupId>net.techcable.tacospigot</groupId>
-      <artifactId>WineSpigot</artifactId>
-      <version>1.8.8-R0.2-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
       <version>1.17-R0.1-SNAPSHOT</version>
@@ -88,6 +82,13 @@
       <version>LATEST</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/libs/CoreProtect.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>net.techcable.tacospigot</groupId>
+      <artifactId>WineSpigot</artifactId>
+      <version>1.8.8-R0.2-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/libs/WineSpigot.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>testbuild</groupId>
@@ -140,13 +141,6 @@
     </dependency>
     <dependency>
       <groupId>org.jdgames</groupId>
-      <artifactId>MobExtras</artifactId>
-      <version>LATEST</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/libs/MobExtras-2.13.7.jar</systemPath>
-    </dependency>
-    <dependency>
-      <groupId>org.jdgames</groupId>
       <artifactId>Citizens</artifactId>
       <version>LATEST</version>
       <scope>system</scope>
@@ -172,6 +166,13 @@
       <version>2023.12</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/libs/UltimateAutoRestart-2023.12.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>net.minelink.ctplus</groupId>
+      <artifactId>CombatTagPlus</artifactId>
+      <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/libs/CombatTagPlus-1.0.0-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
 </project>
