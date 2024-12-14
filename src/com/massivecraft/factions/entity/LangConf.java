@@ -269,4 +269,9 @@ public class LangConf extends Entity<LangConf> {
     public String spawnbotSpawnedMsg = "&aSandbot spawned at your location.";
     public String sandbotName = "&c&lSandbot";
 
+    public String cantPlaceGenbucketLockdownMsg = "&cYou cannot place genbuckets until raid phase is over.";
+    public String baseRegionCooldownMsg = "&cPlease wait %time% minutes before resetting your base region.";
+    public String setBaseRegionMsg = "&aSaved %claims% connected claims in a 50x50 radius as your faction's base region.";
+    public String setBaseRegionReminderMsg = "&c&lREMINDER: &fYour faction does not have a base region set. Please use /f setbaseregion with your selection to be protected during shielded hours.";
+
 }

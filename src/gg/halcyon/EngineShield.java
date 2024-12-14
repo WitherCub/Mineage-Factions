@@ -138,7 +138,7 @@ public class EngineShield extends Engine {
     }
 
     public boolean isPsInsideBaseRegion(Faction faction, String worldName, int chunkX, int chunkZ) {
-        return faction.isChunkWithinRaidtimerRadiusFromSpawnerChunk(worldName, chunkX, chunkZ);
+        return faction.isChunkWithinRaidtimerRadiusFromSpawnerChunk(worldName, chunkX, chunkZ) || faction.getBaseRegionPs().contains(PS.valueOf(worldName, chunkX, chunkZ));
     }
 
     //@EventHandler(priority = EventPriority.LOWEST)

@@ -1,5 +1,6 @@
 package com.massivecraft.factions.engine;
 
+import com.golfing8.kore.event.GenBlockUseEvent;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
 import com.massivecraft.factions.entity.objects.RaidData;
@@ -45,28 +46,28 @@ public class EngineRaidtimer extends Engine {
         });
     }
 
-    //@EventHandler(priority = EventPriority.LOWEST)
-    //public void onGenbucketPlace(EventGenbucketPlace event) {
-    //    PS psAt = PS.valueOf(event.getPlayer().getLocation());
-    //    Faction factionAt = BoardColl.get().getFactionAt(psAt);
-    //
-    //    RaidData raidData = RaidDataStorage.get().isBeingRaided(factionAt);
-    //
-    //    if (raidData != null && factionAt.getId().equals(raidData.getFactionRaidedId()) && raidData.getPhase() == 1) {
-    //        int chunkX = psAt.getChunkX(true);
-    //        int chunkZ = psAt.getChunkZ(true);
-    //        String worldName = psAt.getWorld(true);
-    //
-    //        boolean isWithinCoreRadius = EngineShield.get().isPsInsideBaseRegion(factionAt, worldName, chunkX, chunkZ);
-    //
-    //        if (!isWithinCoreRadius) {
-    //            return;
-    //        }
-    //
-    //        event.setCancelled(true);
-    //        MixinMessage.get().msgOne(event.getPlayer(), MConf.get().cantPlaceGenbucketLockdownMsg);
-    //    }
-    //}
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onGenbucketPlace(GenBlockUseEvent event) {
+        PS psAt = PS.valueOf(event.getUsedAt().getChunk());
+        Faction factionAt = BoardColl.get().getFactionAt(psAt);
+
+        RaidData raidData = RaidDataStorage.get().isBeingRaided(factionAt);
+
+        if (raidData != null && factionAt.getId().equals(raidData.getFactionRaidedId()) && raidData.getPhase() == 1) {
+            int chunkX = psAt.getChunkX(true);
+            int chunkZ = psAt.getChunkZ(true);
+            String worldName = psAt.getWorld(true);
+
+            boolean isWithinCoreRadius = EngineShield.get().isPsInsideBaseRegion(factionAt, worldName, chunkX, chunkZ);
+
+            if (!isWithinCoreRadius) {
+                return;
+            }
+
+            event.setCancelled(true);
+            MixinMessage.get().msgOne(event.getOwner(), LangConf.get().cantPlaceGenbucketLockdownMsg);
+        }
+    }
 
     //@EventHandler(priority = EventPriority.LOWEST)
     //public void onPrinterToggle(PrinterToggleEvent event) {

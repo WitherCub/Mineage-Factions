@@ -771,4 +771,12 @@ public class MConf extends Entity<MConf>
 
 	public boolean enableTnTWand = true;
 	public int blockChestBeforeRestartSec = 60;
+
+	public int maxCoreChunks = 25;
+	public boolean flyOnlyInCoreNRaidClaims = true;
+	public boolean onlyPlaceSpawnersInCoreClaims = true;
+
+	public long reminderDelayMillis = 300000;
+	public int baseRegionLoopRadius = 50;
+	public int baseRegionSetMinutesCooldown = 2;
 }

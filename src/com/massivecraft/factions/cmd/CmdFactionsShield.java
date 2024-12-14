@@ -39,7 +39,11 @@ public class CmdFactionsShield extends FactionsCommand
 	public void perform()
 	{
 		if (!MPerm.getPermShield().has(msender, msenderFaction, true)) return;
-		
+		if(msenderFaction.getBaseRegionPs().isEmpty()) {
+			msender.msg("<rose>You must set a base region to set a shield time.");
+			return;
+		}
+
 		me.openInventory(getShieldGui(msenderFaction).getInventory());
 		playersWithShieldGuiOpen.add(msender.getUuid());
 	}

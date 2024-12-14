@@ -60,4 +60,7 @@ public class ChunkPos {
 		return Bukkit.getWorld(world).getChunkAt(x, z);
 	}
 
+	public PS getPS() {
+		return PS.valueOf(world, x, z);
+	}
 }

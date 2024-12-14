@@ -84,10 +84,15 @@ public class TaskRaidTimer extends ModuloRepeatTask {
             return;
         }
 
-        if (factionRaided.getSpawnerChunks() != null && !factionRaided.getSpawnerChunks().isEmpty()) {
+        if (
+                (factionRaided.getSpawnerChunks() != null && !factionRaided.getSpawnerChunks().isEmpty()) ||
+                (factionRaided.getBaseRegionPs() != null && !factionRaided.getBaseRegionPs().isEmpty())
+        ) {
             FactionValue factionValue = new FactionValue(factionRaided.getId(), new MassiveSet<>(), 0, 0);
 
-            Set<PS> chunksToProcessPs = factionRaided.getSpawnerChunks().stream().map(chunkPos -> PS.valueOf(chunkPos.getChunk())).collect(Collectors.toSet());
+            Set<PS> chunksToProcessPs = new HashSet<>();
+            if(factionRaided.getSpawnerChunks() != null) chunksToProcessPs.addAll(factionRaided.getSpawnerChunks().stream().map(chunkPos -> PS.valueOf(chunkPos.getChunk())).collect(Collectors.toSet()));
+            if(factionRaided.getBaseRegionPs() != null) chunksToProcessPs.addAll(factionRaided.getBaseRegionPs());
 
             factionAndTaskId.put(factionRaided.getId(), Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Factions.get(), () -> {
                 Set<PS> chunksProcessedPs = new HashSet<>();

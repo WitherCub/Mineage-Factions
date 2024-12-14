@@ -207,7 +207,8 @@ public class Factions extends MassivePlugin
 				TaskUpdateShield.class,
 				TaskUpdateShieldGui.class,
 				TaskUpdateShieldGuiSeconds.class,
-				TaskUpdateBoard.class
+				TaskUpdateBoard.class,
+				TaskReminder.class
 		);
 
 		this.activate(this.getClassesActive("chat", ChatActive.class));

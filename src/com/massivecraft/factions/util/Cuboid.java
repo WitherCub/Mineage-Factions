@@ -1,8 +1,12 @@
 package com.massivecraft.factions.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashSet;
+import java.util.Set;
 
 //Simple, bare-bones cuboid class. Original idea from bergerkiller on the bukkit forumns (http://forums.bukkit.org/threads/region-general-api-for-creating-cuboids.34644/).
 public class Cuboid {
@@ -14,6 +18,17 @@ public class Cuboid {
 		zMin = Math.min(point1.getBlockZ(), point2.getBlockZ());
 		zMax = Math.max(point1.getBlockZ(), point2.getBlockZ());
 		world = point1.getWorld();
+	}
+
+	public Cuboid(ChunkPos chunk1, ChunkPos chunk2) {
+		xMin = Math.min(chunk1.getX(), chunk2.getX());
+		xMax = Math.max(chunk1.getX(), chunk2.getX());
+		zMin = Math.min(chunk1.getZ(), chunk2.getZ());
+		zMax = Math.max(chunk1.getZ(), chunk2.getZ());
+		world = Bukkit.getWorld(chunk1.getWorld());
+
+		yMax = 1;
+		yMin = 0;
 	}
 	
 	public Cuboid(int xMin, int xMax, int yMin, int yMax, int zMin,int zMax, World world){
@@ -97,5 +112,17 @@ public class Cuboid {
 	}
 	public int getArea() {
 		return getHeight() * getXWidth() * getZWidth();
+	}
+
+	public Set<ChunkPos> getChunkArray() {
+		Set<ChunkPos> ret = new HashSet<>();
+
+		for (int x = xMin; x <= xMax; x++) {
+			for (int z = xMin; z <= xMax; z++) {
+				ret.add(new ChunkPos(world.getName(), x, z));
+			}
+		}
+
+		return ret;
 	}
 }

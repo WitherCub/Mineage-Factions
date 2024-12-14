@@ -138,6 +138,8 @@ public class CmdFactions extends FactionsCommand
 		this.addChild(CmdFactionsUnclaim.get());
 		this.addChild(new CmdFactionsList());
 
+		this.addChild(new CmdFactionsSetBaseRegion());
+
 		CmdFactionsClaim claim = CmdFactionsClaim.get();
 		CmdFactionsFlag flag = CmdFactionsFlag.get();
 		this.addChild(claim);

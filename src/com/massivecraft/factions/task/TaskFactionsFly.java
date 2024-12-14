@@ -64,10 +64,20 @@ public class TaskFactionsFly extends ModuloRepeatTask
 					{
 						EngineFly.get().disableFlight(player, LangConf.get().factionsFlyDisabledEnemyNearbyMessage);
 					}
+					else if (MConf.get().flyOnlyInCoreNRaidClaims && !hostFaction.getBaseRegionPs().contains(PS.valueOf(player.getLocation().getChunk())) && !hostFaction.isInRaidClaim(player.getLocation().getChunk()))
+					{
+						EngineFly.get().disableFlight(player, "&cYou can only fly in base/raid claims.");
+					}
 				}
 			}
-			else if (!EngineFly.get().playersWithFlyDisabled.contains(player.getUniqueId().toString()) && !player.getAllowFlight() && !EngineFly.get().isEnemyNear(mplayer, player, hostFaction) && (MPerm.getPermFly().has(mplayer, hostFaction, false) || (hostFaction.isNone() && player.hasPermission("factions.wildfly"))))
+			else if (
+					!EngineFly.get().playersWithFlyDisabled.contains(player.getUniqueId().toString()) &&
+					!player.getAllowFlight() && !EngineFly.get().isEnemyNear(mplayer, player, hostFaction) &&
+					(MPerm.getPermFly().has(mplayer, hostFaction, false) ||
+					(hostFaction.isNone() && player.hasPermission("factions.wildfly")))
+			)
 			{
+				if(MConf.get().flyOnlyInCoreNRaidClaims && !hostFaction.getBaseRegionPs().contains(PS.valueOf(player.getLocation().getChunk())) && !hostFaction.isInRaidClaim(player.getLocation().getChunk())) continue;
 				if(IntegrationCTPlus.get().isActive() && EngineCTPlus.get().isInCombat(player)) continue;
 				EngineFly.get().enableFlight(player, LangConf.get().factionsFlyEnabledMessage);
 			}

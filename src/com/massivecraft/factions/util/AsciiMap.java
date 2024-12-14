@@ -209,6 +209,10 @@ public class AsciiMap
 					{
 						ret = ret.add(factionChar.color(ChatColor.BLUE).tooltip("Spawner chunk (" + ChatColor.stripColor(hereFaction.getName()) + ")"));
 					}
+					if (!hereFaction.isNone() && hereFaction.getBaseRegionPs().contains(chunkPos.getPS()))
+					{
+						ret = ret.add(factionChar.color(ChatColor.YELLOW).tooltip("Base chunk (" + ChatColor.stripColor(hereFaction.getName()) + ")"));
+					}
 					else
 					{
 						ret = ret.add(factionChar.tooltip("Claimed by " + ChatColor.stripColor(hereFaction.getName())));
@@ -221,6 +225,10 @@ public class AsciiMap
 				else if (!hereFaction.isNone() && hereFaction.getSpawnerChunks().contains(chunkPos))
 				{
 					ret = ret.add(factionChar.color(ChatColor.BLUE).tooltip("Spawner chunk (" + ChatColor.stripColor(hereFaction.getName()) + ")"));
+				}
+				else if (!hereFaction.isNone() && hereFaction.getBaseRegionPs().contains(chunkPos.getPS()))
+				{
+					ret = ret.add(factionChar.color(ChatColor.YELLOW).tooltip("Base chunk (" + ChatColor.stripColor(hereFaction.getName()) + ")"));
 				}
 				else if (mplayer.getFaction() == hereFaction)
 				{

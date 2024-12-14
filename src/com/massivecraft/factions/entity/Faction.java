@@ -29,10 +29,7 @@ import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.trait.trait.Owner;
 import net.citizensnpcs.trait.Gravity;
-import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 import org.bukkit.command.CommandSender;
@@ -213,6 +210,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator
 
 		this.setRaidClaims(that.raidClaims);
 		this.setSandbots(that.sandbots);
+		this.setBaseRegionPs(that.baseRegionPs);
 
 //		if (!isSystemFaction())
 //		{
@@ -2092,4 +2090,50 @@ public class Faction extends Entity<Faction> implements FactionsParticipator
 		return null;
 	}
 
+	private Set<PS> baseRegionPs = new HashSet<>();
+	private Long baseRegionSetTime = null;
+
+	public Set<PS> getBaseRegionPs()
+	{
+		return baseRegionPs;
+	}
+
+	public void setBaseRegionPs(Set<PS> baseRegionPs)
+	{
+		this.baseRegionPs = baseRegionPs;
+		this.changed();
+	}
+
+	public void removeBaseRegionPs(Set<PS> baseRegionPs) {
+		this.baseRegionPs.removeAll(baseRegionPs);
+		this.changed();
+	}
+
+	public Long getBaseRegionSetTime()
+	{
+		return baseRegionSetTime;
+	}
+
+	public void setBaseRegionSetTime(Long baseRegionSetTime)
+	{
+		this.baseRegionSetTime = baseRegionSetTime;
+		this.changed();
+	}
+
+	public boolean isInRaidClaim(Chunk chunk) {
+		if(raidClaims.isEmpty()) return false;
+
+		boolean isInClaim = false;
+		PS pChunk = PS.valueOf(chunk);
+		for(Set<PS> claims: raidClaims.values()) {
+			if(claims == null) continue;
+
+			if(claims.contains(pChunk)) {
+				isInClaim = true;
+				break;
+			}
+		}
+
+		return isInClaim;
+	}
 }
