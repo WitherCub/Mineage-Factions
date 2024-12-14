@@ -774,6 +774,7 @@ public class MConf extends Entity<MConf>
 
 	public int maxCoreChunks = 25;
 	public boolean flyOnlyInCoreNRaidClaims = true;
+	public int flyOnlyInMinutesOldClaim = 10;
 	public boolean onlyPlaceSpawnersInCoreClaims = true;
 
 	public long reminderDelayMillis = 300000;
