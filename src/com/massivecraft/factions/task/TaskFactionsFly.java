@@ -1,5 +1,6 @@
 package com.massivecraft.factions.task;
 
+import com.massivecraft.factions.TerritoryAccess;
 import com.massivecraft.factions.engine.EngineFly;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.*;
@@ -36,6 +37,8 @@ public class TaskFactionsFly extends ModuloRepeatTask
 			MPlayer mplayer = MPlayer.get(player);
 			
 			if (EngineFly.get().hasFlyBypass(player)) continue;
+
+			TerritoryAccess access = BoardColl.get().getTerritoryAccessAt(PS.valueOf(player));
 			
 			Faction hostFaction = BoardColl.get().getFactionAt(PS.valueOf(player.getLocation()));
 			
@@ -67,6 +70,10 @@ public class TaskFactionsFly extends ModuloRepeatTask
 					else if (MConf.get().flyOnlyInCoreNRaidClaims && !hostFaction.getBaseRegionPs().contains(PS.valueOf(player.getLocation().getChunk())) && !hostFaction.isInRaidClaim(player.getLocation().getChunk()))
 					{
 						EngineFly.get().disableFlight(player, "&cYou can only fly in base/raid claims.");
+					}
+					else if (MConf.get().flyOnlyInMinutesOldClaim > 0 && (access == null || System.currentTimeMillis() - access.getClaimTime() < MConf.get().flyOnlyInMinutesOldClaim * 1000L))
+					{
+						EngineFly.get().disableFlight(player, "&cYou can only fly in claims that are " + MConf.get().flyOnlyInMinutesOldClaim + " minutes old.");
 					}
 				}
 			}
